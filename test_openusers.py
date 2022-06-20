@@ -10,7 +10,7 @@ def run(playwright: Playwright) -> None:
     page.locator("input[name=\"password\"]").fill("siveo")
     page.locator("text=Connecter").click()
     expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
-    page.locator("#navbarusers :text('Utilisateurs')").click()
+    page.locator("#navbarusers").click()
     expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=users&action=index")
     context.close()
     browser.close()
