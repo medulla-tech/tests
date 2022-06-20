@@ -10,8 +10,8 @@ def run(playwright: Playwright) -> None:
     page.locator("input[name=\"username\"]").click()
     # Fill input[name="username"]
     page.locator("input[name=\"username\"]").fill("root")
-    # Press Tab
-    page.locator("input[name=\"username\"]").press("Tab")
+    # Click input[name="password"]
+    page.locator("input[name=\"password\"]").click()
     # Fill input[name="password"]
     page.locator("input[name=\"password\"]").fill("siveo")
     # Click text=Connecter
