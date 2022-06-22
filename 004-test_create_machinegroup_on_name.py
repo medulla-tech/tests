@@ -18,7 +18,7 @@ def run(playwright: Playwright) -> None:
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=0').click()
     page.locator('//*[@id="autocomplete"]').click()
-    page.locator('//*[@id="autocomplete"]').fill("win")
+    page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[4]/input[2]").click()
     page.locator("//html/body/div/div[4]/div/div[3]/table[3]/tbody/tr/td[1]/input").click()
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
