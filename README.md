@@ -15,3 +15,4 @@
 - [ ] Crééer un package logiciel
 - [ ] Supprimer un package logiciel
 - [ ] Tester la suppression d'une machine si l'extension fusion est désactivée
+- [ ] Convertir les tests pour pouvoir les utiliser avec pytest
