@@ -1,20 +1,23 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import  expect, Page
 import re
-def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto("http://dev.siveo.net/mmc/")
-    page.locator("input[name=\"username\"]").click()
-    page.locator("input[name=\"username\"]").fill("root")
-    page.locator("input[name=\"password\"]").click()
-    page.locator("input[name=\"password\"]").fill("siveo")
-    page.locator("text=Connecter").click()
+
+def test_create_group_based_on_name(page: Page) -> None:
+
+    page.goto('http://dev.siveo.net')
+
+    # We fill username/password and we connect into the mmc.
+    page.fill('#username', 'root')
+    page.fill('#password', 'siveo')
+    page.click('#connect_button')
+
     expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
-    page.locator("#navbarcomputers").click()
+
+    page.click('#navbarcomputers')
     expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
-    page.locator("#computersgroupcreator").click()
+
+    page.click("#computersgroupcreator")
     expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=0').click()
     page.locator('//*[@id="autocomplete"]').click()
@@ -25,8 +28,3 @@ def run(playwright: Playwright) -> None:
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Name")
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[2]/td[3]/input").click()
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
-    context.close()
-    browser.close()
-with sync_playwright() as playwright:
-    run(playwright)
-
