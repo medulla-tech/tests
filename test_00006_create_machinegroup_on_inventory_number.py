@@ -1,7 +1,7 @@
 from playwright.sync_api import  expect, Page
 import re
 
-def test_create_group_based_on_description(page: Page) -> None:
+def test_create_group_based_on_inventory_number(page: Page) -> None:
 
     page.goto('http://dev.siveo.net')
 
