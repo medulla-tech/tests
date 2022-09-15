@@ -1,4 +1,5 @@
 from playwright.sync_api import  expect, Page
+import time 
 
 def test_open_imaging(page: Page) -> None:
 
