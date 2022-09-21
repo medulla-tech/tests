@@ -69,12 +69,11 @@ def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
         conffile.close()
      
     conf = json.loads(content)
-     
+
+    excluded = ["creation_date", "id"]
     if jsonfile == "conf.json":
-        excluded = ["creation_date", "id"]
         rem_keys_in_dict(excluded, conf)
     else:
-        excluded = ["creation_date", "id"]
         rem_keys_in_dict(excluded, conf["info"])
 
     with open(filename, 'w') as conffile: 
