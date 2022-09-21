@@ -70,8 +70,12 @@ def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
      
     conf = json.loads(content)
      
-    excluded = ["creation_date", "id"]
-    rem_keys_in_dict(excluded, conf)
+    if jsonfile == "conf.json":
+        excluded = ["creation_date", "id"]
+        rem_keys_in_dict(excluded, conf)
+    else:
+        excluded = ["creation_date", "id"]
+        rem_keys_in_dict(excluded, conf["info"])
 
     with open(filename, 'w') as conffile: 
         json.dump(conf, conffile) 
@@ -112,7 +116,8 @@ def test_create_package_execute(page: Page) -> None:
         page.locator("#current-actions li >> nth=0")
     )
     # page.click('//*[@id="Form"]/input[3]')
-    page.click("#property.btn.btn-primary")
+    page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
+    page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click("//html/body/div/div[3]/div[2]/div/div[3]/button")
     expect(page).to_have_url(
@@ -160,12 +165,11 @@ def test_correctness_package(page: Page) -> None:
         )
         == True
     )
-    # TODO: Enable when the we will have actionlabel modified graphically.
-    #remove_unneeded_key(tempdir, package_uuid, "xmppdeploy.json")
-    #assert (
-    #    filecmp.cmp(
-    #        os.path.join(tempdir, package_uuid, "xmppdeploy.json"),
-    #        os.path.join("packages_template", "xmppdeploy-execute.json"),
-    #    )
-    #    == True
-    #)
+    remove_unneeded_key(tempdir, package_uuid, "xmppdeploy.json")
+    assert (
+        filecmp.cmp(
+            os.path.join(tempdir, package_uuid, "xmppdeploy.json"),
+            os.path.join("packages_template", "xmppdeploy-execute.json"),
+        )
+        == True
+    )
