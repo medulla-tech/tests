@@ -4,7 +4,7 @@ def test_create_users(page: Page) -> None:
 
     page.goto('http://wva.siveo.net')
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')

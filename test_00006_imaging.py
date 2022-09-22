@@ -14,7 +14,7 @@ def test_open_imaging(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -30,7 +30,7 @@ def test_open_imaging_manage_masters(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -49,7 +49,7 @@ def test_open_imaging_manage_bootservices(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -68,7 +68,7 @@ def test_open_imaging_manage_bootmenu(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -87,7 +87,7 @@ def test_open_imaging_manage_postimaging_scripts(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -106,7 +106,7 @@ def test_open_imaging_configuration(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -125,7 +125,7 @@ def test_open_imaging_manage_sysprep(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -144,7 +144,7 @@ def test_open_imaging_manage_groups(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
@@ -163,7 +163,7 @@ def test_open_imaging_add_groups(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')

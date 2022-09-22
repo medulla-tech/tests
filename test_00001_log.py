@@ -14,7 +14,7 @@ def test_basic_login(page: Page) -> None:
 
     page.goto(test_server)
 
-    # We fille username/password and we connect into the mmc.
+    # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
