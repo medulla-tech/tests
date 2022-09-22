@@ -29,4 +29,22 @@
 - [ ] Crééer un package logiciel
 - [ ] Supprimer un package logiciel
 - [ ] Tester la suppression d'une machine si l'extension fusion est désactivée
-- [ ] Convertir les tests pour pouvoir les utiliser avec pytest
+- [x] Convertir les tests pour pouvoir les utiliser avec pytest
+
+
+# Comment lancer les tests.
+
+Au préalable il faut installer playwright et playwright-pytest
+
+pip install playwright
+pip install pytest-playwright
+
+Ensuite il faut configurer playwright, pour cela il faut "l'installer"
+
+playwright install
+
+Pour lancer les tests il faut utiliser la commande suivante:
+
+python3 -m pytest . --headed --slowmo 500 -o log_cli=true
+
+au lieu du . qui signifie lancer tout les tests du dossier on peut utiliser unitairement un test précis.
