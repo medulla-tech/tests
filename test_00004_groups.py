@@ -1,22 +1,32 @@
 from playwright.sync_api import  expect, Page
 import re
+import configparser
+import os
+
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+Config = configparser.ConfigParser()
+Config.read(os.path.join(project_dir, "config.ini"))
+
+test_server = Config.get('test_server', 'name')
+
 
 def test_create_group_based_on_name(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=0').click()
@@ -31,20 +41,20 @@ def test_create_group_based_on_name(page: Page) -> None:
 
 def test_create_group_based_on_description(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=1').click()
@@ -59,20 +69,20 @@ def test_create_group_based_on_description(page: Page) -> None:
 
 def test_create_group_based_on_inventory_number(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=2').click()
@@ -87,20 +97,20 @@ def test_create_group_based_on_inventory_number(page: Page) -> None:
 
 def test_create_group_based_on_glpi_group(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=3').click()
@@ -115,20 +125,20 @@ def test_create_group_based_on_glpi_group(page: Page) -> None:
 
 def test_create_group_based_on_peripheral_name(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=4').click()
@@ -143,20 +153,20 @@ def test_create_group_based_on_peripheral_name(page: Page) -> None:
 
 def test_create_group_based_on_peripheral_serial(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=5').click()
@@ -171,20 +181,20 @@ def test_create_group_based_on_peripheral_serial(page: Page) -> None:
     
 def test_create_group_based_on_machine_type(page: Page) -> None:
 
-    page.goto('http://dev.siveo.net')
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url("http://dev.siveo.net/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('tr td a >> nth=0').click()
     page.locator('.listinfos tbody tr td a >> nth=6').click()

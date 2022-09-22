@@ -6,6 +6,13 @@ from subprocess import call
 import os
 import filecmp
 import json
+import configparser
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+Config = configparser.ConfigParser()
+Config.read(os.path.join(project_dir, "config.ini"))
+
+test_server = Config.get('test_server', 'name')
 
 def find_uuid(package_url) -> str:
     """
@@ -33,7 +40,7 @@ def get_package(package_uuid, tempdir) -> None:
         tempdir: The directory where we will copy the test package
     """
     package_path = os.path.join("/", "var", "lib", "pulse2", "packages", package_uuid)
-    cmd = "scp -r root@wva.siveo.net:%s %s" % (package_path, tempdir)
+    cmd = "scp -r root@" + test_server + ":%s %s" % (package_path, tempdir)
     call(cmd.split(" "))
 
 def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
@@ -85,7 +92,7 @@ def test_create_package_execute(page: Page) -> None:
         It creates a simple package with an empty
         execute field.
     """
-    page.goto("http://wva.siveo.net")
+    page.goto(test_server + "")
 
     # We fill username/password and we connect into the mmc.
     page.fill("#username", "root")
@@ -93,12 +100,12 @@ def test_create_package_execute(page: Page) -> None:
     page.click("#connect_button")
 
     expect(page).to_have_url(
-        "http://wva.siveo.net/mmc/main.php?module=base&submod=main&action=default"
+        test_server + "/mmc/main.php?module=base&submod=main&action=default"
     )
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        "http://wva.siveo.net/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -120,7 +127,7 @@ def test_create_package_execute(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click("//html/body/div/div[3]/div[2]/div/div[3]/button")
     expect(page).to_have_url(
-        "http://wva.siveo.net/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 
@@ -128,7 +135,7 @@ def test_correctness_package(page: Page) -> None:
     """
         It checks if the packages we just created is OK.
     """
-    page.goto("http://wva.siveo.net")
+    page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
     page.fill("#username", "root")
@@ -136,12 +143,12 @@ def test_correctness_package(page: Page) -> None:
     page.click("#connect_button")
 
     expect(page).to_have_url(
-        "http://wva.siveo.net/mmc/main.php?module=base&submod=main&action=default"
+        test_server + "/mmc/main.php?module=base&submod=main&action=default"
     )
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        "http://wva.siveo.net/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click(
