@@ -7,13 +7,14 @@ import os
 import filecmp
 import json
 import configparser
+import time
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
 Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
-
+ssh_server = Config.get('test_server', 'ssh')
 def find_uuid(package_url) -> str:
     """
     It uses the URL of the package to exact the uuid.
@@ -40,7 +41,7 @@ def get_package(package_uuid, tempdir) -> None:
         tempdir: The directory where we will copy the test package
     """
     package_path = os.path.join("/", "var", "lib", "pulse2", "packages", package_uuid)
-    cmd = "scp -r root@" + test_server + ":%s %s" % (package_path, tempdir)
+    cmd = "scp -r root@" + ssh_server + ":%s %s" % (package_path, tempdir)
     call(cmd.split(" "))
 
 def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
@@ -135,6 +136,8 @@ def test_correctness_package(page: Page) -> None:
     """
         It checks if the packages we just created is OK.
     """
+    # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
+    time.sleep(5)
     page.goto(test_server)
 
     # We fill username/password and we connect into the mmc.
