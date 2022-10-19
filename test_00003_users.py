@@ -58,7 +58,7 @@ def test_delete_users(page: Page) -> None:
     # We fill username/password and we connect into the mmc.
     page.fill('#username', login)
     page.fill('#password', password)
-    #page.click('#connect_button')
+    page.click('#connect_button')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
     page.click('#navbarusers')
