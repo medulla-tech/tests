@@ -1,7 +1,7 @@
 from playwright.sync_api import  expect, Page
 import configparser
 import os
-
+import time
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
@@ -67,6 +67,5 @@ def test_delete_users(page: Page) -> None:
     page.click('#delfiles')
     page.click(".btnPrimary[type='submit']")
 
-    page.click(".btnPrimary[type='submit']")
     time.sleep(1)
-    expect(pagei).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
