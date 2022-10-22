@@ -10,7 +10,10 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
-
+"""
+    The tests are done to test the user page of pulse.
+    Warning: To be done correctly, it MUST be started with no users created.
+"""
 def test_open_users(page: Page) -> None:
 
     page.goto(test_server)
