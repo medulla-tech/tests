@@ -13,6 +13,7 @@ password = Config.get('test_server', 'password')
 """
     The tests are done to test the user page of pulse.
     Warning: To be done correctly, it MUST be started with no users created.
+    TODO: Test for the user backup
 """
 def test_open_users(page: Page) -> None:
 
@@ -53,7 +54,26 @@ def test_create_users(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
 
+def test_edit_users(page: Page) -> None:
 
+    page.goto(test_server)
+
+    # We fill username/password and we connect into the mmc.
+    page.fill('#username', login)
+    page.fill('#password', password)
+    page.click('#connect_button')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+
+    page.click('#navbarusers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    page.click('//html/body/div/div[4]/div/div[2]/form/table/tbody/tr/td[5]/ul/li[1]/a')
+
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
+    page.click(".btnPrimary[type='submit']")
+
+    time.sleep(1)
+    # We expect the same page as when we validate the user page we stay on it.
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
 def test_delete_users(page: Page) -> None:
 
     page.goto(test_server)
@@ -66,7 +86,7 @@ def test_delete_users(page: Page) -> None:
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
-    page.click('//html/body/div/div[4]/div/div[2]/form/table/tbody/tr[2]/td[5]/ul/li[3]/a')
+    page.click('//html/body/div/div[4]/div/div[2]/form/table/tbody/tr/td[5]/ul/li[3]/a')
     page.click('#delfiles')
     page.click(".btnPrimary[type='submit']")
 
