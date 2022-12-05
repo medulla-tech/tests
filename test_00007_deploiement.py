@@ -1,5 +1,6 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
+from common import medulla_connect
 
 import tempfile
 import logging
@@ -58,13 +59,8 @@ def template_deploy(page: Page) -> None:
     assert result_depl == True
 
 def test_deploy_package_execute_command(page: Page) -> None:
-    page.goto(test_server)
 
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")

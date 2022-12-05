@@ -1,4 +1,6 @@
 from playwright.sync_api import  expect, Page
+from common import medulla_connect
+
 import configparser
 import os
 
@@ -13,14 +15,7 @@ password = Config.get('test_server', 'password')
 
 def test_open_inventory(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -28,14 +23,7 @@ def test_open_inventory(page: Page) -> None:
 
 def test_open_favouriteGroup(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -45,14 +33,7 @@ def test_open_favouriteGroup(page: Page) -> None:
 
 def test_open_AllGroups(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -63,14 +44,7 @@ def test_open_AllGroups(page: Page) -> None:
 
 def test_open_CreateGroups(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -81,14 +55,7 @@ def test_open_CreateGroups(page: Page) -> None:
 
 def test_open_UninventoriedMachines(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -99,14 +66,7 @@ def test_open_UninventoriedMachines(page: Page) -> None:
 
 def test_open_monitoringAlerts(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -117,14 +77,7 @@ def test_open_monitoringAlerts(page: Page) -> None:
 
 def test_open_customQA(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -134,14 +87,7 @@ def test_open_customQA(page: Page) -> None:
 
 def test_open_ActionQuickGroup(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
@@ -152,14 +98,7 @@ def test_open_ActionQuickGroup(page: Page) -> None:
 
 def test_open_filesmanagers(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")

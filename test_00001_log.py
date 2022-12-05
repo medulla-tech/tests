@@ -1,7 +1,8 @@
 from playwright.sync_api import  expect, Page
+from common import medulla_connect
+
 import configparser
 import os
-
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
@@ -13,13 +14,6 @@ password = Config.get('test_server', 'password')
 
 def test_basic_login(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     pass

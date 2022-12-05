@@ -1,5 +1,7 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
+from common import medulla_connect
+
 import tempfile
 import logging
 from subprocess import call
@@ -93,16 +95,7 @@ def test_create_package_execute(page: Page) -> None:
         It creates a simple package with an empty
         execute field.
     """
-    page.goto(test_server + "")
-
-    # We fill username/password and we connect into the mmc.
-    page.fill("#username", "root")
-    page.fill("#password", "siveo")
-    page.click("#connect_button")
-
-    expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=base&submod=main&action=default"
-    )
+    medulla_connect(page)
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
@@ -138,16 +131,7 @@ def test_correctness_package(page: Page) -> None:
     """
     # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
     time.sleep(5)
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill("#username", "root")
-    page.fill("#password", "siveo")
-    page.click("#connect_button")
-
-    expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=base&submod=main&action=default"
-    )
+    medulla_connect(page)
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(

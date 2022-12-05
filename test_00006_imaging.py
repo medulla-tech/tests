@@ -1,4 +1,6 @@
 from playwright.sync_api import  expect, Page
+from common import medulla_connect
+
 import time 
 import configparser
 import os
@@ -14,13 +16,7 @@ password = Config.get('test_server', 'password')
 
 def test_open_imaging(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     # As the page can have issues, with wrong php include , or wrong session
@@ -30,13 +26,7 @@ def test_open_imaging(page: Page) -> None:
 
 def test_open_imaging_manage_masters(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -49,13 +39,7 @@ def test_open_imaging_manage_masters(page: Page) -> None:
 
 def test_open_imaging_manage_bootservices(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -68,13 +52,7 @@ def test_open_imaging_manage_bootservices(page: Page) -> None:
 
 def test_open_imaging_manage_bootmenu(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -87,13 +65,7 @@ def test_open_imaging_manage_bootmenu(page: Page) -> None:
 
 def test_open_imaging_manage_postimaging_scripts(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -106,13 +78,7 @@ def test_open_imaging_manage_postimaging_scripts(page: Page) -> None:
 
 def test_open_imaging_configuration(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -125,13 +91,7 @@ def test_open_imaging_configuration(page: Page) -> None:
 
 def test_open_imaging_manage_sysprep(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -144,13 +104,7 @@ def test_open_imaging_manage_sysprep(page: Page) -> None:
 
 def test_open_imaging_manage_groups(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
@@ -163,13 +117,7 @@ def test_open_imaging_manage_groups(page: Page) -> None:
 
 def test_open_imaging_add_groups(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")

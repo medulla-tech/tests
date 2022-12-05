@@ -1,4 +1,6 @@
 from playwright.sync_api import  expect, Page
+from common import medulla_connect
+
 import configparser
 import os
 import time
@@ -15,13 +17,7 @@ password = Config.get('test_server', 'password')
 """
 def test_open_services(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcontrol')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")
@@ -29,13 +25,7 @@ def test_open_services(page: Page) -> None:
 
 def test_open_services_others(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarcontrol')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")
@@ -46,13 +36,7 @@ def test_open_services_others(page: Page) -> None:
 
 def test_open_services_log(page: Page) -> None:
 
-    page.goto(test_server)
-    
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
     
     page.click('#navbarcontrol')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")

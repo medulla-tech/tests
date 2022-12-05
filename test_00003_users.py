@@ -1,4 +1,6 @@
 from playwright.sync_api import  expect, Page
+from common import medulla_connect
+
 import configparser
 import os
 import time
@@ -17,26 +19,14 @@ password = Config.get('test_server', 'password')
 """
 def test_open_users(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarusers')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=users&action=index")
 
 def test_create_users(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
@@ -56,13 +46,7 @@ def test_create_users(page: Page) -> None:
 
 def test_edit_users(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
@@ -76,13 +60,7 @@ def test_edit_users(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
 def test_delete_users(page: Page) -> None:
 
-    page.goto(test_server)
-
-    # We fill username/password and we connect into the mmc.
-    page.fill('#username', login)
-    page.fill('#password', password)
-    page.click('#connect_button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    medulla_connect(page)
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
