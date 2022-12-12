@@ -18,9 +18,6 @@ password = Config.get('test_server', 'password')
     The tests are done to test the computer page of pulse.
 
     Test to be done:
-    -> Open the computer page.
-    -> Open all left pages
-    -> Open inventory of a machine
     -> Open all actions of a machine
     -> Do a search
     -> List online/offline computers.
