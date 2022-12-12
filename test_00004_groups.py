@@ -169,3 +169,29 @@ def test_create_group_based_on_machine_type(page: Page) -> None:
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Type")
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[2]/td[3]/input").click()
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
+
+
+def test_create_group_based_on_software_name_and_version(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.locator('tr td a >> nth=0').click()
+
+    page.locator('.listinfos tbody tr td a >> nth=17').click()
+    page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[4]/input").fill("Notepad")
+    page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[5]/input").click()
+    page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[6]/input").fill("0.1")
+    page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[7]/input").click()
+    page.locator("//html/body/div/div[4]/div/div[3]/table[3]/tbody/tr/td[1]/input").click()
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Software Name and Version")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[2]/td[3]/input").click
+
+    expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
+
+
