@@ -15,7 +15,14 @@ password = Config.get('test_server', 'password')
 """
     The tests are done to test the user page of pulse.
     Warning: To be done correctly, it MUST be started with no users created.
-    TODO: Test for the user backup
+
+    Test to be done:
+    -> Create a user
+    -> Delete a user
+    -> Edit a user
+    -> Backup a user
+    -> Create a user already existing ( same name ).
+    -> Modify MMC rights
 """
 def test_open_users(page: Page) -> None:
 

@@ -17,6 +17,20 @@ Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
 ssh_server = Config.get('test_server', 'ssh')
+
+"""
+    The tests are done to test the package page of pulse.
+
+    Test to be done:
+    -> Open the package page.
+    -> Create a package ( all possible modes )
+    -> Modify a package
+    -> Create a rule
+    -> List the rules
+    -> Edit a rule
+"""
+
+
 def find_uuid(package_url) -> str:
     """
     It uses the URL of the package to exact the uuid.

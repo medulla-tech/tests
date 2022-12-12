@@ -12,6 +12,17 @@ Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
 
+"""
+    The tests are done to test the user page of pulse.
+
+    Test to be done:
+    -> Create a group
+    -> Delete a group
+    -> Edit a group
+        -> Add a new description to an existing group
+    -> Add new machines to a group
+
+"""
 def test_create_group_based_on_name(page: Page) -> None:
 
     medulla_connect(page)
