@@ -65,10 +65,10 @@ def test_deploy_package_execute_command(page: Page) -> None:
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
-    page.locator("//html/body/div[1]/div[4]/div/div[2]/form/table/tbody/tr[4]/td[7]/ul/li[5]/a").click()
+    page.click(".install > a >> nth=0")
     time.sleep(1)
 
-    page.locator("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[3]/td[5]/ul/li[2]/a").click()
+    page.click('.start')
     time.sleep(1)
 
     template_deploy(page)

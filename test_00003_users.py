@@ -57,7 +57,7 @@ def test_edit_users(page: Page) -> None:
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
-    page.click('//html/body/div/div[4]/div/div[2]/form/table/tbody/tr/td[5]/ul/li[1]/a')
+    page.click('.edit')
 
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
     page.click(".btnPrimary[type='submit']")
@@ -71,7 +71,7 @@ def test_delete_users(page: Page) -> None:
 
     page.click('#navbarusers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
-    page.click('//html/body/div/div[4]/div/div[2]/form/table/tbody/tr/td[5]/ul/li[3]/a')
+    page.click('.delete > a >> nth=0')
     page.click('#delfiles')
     page.click(".btnPrimary[type='submit']")
 

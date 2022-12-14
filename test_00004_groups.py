@@ -39,8 +39,9 @@ def test_create_group_based_on_name(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Name")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -60,8 +61,9 @@ def test_create_group_based_on_description(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Description")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -81,8 +83,9 @@ def test_create_group_based_on_inventory_number(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Inventory Number")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -102,8 +105,9 @@ def test_create_group_based_on_glpi_group(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Glpi Group")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -123,8 +127,9 @@ def test_create_group_based_on_peripheral_name(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Peripheral name")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -144,11 +149,12 @@ def test_create_group_based_on_peripheral_serial(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Peripheral serial")
+
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
-    
+
 def test_create_group_based_on_machine_type(page: Page) -> None:
 
     medulla_connect(page)
@@ -165,7 +171,7 @@ def test_create_group_based_on_machine_type(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Type")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -187,7 +193,7 @@ def test_create_group_based_on_machine_manufacturer(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Manufacturer")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -208,7 +214,7 @@ def test_create_group_based_on_machine_model(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Model")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -229,7 +235,7 @@ def test_create_group_based_on_machine_owner(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Owner")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -250,7 +256,7 @@ def test_create_group_based_on_last_logged_user(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Last Logged User")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -271,7 +277,7 @@ def test_create_group_based_on_user_location(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By User location")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -292,7 +298,7 @@ def test_create_group_based_on_location(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Location")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -313,7 +319,7 @@ def test_create_group_based_on_state(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By State")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -334,7 +340,7 @@ def test_create_group_based_on_entity(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Entity")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -355,7 +361,7 @@ def test_create_group_based_on_operating_system(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Operating System")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -376,7 +382,7 @@ def test_create_group_based_on_installed_software(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Installed Software")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -420,7 +426,7 @@ def test_create_group_based_on_os_version(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By OS Version")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -441,7 +447,7 @@ def test_create_group_based_on_architecture(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Architecture")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -462,7 +468,7 @@ def test_create_group_based_on_register_key(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Register Key")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
@@ -486,7 +492,7 @@ def test_create_group_based_on_register_key_value(page: Page) -> None:
     page.locator('//*[@id="autocomplete2"]').fill("*win*")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").click()
+
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Register Key value")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))

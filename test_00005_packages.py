@@ -84,14 +84,14 @@ def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
         for key in keys:
             if key in mydict:
                 mydict.pop(key)
-    
+
     filename = os.path.join(tempdir, uuid, jsonfile)
     content = ""
-    
+
     with open(filename, "r") as conffile:
         content = conffile.read()
         conffile.close()
-     
+
     conf = json.loads(content)
 
     excluded = ["creation_date", "id"]
@@ -132,8 +132,11 @@ def test_create_package_execute(page: Page) -> None:
     # page.click('//*[@id="Form"]/input[3]')
     page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
     page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
+    page.fill("#version", "0.0")
+    page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
     page.click(".btnPrimary[type='submit']")
-    page.click("//html/body/div/div[3]/div[2]/div/div[3]/button")
+    page.click(".btn")
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -152,9 +155,7 @@ def test_correctness_package(page: Page) -> None:
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
-    page.click(
-        "//html/body/div/div[4]/div/div[2]/form/table/tbody/tr/td[10]/ul/li[1]/a"
-    )
+    page.click(".display > a >> nth=0")
 
     package_url = page.url
     package_uuid = find_uuid(package_url)[0]

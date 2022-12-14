@@ -31,7 +31,7 @@ def test_open_imaging_manage_masters(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[2]/a").click()
+    page.click('#master')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -44,7 +44,7 @@ def test_open_imaging_manage_bootservices(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[3]/a").click()
+    page.click('#service')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -57,7 +57,7 @@ def test_open_imaging_manage_bootmenu(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[4]/a").click()
+    page.click('#bootmenu')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -70,7 +70,7 @@ def test_open_imaging_manage_postimaging_scripts(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[5]/a").click()
+    page.click('#postinstall')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -83,7 +83,7 @@ def test_open_imaging_configuration(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[6]/a").click()
+    page.click('#configuration')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -96,7 +96,7 @@ def test_open_imaging_manage_sysprep(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[7]/a").click()
+    page.click('#systemImageManager')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -109,7 +109,7 @@ def test_open_imaging_manage_groups(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[8]/a").click()
+    page.click('#list_profiles')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
@@ -122,7 +122,7 @@ def test_open_imaging_add_groups(page: Page) -> None:
     page.click('#navbarmanage')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
 
-    page.locator("//html/body/div/div[4]/div/div[1]/ul/li[9]/a").click()
+    page.click('#computersprofilecreator')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
