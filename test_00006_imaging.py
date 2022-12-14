@@ -102,6 +102,22 @@ def test_open_imaging_manage_sysprep(page: Page) -> None:
     time.sleep(1)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=systemImageManager")
 
+def test_open_imaging_manage_sysprep_list(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarmanage')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+
+    page.click('#systemImageManager')
+    # As the page can have issues, with wrong php include , or wrong session
+    # we wait a second to be sure we have the final page.
+    time.sleep(1)
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=systemImageManager")
+
+
+    page.click('#sysprepList a')
+
 def test_open_imaging_manage_groups(page: Page) -> None:
 
     medulla_connect(page)
