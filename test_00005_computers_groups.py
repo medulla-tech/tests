@@ -46,8 +46,6 @@ def test_create_group_based_on_name(page: Page) -> None:
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
     result_on_name = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Name'")
-    mylogger.info(' record %s '% result_on_name)
-
 
     normal_result = "1==glpi::Computer name==*win*"
 
