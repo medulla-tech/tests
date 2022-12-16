@@ -116,3 +116,13 @@ def test_open_filesmanagers(page: Page) -> None:
 
     page.click('#filesmanagers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=filesmanagers")
+
+def test_open_topology(page: Page) -> None:
+
+    medulla_connect(page)
+    
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    
+    page.click('#topology')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=topology")
