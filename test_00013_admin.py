@@ -55,3 +55,25 @@ def test_admin_rules(page: Page) -> None:
 
     page.click('#rules')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+
+def test_admin_create_cluster(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbaradmin')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+
+    page.click('#newCluster')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=newCluster")
+
+    page.fill('#cluster_name', 'Cluster Created by playwright To be deleted')
+    page.fill('#cluster_description', 'Cluster Created by playwright Description')
+
+    page.locator("#outCluster li >> nth=0").drag_to(
+        page.locator("#inCluster")
+    )
+    page.click(".btnPrimary[type='submit']")
+
+    # To check if the cluster is created, we check if the locator is present
+    locator = page.locator(".alert")
+    expect(locator).to_have_class("alert alert-success")
