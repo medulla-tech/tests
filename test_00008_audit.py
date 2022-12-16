@@ -29,6 +29,18 @@ def test_open_audit(page: Page) -> None:
     page.click('#navbarxmppmaster')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
 
+def test_audit_modify_refresh(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarxmppmaster')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+
+    page.fill('#nbs', '103')
+    page.click('//*[@id="bt"]')
+
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index&refreshtime=6180000")
+
 def test_audit_users_tasks(page: Page) -> None:
 
     medulla_connect(page)
