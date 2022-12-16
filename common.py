@@ -47,7 +47,7 @@ def sqlcheck(base, sql_request):
                             db=base)
 
         cursor = db.cursor()
-        record = cursor.execute(sql_request)
+        cursor.execute(sql_request)
 
         for row in cursor.fetchone():
             return row
