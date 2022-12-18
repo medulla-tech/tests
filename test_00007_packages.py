@@ -192,6 +192,24 @@ def test_correctness_package_execute_json(page: Page) -> None:
         == True
     )
 
+def test_package_view_execute_package(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    package_uuid = find_uuid_sql("Package de test execute")
+
+    id_to_edit = "#p" + package_uuid + " .display a"
+    page.click(id_to_edit)
+
+    # FIXME: Fix the expect part.
+    url_to_edit = "*packageUuid=" + package_uuid + "*"
+    expect(page).to_have_url(re.compile(url_to_edit))
+
 def test_package_delete_execute_package(page: Page) -> None:
 
     medulla_connect(page)
@@ -211,20 +229,3 @@ def test_package_delete_execute_package(page: Page) -> None:
     locator = page.locator(".alert")
     expect(locator).to_have_class("alert alert-success")
 
-def test_package_view_execute_package(page: Page) -> None:
-
-    medulla_connect(page)
-
-    page.click("#navbarpkgs")
-    expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
-    )
-
-    package_uuid = find_uuid_sql("Package de test execute")
-
-    id_to_edit = "#p" + package_uuid + " .display a"
-    page.click(id_to_edit)
-
-    # FIXME: Fix the expect part.
-    url_to_edit = "*packageUuid=" + package_uuid + "*"
-    expect(page).to_have_url(re.compile(url_to_edit))
