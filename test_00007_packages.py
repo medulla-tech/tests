@@ -1,6 +1,6 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
-from common import medulla_connect
+from common import medulla_connect, sqlcheck
 
 import tempfile
 import logging
@@ -10,6 +10,7 @@ import filecmp
 import json
 import configparser
 import time
+import re
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
@@ -52,7 +53,7 @@ def find_uuid_sql(label) -> str:
 
 
     # If we replay the test job, only take one
-    sql_request = "SELECT uuid FROM packages WHERE label = '" . label . "'LIMIT 1"
+    sql_request = "SELECT uuid FROM packages WHERE label = '" + label + "'LIMIT 1"
     package_uuid = sqlcheck("pkgs", sql_request)
 
     return package_uuid
@@ -190,3 +191,40 @@ def test_correctness_package_execute_json(page: Page) -> None:
         )
         == True
     )
+
+def test_package_delete_execute_package(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    package_uuid = find_uuid_sql("Package de test execute")
+
+    id_to_remove = "#p" . package_uuid . " .delete a"
+    page.click(id_to_remove)
+    page.click(".btnPrimary[type='submit']")
+
+    # To check if the user is created, we check if the locator is present
+    locator = page.locator(".alert")
+    expect(locator).to_have_class("alert alert-success")
+
+def test_package_view_execute_package(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    package_uuid = find_uuid_sql("Package de test execute")
+
+    id_to_edit = "#p" + package_uuid + " .display a"
+    page.click(id_to_edit)
+
+    # FIXME: Fix the expect part.
+    url_to_edit = "*packageUuid=" + package_uuid + "*"
+    expect(page).to_have_url(re.compile(url_to_edit))
