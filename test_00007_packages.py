@@ -31,7 +31,7 @@ ssh_server = Config.get('test_server', 'ssh')
 """
 
 
-def find_uuid(package_url) -> str:
+def find_uuid_web(package_url) -> str:
     """
     It uses the URL of the package to exact the uuid.
     The uuid is used on the filesystem to store the package
@@ -46,6 +46,15 @@ def find_uuid(package_url) -> str:
     package_uuid = ""
     parsed_url = urlparse(package_url).query
     package_uuid = parse_qs(parsed_url).get("packageUuid", "")
+    return package_uuid
+
+def find_uuid_sql(label) -> str:
+
+
+    # If we replay the test job, only take one
+    sql_request = "SELECT uuid FROM packages WHERE label = '" . label . "'LIMIT 1"
+    package_uuid = sqlcheck("pkgs", sql_request)
+
     return package_uuid
 
 
@@ -117,7 +126,7 @@ def test_create_package_execute(page: Page) -> None:
     )
 
     page.click("#add")
-    page.fill("#label", "Package de test")
+    page.fill("#label", "Package de test execute")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
 
@@ -142,7 +151,7 @@ def test_create_package_execute(page: Page) -> None:
     )
 
 
-def test_correctness_package(page: Page) -> None:
+def test_correctness_package_execute_json(page: Page) -> None:
     """
         It checks if the packages we just created is OK.
     """
@@ -158,7 +167,7 @@ def test_correctness_package(page: Page) -> None:
     page.click(".display > a >> nth=0")
 
     package_url = page.url
-    package_uuid = find_uuid(package_url)[0]
+    package_uuid = find_uuid_web(package_url)[0]
 
     tempdir = tempfile.mkdtemp()
 
