@@ -12,7 +12,7 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
-
+machineName = Config.get('test_server', 'machinename')
 
 """
     The tests are done to test the computer page of pulse.
@@ -126,3 +126,19 @@ def test_open_topology(page: Page) -> None:
     
     page.click('#topology')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=topology")
+
+def test_open_inventory_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
