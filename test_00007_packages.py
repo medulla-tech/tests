@@ -221,7 +221,7 @@ def test_package_delete_execute_package(page: Page) -> None:
 
     package_uuid = find_uuid_sql("Package de test execute")
 
-    id_to_remove = "#p" . package_uuid . " .delete a"
+    id_to_remove = "#p" +  package_uuid + " .delete a"
     page.click(id_to_remove)
     page.click(".btnPrimary[type='submit']")
 
