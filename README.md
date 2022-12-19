@@ -56,17 +56,13 @@ A voir une fois le module terminé.
 - [ ] Création de groupe statique
 - [ ] Création de groupe avec import csv
 
-### Création de groupe autre cas
+## Création de groupe autre cas
 - [ ] Créer un groupe alors qu'il existe déjà
 - [ ] Supprimer un groupe 
 - [ ] Partager un groupe
 - [ ] Montrer le contenu du groupe
 - [ ] Editer le groupe
-### Logiciel
-- [ ] Crééer un package logiciel
-- [ ] Supprimer un package logiciel
-- [ ] Tester la suppression d'une machine si l'extension fusion est désactivée
-- [x] Convertir les tests pour pouvoir les utiliser avec pytest
+
 
 # Imaging
 - [x] Afficher toutes les pages du module
