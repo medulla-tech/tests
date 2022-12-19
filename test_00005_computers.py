@@ -142,7 +142,7 @@ def test_open_inventory_from_bar(page: Page) -> None:
 
     #TODO: Add expect for the URL.
 
-def test_open_inventory_tab_summary(page: Page) -> None:
+def test_open_monitoring_from_bar(page: Page) -> None:
 
     medulla_connect(page)
 
@@ -153,11 +153,158 @@ def test_open_inventory_tab_summary(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m" + machine_serial + " .monit a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_remoteviewer_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .guaca a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_backup_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .urbackup a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_deploy_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_imaging_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .imaging a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_xmppconsole_tab_summary(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .console a"
     page.click(machine_inventory)
 
     page.click("#tab0")
     expect(page).to_have_url(re.compile(".*part=Summary*"))
+
+def test_open_fileviewer_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .fileviewer a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_config_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .config a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_quickaction_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .quick a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_delete_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .delete a"
+    page.click(machine_inventory)
+
+    page.click('#imageWarning')
+    page.click(".btnPrimary[type='submit']")
+
+    #TODO: Add expect for the URL.
 
 def test_open_inventory_tab_hardware(page: Page) -> None:
 
