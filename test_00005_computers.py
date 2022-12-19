@@ -458,3 +458,183 @@ def test_open_inventory_tab_registry(page: Page) -> None:
 
     page.click("#tab9")
     expect(page).to_have_url(re.compile(".*part=Registry*"))
+
+def test_open_glpi_inventory_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_monitoring_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .monit a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_remoteviewer_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .guaca a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_backup_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .urbackup a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_deploy_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_imaging_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .imaging a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_xmppconsole_tab_summary(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .console a"
+    page.click(machine_inventory)
+
+    page.click("#tab0")
+    expect(page).to_have_url(re.compile(".*part=Summary*"))
+
+def test_open_glpi_fileviewer_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .fileviewer a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_config_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .config a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_quickaction_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .quick a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
+def test_open_glpi_delete_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .delete a"
+    page.click(machine_inventory)
+
+    page.click('#imageWarning')
+    page.click(".btnPrimary[type='submit']")
+
+    #TODO: Add expect for the URL.
