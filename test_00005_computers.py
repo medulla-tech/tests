@@ -31,7 +31,6 @@ def test_open_inventory(page: Page) -> None:
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
-
 def test_open_favouriteGroup(page: Page) -> None:
 
     medulla_connect(page)
@@ -142,3 +141,173 @@ def test_open_inventory_from_bar(page: Page) -> None:
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
+
+def test_open_inventory_tab_summary(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab0")
+    expect(page).to_have_url(re.compile(".*part=Summary*"))
+
+def test_open_inventory_tab_hardware(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab1")
+    expect(page).to_have_url(re.compile(".*part=Hardware*"))
+
+def test_open_inventory_tab_connections(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab2")
+    expect(page).to_have_url(re.compile(".*part=Connections*"))
+
+def test_open_inventory_tab_storage(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab3")
+    expect(page).to_have_url(re.compile(".*part=Storage*"))
+
+def test_open_inventory_tab_network(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab4")
+    expect(page).to_have_url(re.compile(".*part=Network"))
+
+def test_open_inventory_tab_software(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab5")
+    expect(page).to_have_url(re.compile(".*part=Software"))
+
+def test_open_inventory_tab_administrative(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab6")
+    expect(page).to_have_url(re.compile(".*part=Administrative"))
+
+def test_open_inventory_tab_history(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab7")
+    expect(page).to_have_url(re.compile(".*part=History"))
+
+def test_open_inventory_tab_antivirus(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab8")
+    expect(page).to_have_url(re.compile(".*part=Antivirus*"))
+
+def test_open_inventory_tab_registry(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .inventory a"
+    page.click(machine_inventory)
+
+    page.click("#tab9")
+    expect(page).to_have_url(re.compile(".*part=Registry*"))
