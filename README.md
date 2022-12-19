@@ -26,18 +26,18 @@ A voir une fois le module terminé.
 
 # Vue Machines
 - [x] Afficher toutes les pages
-- [ ] Afficher l'inventaire d'une machine ( en attente des IDs )
-- [ ] Afficher le monitoring d'une machine  ( en attente des IDs )
-- [ ] Lancer la PMAD d'une machine  ( en attente des IDs )
-- [ ] Lancer le module de sauvegarde ( en attente des IDs )
-- [ ] Lancer la page de déploiement ( le déploiement est fait dans un autre test ). ( en attente des IDs )
-- [ ] Lancer la page d'iamging ( l'imaging est fait dans un autre test ). ( en attente des IDs )
-- [ ] Lancer la page de la console XMPP ( en attente des IDs )
-- [ ] Lancer la page de file browser ( en attente des IDs )
-- [ ] Lancer la page de file viewer ( en attente des IDs )
-- [ ] Lancer la page d'édition de fichier de configuration ( en attente des IDs )
-- [ ] Lancer la page de quick Action ( en attente des IDs )
-- [ ] Supprimer une machine ( en attente des IDs )
+- [x] Afficher l'inventaire d'une machine
+- [x] Afficher le monitoring d'une machine
+- [x] Lancer la PMAD d'une machine
+- [x] Lancer le module de sauvegarde
+- [x] Lancer la page de déploiement ( le déploiement est fait dans un autre test ).
+- [x] Lancer la page d'iamging ( l'imaging est fait dans un autre test ).
+- [x] Lancer la page de la console XMPP
+- [x] Lancer la page de file browser
+- [x] Lancer la page de file viewer
+- [x] Lancer la page d'édition de fichier de configuration
+- [x] Lancer la page de quick Action
+- [x] Supprimer une machine
 
 ## Création de groupe dynamique - GLPI
 - [x] Créer un groupe de machine basé sur le nom
