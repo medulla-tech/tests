@@ -65,6 +65,7 @@ def test_edit_users(page: Page) -> None:
     time.sleep(1)
     # We expect the same page as when we validate the user page we stay on it.
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
+
 def test_delete_users(page: Page) -> None:
 
     medulla_connect(page)
