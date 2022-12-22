@@ -171,9 +171,27 @@ def test_deploy_package_execute_command(page: Page) -> None:
 
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
 
-    # FIXME: Allow to modify the date of the deploiement
-    # page.click("start_date")
-    # page.fill("[type=text]", "2022-12-32 22:00:00")
+
+    now = datetime.now()
+
+    start_hour = now + timedelta(minutes=5)
+    start_hour = start_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_hour = start_hour + timedelta(hours=1)
+    end_hour = end_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_date = page.locator("#end_date")
+    end_date.evaluate("node => node.removeAttribute('readonly')");
+
+    end_date.evaluate("node => node.setAttribute('value', '%s')" % end_hour);
+    end_date.evaluate("node => node.setAttribute('readonly', 1)");
+
+
+    start_date = page.locator("#start_date")
+    start_date.evaluate("node => node.removeAttribute('readonly')");
+
+    start_date.evaluate("node => node.setAttribute('value', '%s')" % start_hour);
+    start_date.evaluate("node => node.setAttribute('readonly', 1)");
 
     page.click(".btnPrimary[type='submit']")
     template_deploy(page)
