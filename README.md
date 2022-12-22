@@ -47,7 +47,23 @@ A voir une fois le module terminé.
 - [x] Créer un groupe de machine basé sur un nom de périphérique
 - [x] Créer un groupe de machine basé sur un serial de périphérique
 - [x] Créer un groupe de machine basé sur le type de machine
+- [x] Créer un groupe de machine basé sur le fabricant du poste
+- [x] Créer un groupe de machine basé sur le modele du poste
+- [x] Créer un groupe de machine basé sur l' utilisateur de la machine
+- [x] Créer un groupe de machine basé sur le derniere utilisateur connecté
+- [x] Créer un groupe de machine basé sur l'emplacement de l'utilisateur
+- [x] Créer un groupe de machine basé sur l'emplacement de la machine
+- [x] Créer un groupe de machine basé sur l'état de la machine ( production, réparation, rebut, ...)
+- [x] Créer un groupe de machine basé sur l'entité à laquelle appartient la machine
+- [x] Créer un groupe de machine basé sur le Systeme d'exploitation
+- [x] Créer un groupe de machine basé sur le logiciel install
 - [x] Créer un groupe de machine basé sur le nom du logiciel et la version
+- [x] Créer un groupe de machine basé sur la version de l'OS
+- [x] Créer un groupe de machine basé sur l'architecture de l'OS
+- [x] Créer un groupe de machine basé sur des clef de registre
+- [x] Créer un groupe de machine basé sur des valeurs de clef de registre
+- [x] Créer un groupe de machine basé sur la présence online/offline d'une machine
+
 ## Création de groupe dynamique - XMPPMASTER
 - [x] Créer un groupe de machine basé sur l'OU User
 - [ ] Créer un groupe de machine basé sur l'OU Machine
