@@ -31,7 +31,7 @@ A voir une fois le module terminé.
 - [x] Lancer la PMAD d'une machine
 - [x] Lancer le module de sauvegarde
 - [x] Lancer la page de déploiement ( le déploiement est fait dans un autre test ).
-- [x] Lancer la page d'iamging ( l'imaging est fait dans un autre test ).
+- [x] Lancer la page d'imaging ( l'imaging est fait dans un autre test ).
 - [x] Lancer la page de la console XMPP
 - [x] Lancer la page de file browser
 - [x] Lancer la page de file viewer
