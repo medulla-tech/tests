@@ -657,3 +657,28 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
 
     assert normal_result != result_on_server[0]
 
+def test_create_group_based_by_OU_Machine(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.locator('#xmppmaster').click()
+    page.locator('//*[@id="OU-Machine"]').click()
+    page.locator('//*[@id="autocomplete"]').fill("test OU Machine")
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btnPrimary[type='button']")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By OU Machine")
+    page.click(".btnPrimary[type='submit']")
+
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By OU Machine'")
+
+    normal_result = "1==xmppmaster::OU user==test OU Machine"
+
+    assert normal_result != result_on_server[0]
+
