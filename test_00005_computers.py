@@ -126,6 +126,22 @@ def test_open_topology(page: Page) -> None:
     page.click('#topology')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=topology")
 
+def test_open_inventory_from_name(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " a"
+    page.click(machine_inventory)
+
+    #TODO: Add expect for the URL.
+
 def test_open_inventory_from_bar(page: Page) -> None:
 
     medulla_connect(page)
@@ -458,6 +474,21 @@ def test_open_inventory_tab_registry(page: Page) -> None:
 
     page.click("#tab9")
     expect(page).to_have_url(re.compile(".*part=Registry*"))
+
+def test_open_glpi_inventory_from_name(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesListglpi')
+    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " a"
+    page.click(machine_inventory)
+
 
 def test_open_glpi_inventory_from_bar(page: Page) -> None:
 
