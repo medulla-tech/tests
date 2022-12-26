@@ -17,9 +17,6 @@ password = Config.get('test_server', 'password')
     Warning: To be done correctly, it MUST be started with no users created.
 
     Test to be done:
-    -> Create a group
-    -> Delete a group
-    -> Edit a group -> Will need IDs
     -> Create group with an already existing name
 """
 TestGroup_Name = "Nom_Du_groupe_de_test"
