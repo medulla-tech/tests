@@ -20,9 +20,9 @@ A voir une fois le module terminé.
 
 # Groups
 - [x] Créer un groupe
-- [ ] Voir un groupe
-- [ ] Éditer un groupe
-- [ ] Supprimer un groupe
+- [x] Voir un groupe
+- [x] Éditer un groupe
+- [x] Supprimer un groupe
 
 # Vue Machines
 - [x] Afficher toutes les pages
