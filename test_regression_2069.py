@@ -156,7 +156,7 @@ def template_deploy(page: Page) -> None:
 
     assert result_depl == True
 
-def test_deploy_package_execute_command(page: Page) -> None:
+def test_deploy_delayed_command(page: Page) -> None:
 
     medulla_connect(page)
 
