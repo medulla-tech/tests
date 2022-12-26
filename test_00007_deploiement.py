@@ -72,3 +72,44 @@ def test_deploy_package_execute_command(page: Page) -> None:
     time.sleep(1)
 
     template_deploy(page)
+
+def test_deploy_delayed_command(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesList')
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
+
+
+    now = datetime.now()
+
+    start_hour = now + timedelta(minutes=5)
+    start_hour = start_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_hour = start_hour + timedelta(hours=1)
+    end_hour = end_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_date = page.locator("#end_date")
+    end_date.evaluate("node => node.removeAttribute('readonly')");
+
+    end_date.evaluate("node => node.setAttribute('value', '%s')" % end_hour);
+    end_date.evaluate("node => node.setAttribute('readonly', 1)");
+
+
+    start_date = page.locator("#start_date")
+    start_date.evaluate("node => node.removeAttribute('readonly')");
+
+    start_date.evaluate("node => node.setAttribute('value', '%s')" % start_hour);
+    start_date.evaluate("node => node.setAttribute('readonly', 1)");
+
+    page.click(".btnPrimary[type='submit']")
+    template_deploy(page)
