@@ -699,6 +699,12 @@ def test_create_group_by_online_computers(page: Page) -> None:
     page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Group Created by playwright By Online Computers")
     page.click('.btnPrimary[type="submit"]')
 
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Online Computers'")
+
+    normal_result = "1==glpi::Online computer==True"
+
+    assert normal_result != result_on_server[0]
+
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
 def test_create_group_by_offline_computers(page: Page) -> None:
@@ -717,5 +723,11 @@ def test_create_group_by_offline_computers(page: Page) -> None:
     page.click('.btnPrimary[type="button"]')
     page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Group Created by playwright By Offline Computers")
     page.click('.btnPrimary[type="submit"]')
+
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Offline Computers'")
+
+    normal_result = "1==glpi::Online computer==False"
+
+    assert normal_result != result_on_server[0]
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
