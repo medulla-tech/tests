@@ -23,6 +23,10 @@ def medulla_connect(page: Page) -> None:
 
     page.goto(test_server)
 
+    # Changing the language to English
+    locator = page.locator('#lang')
+    locator.select_option('C')
+
     # We fill username/password and we connect into the mmc.
     page.fill('#username', 'root')
     page.fill('#password', 'siveo')
