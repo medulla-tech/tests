@@ -3,7 +3,7 @@ from common import medulla_connect, sqlcheck
 
 import configparser
 import os
-
+import re
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
