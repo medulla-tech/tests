@@ -15,8 +15,8 @@ A voir une fois le module terminé.
 - [x] Créer un utilisateur
 - [x] Supprimer un utilisateur
 - [x] Éditer un utilisateur
-- [ ] Créer un utilisateur en double
-- [ ] Sauvegarder un utilisateur
+- [x] Créer un utilisateur en double
+- [x] Sauvegarder un utilisateur
 
 # Groups
 - [x] Créer un groupe
