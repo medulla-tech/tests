@@ -89,7 +89,7 @@ A voir une fois le module terminé.
 - [ ] Afficher un package ( WIP )
 - [ ] Modifier un package.
 
-- [ ] Faire un package et les 3 autres étapes pour tout les types de packages.
+- [x] Faire un package et les 3 autres étapes pour tout les types de packages.
 
 # Audit
 - [x] Afficher toutes les pages du module.
