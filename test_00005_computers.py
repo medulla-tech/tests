@@ -1,5 +1,5 @@
 from playwright.sync_api import  expect, Page
-from common import medulla_connect
+from common import medulla_connect, sqlcheck
 
 import configparser
 import os
@@ -137,7 +137,7 @@ def test_open_inventory_from_name(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " a"
+    machine_inventory = "#m_" + machine_serial + " a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -153,7 +153,7 @@ def test_open_inventory_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -169,7 +169,7 @@ def test_open_monitoring_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .monit a"
+    machine_inventory = "#m_" + machine_serial + " .monit a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -185,7 +185,7 @@ def test_open_remoteviewer_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .guaca a"
+    machine_inventory = "#m_" + machine_serial + " .guaca a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -201,7 +201,7 @@ def test_open_backup_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .urbackup a"
+    machine_inventory = "#m_" + machine_serial + " .urbackup a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -217,7 +217,7 @@ def test_open_deploy_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .install a"
+    machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -233,7 +233,7 @@ def test_open_imaging_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .imaging a"
+    machine_inventory = "#m_" + machine_serial + " .imaging a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -249,7 +249,7 @@ def test_open_xmppconsole_tab_summary(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .console a"
+    machine_inventory = "#m_" + machine_serial + " .console a"
     page.click(machine_inventory)
 
     page.click("#tab0")
@@ -266,7 +266,7 @@ def test_open_fileviewer_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .fileviewer a"
+    machine_inventory = "#m_" + machine_serial + " .fileviewer a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -282,7 +282,7 @@ def test_open_config_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .config a"
+    machine_inventory = "#m_" + machine_serial + " .config a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -298,7 +298,7 @@ def test_open_quickaction_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .quick a"
+    machine_inventory = "#m_" + machine_serial + " .quick a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -314,7 +314,7 @@ def test_open_delete_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .delete a"
+    machine_inventory = "#m_" + machine_serial + " .delete a"
     page.click(machine_inventory)
 
     page.click('#imageWarning')
@@ -333,7 +333,7 @@ def test_open_inventory_tab_hardware(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab1")
@@ -350,7 +350,7 @@ def test_open_inventory_tab_connections(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab2")
@@ -367,7 +367,7 @@ def test_open_inventory_tab_storage(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab3")
@@ -384,7 +384,7 @@ def test_open_inventory_tab_network(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab4")
@@ -401,7 +401,7 @@ def test_open_inventory_tab_software(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab5")
@@ -418,7 +418,7 @@ def test_open_inventory_tab_administrative(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab6")
@@ -435,7 +435,7 @@ def test_open_inventory_tab_history(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab7")
@@ -452,7 +452,7 @@ def test_open_inventory_tab_antivirus(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab8")
@@ -469,7 +469,7 @@ def test_open_inventory_tab_registry(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     page.click("#tab9")
@@ -486,7 +486,7 @@ def test_open_glpi_inventory_from_name(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " a"
+    machine_inventory = "#m_" + machine_serial + " a"
     page.click(machine_inventory)
 
 
@@ -501,7 +501,7 @@ def test_open_glpi_inventory_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .inventory a"
+    machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -517,7 +517,7 @@ def test_open_glpi_monitoring_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .monit a"
+    machine_inventory = "#m_" + machine_serial + " .monit a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -533,7 +533,7 @@ def test_open_glpi_remoteviewer_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .guaca a"
+    machine_inventory = "#m_" + machine_serial + " .guaca a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -549,7 +549,7 @@ def test_open_glpi_backup_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .urbackup a"
+    machine_inventory = "#m_" + machine_serial + " .urbackup a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -565,7 +565,7 @@ def test_open_glpi_deploy_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .install a"
+    machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -581,7 +581,7 @@ def test_open_glpi_imaging_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .imaging a"
+    machine_inventory = "#m_" + machine_serial + " .imaging a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -597,7 +597,7 @@ def test_open_glpi_xmppconsole_tab_summary(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .console a"
+    machine_inventory = "#m_" + machine_serial + " .console a"
     page.click(machine_inventory)
 
     page.click("#tab0")
@@ -614,7 +614,7 @@ def test_open_glpi_fileviewer_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .fileviewer a"
+    machine_inventory = "#m_" + machine_serial + " .fileviewer a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -630,7 +630,7 @@ def test_open_glpi_config_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .config a"
+    machine_inventory = "#m_" + machine_serial + " .config a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -646,7 +646,7 @@ def test_open_glpi_quickaction_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .quick a"
+    machine_inventory = "#m_" + machine_serial + " .quick a"
     page.click(machine_inventory)
 
     #TODO: Add expect for the URL.
@@ -662,7 +662,7 @@ def test_open_glpi_delete_from_bar(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .delete a"
+    machine_inventory = "#m_" + machine_serial + " .delete a"
     page.click(machine_inventory)
 
     page.click('#imageWarning')
