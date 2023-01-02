@@ -175,10 +175,10 @@ def test_deploy_delayed_command(page: Page) -> None:
 
     now = datetime.now()
 
-    start_hour = now + timedelta(minutes=5)
-    start_hour = start_hour.strftime('%Y-%m-%d %H:%M:%S')
+    start_hour_tohour_format = now + timedelta(minutes=5)
+    start_hour = start_hour_tohour_format.strftime('%Y-%m-%d %H:%M:%S')
 
-    end_hour = start_hour + timedelta(hours=1)
+    end_hour = start_hour_tohour_format + timedelta(hours=1)
     end_hour = end_hour.strftime('%Y-%m-%d %H:%M:%S')
 
     end_date = page.locator("#end_date")
