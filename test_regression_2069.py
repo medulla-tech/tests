@@ -167,7 +167,7 @@ def test_deploy_delayed_command(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .install a"
+    machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
