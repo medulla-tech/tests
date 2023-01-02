@@ -110,7 +110,6 @@ A faire une fois le module terminé
 - [x] Afficher les relays
 - [x] Lister les clusters
 - [x] Créer un nouveau cluster
-- [ ] Créer un nouveau cluster en double ( possible bug trouvé )
 - [x] Créer une règle
 - [ ] Modifier l'ordre d'une règle ( En attente d'IDs )
 
