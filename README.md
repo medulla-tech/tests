@@ -86,8 +86,8 @@ A voir une fois le module terminé.
 # Packages
 - [x] Créer un package
 - [x] Supprimer un package
-- [ ] Afficher un package ( WIP )
-- [ ] Modifier un package.
+- [x] Afficher un package
+- [x] Modifier un package.
 
 - [x] Faire un package et les 3 autres étapes pour tout les types de packages.
 
