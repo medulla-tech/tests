@@ -1,5 +1,5 @@
 from playwright.sync_api import  expect, Page
-from common import medulla_connect
+from common import medulla_connect, sqlcheck
 
 import configparser
 import os
@@ -11,6 +11,8 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
+
+user_rule = "user"
 
 """
     TODO: 
@@ -55,6 +57,44 @@ def test_admin_rules(page: Page) -> None:
 
     page.click('#rules')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+
+def test_admin_rules_up(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbaradmin')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+
+    page.click('#rules')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+
+    sql_request = "SELECT level FROM rules WHERE name='%s'" % user_rule
+    level_before = sqlcheck("xmppmaster", sql_request)
+
+    page.click("#cr_" + user_rule + " .up a")
+
+    level_after = sqlcheck("xmppmaster", sql_request)
+
+    assert level_after < level_before
+
+def test_admin_rules_down(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbaradmin')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+
+    page.click('#rules')
+    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+
+    sql_request = "SELECT level FROM rules WHERE name='%s'" % user_rule
+    level_before = sqlcheck("xmppmaster", sql_request)
+
+    page.click("#cr_" + user_rule + " .down a")
+
+    level_after = sqlcheck("xmppmaster", sql_request)
+
+    assert level_after > level_before
 
 def test_admin_create_cluster(page: Page) -> None:
 
