@@ -74,10 +74,10 @@ A voir une fois le module terminé.
 
 ## Création de groupe autre cas
 - [ ] Créer un groupe alors qu'il existe déjà
-- [ ] Supprimer un groupe 
+- [x] Supprimer un groupe 
 - [ ] Partager un groupe
-- [ ] Montrer le contenu du groupe
-- [ ] Editer le groupe
+- [x] Montrer le contenu du groupe
+- [x] Editer le groupe
 
 
 # Imaging
