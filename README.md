@@ -111,9 +111,7 @@ A faire une fois le module terminé
 - [x] Lister les clusters
 - [x] Créer un nouveau cluster
 - [x] Créer une règle
-- [ ] Modifier l'ordre d'une règle ( En attente d'IDs )
-
-
+- [x] Modifier l'ordre d'une règle
 
 # Comment lancer les tests.
 
