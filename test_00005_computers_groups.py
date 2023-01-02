@@ -11,18 +11,130 @@ Config = configparser.ConfigParser()
 Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
+GroupTest = "Group_Test"
 
 """
     The tests are done to test the user page of pulse.
 
     Test to be done:
-    -> Create a group
-    -> Delete a group
     -> Edit a group
         -> Add a new description to an existing group
     -> Add new machines to a group
 
 """
+
+def test_create_group_based_on_name(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.locator('#glpi').click()
+    page.locator('#Computer-name').click()
+    page.locator('//*[@id="autocomplete"]').click()
+    page.locator('//*[@id="autocomplete"]').fill("*win*")
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btnPrimary[type='button']")
+
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill(GroupTest)
+
+    page.click(".btnPrimary[type='submit']")
+
+
+def test_groups_list_from_name(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest + " a")
+    expect(page).to_have_url(re.compile(".*action=display*"))
+
+def test_groups_display_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest +  " .display a")
+    expect(page).to_have_url(re.compile(".*action=display*"))
+
+def test_groups_edit_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest + " .edit a")
+    expect(page).to_have_url(re.compile(".*computersgroupedit*"))
+
+def test_groups_share_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest + " .groupshare a")
+    expect(page).to_have_url(re.compile(".*edit_share*"))
+
+def test_groups_install_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest + " .install a")
+    expect(page).to_have_url(re.compile(".*action=groupmsctabs*"))
+
+def test_groups_delete_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#list')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    # Ajouter le nom du groupe via SQL
+    page.click("#g_" + GroupTest + " .delete a")
+    page.click(".btnPrimary[type='submit']")
+
+
+    result_on_server = sqlcheck("dyngroup", "SELECT count(*) FROM Groups WHERE name = 'Group_Test'")
+
+    # We use 0 here as we deleted the Group we should have any left
+    assert 0 == result_on_server
+
 def test_create_group_based_on_name(page: Page) -> None:
 
     medulla_connect(page)
