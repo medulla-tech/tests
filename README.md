@@ -6,8 +6,7 @@ Cette page liste les tests a faire.
 # Dashboard
 - [x] Créer une utilisateur
 - [x] Créer un groupe
-- [ ] Créer des groupes en fonction des camemberts ( ne semble pas possible, a voir avec les devs ).
-
+- [ ] Créer des groupes en fonction des camemberts
 # Kiosk
 A voir une fois le module terminé.
 
