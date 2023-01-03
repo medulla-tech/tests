@@ -53,8 +53,10 @@ def sqlcheck(base, sql_request):
         cursor = db.cursor()
         cursor.execute(sql_request)
 
-        for row in cursor.fetchone():
+        for row in cursor.fetchone() or cursor:
             return row
+
+        return None
 
     except Exception as e:
         sys.exit(1)
