@@ -68,7 +68,7 @@ A voir une fois le module terminé.
 - [x] Créer un groupe de machine basé sur l'OU User
 - [x] Créer un groupe de machine basé sur l'OU Machine
 ## Création de groupe dynamique - DYNGROUP
-- [ ] Créer un groupe sur un groupe existant
+- [x] Créer un groupe sur un groupe existant
 - [ ] Création de groupe statique
 - [ ] Création de groupe avec import csv
 
