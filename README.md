@@ -45,7 +45,7 @@ A voir une fois le module terminé.
 - [x] Créer un groupe de machine basé sur la numero d'inventaire
 - [x] Créer un groupe de machine basé sur un groupe Glpi
 - [x] Créer un groupe de machine basé sur un nom de périphérique
-- [x] Créer un groupe de machine basé sur un serial de périphérique
+- [x] Créer un groupe de machine basé sur un serial de périphériquecomputers_groups
 - [x] Créer un groupe de machine basé sur le type de machine
 - [x] Créer un groupe de machine basé sur le fabricant du poste
 - [x] Créer un groupe de machine basé sur le modele du poste
@@ -68,12 +68,12 @@ A voir une fois le module terminé.
 - [x] Créer un groupe de machine basé sur l'OU User
 - [x] Créer un groupe de machine basé sur l'OU Machine
 ## Création de groupe dynamique - DYNGROUP
-- [x] Créer un groupe sur un groupe existant
+- [ ] Créer un groupe sur un groupe existant
 - [ ] Création de groupe statique
 - [ ] Création de groupe avec import csv
 
 ## Création de groupe autre cas
-- [ ] Créer un groupe alors qu'il existe déjà
+- [x] Créer un groupe alors qu'il existe déjà
 - [x] Supprimer un groupe 
 - [ ] Partager un groupe
 - [x] Montrer le contenu du groupe
