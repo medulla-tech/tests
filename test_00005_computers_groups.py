@@ -897,3 +897,53 @@ def test_create_group_by_existing_group(page: Page) -> None:
     assert normal_result != result_on_server[0]
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
+
+def test_create_group_static(page: Page) -> None:
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.click("#tabsta a")
+
+    page.fill(".tabdiv input[name='name']", "Group Created by playwright Static")
+
+    page.click(".list option >> nth=0")
+    page.click("#grouplist input[name='baddmachine']")
+    page.click(".btnPrimary[type='submit']")
+
+    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Group Created by playwright Static'")
+
+    assert result_on_server == 1
+
+    locator = page.locator(".alert")
+    expect(locator).to_have_class("alert alert-success")
+
+def test_create_group_by_import_csv(page: Page) -> None:
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.click("#tabfromfile a")
+    page.fill("#groupname", "Group Created by playwright By Import CSV")
+
+    with page.expect_file_chooser() as fc_info:
+        page.locator("#importfile").click()
+        file_chooser = fc_info.value
+        file_chooser.set_files("packages_template/csv_grp.csv")
+
+    page.click(".btnPrimary[type='submit']")
+
+    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Group Created by playwright By Import CSV'")
+
+    assert result_on_server == 1
+
+    locator = page.locator(".alert")
+    expect(locator).to_have_class("alert alert-success")
