@@ -12,6 +12,7 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
+machineName = Config.get('test_server', 'machinename')
 
 def test_dashboard_createuser(page: Page) -> None:
 
@@ -102,7 +103,7 @@ def template_create_group_by_status(page: Page, selector, group_name) -> None:
 def test_create_groupe_by_dashboard_machine_online(page: Page) -> None:
     medulla_connect(page)
 
-    status = sqlcheck("xmppmaster", "SELECT status FROM uptime_machine WHERE hostname = 'ath-win-1' ORDER BY id DESC LIMIT 1")
+    status = sqlcheck("xmppmaster", "SELECT status FROM uptime_machine WHERE hostname = '" + machineName + "' ORDER BY id DESC LIMIT 1")
 
     if(status == 1):
         template_create_group_by_status(page, ".computersonline-graphLabel0 a", "Machine Online")
