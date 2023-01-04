@@ -947,3 +947,45 @@ def test_create_group_by_import_csv(page: Page) -> None:
 
     locator = page.locator(".alert")
     expect(locator).to_have_class("alert alert-success")
+
+def test_share_group(page: Page) -> None:
+    
+    group_name = "aGroup_Created_by_playwright_For_Sharing"
+    id_grp = "#g_"
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+    page.click("#tabsta a")
+
+    page.fill(".tabdiv input[name='name']", group_name)
+
+    page.click(".list option >> nth=0")
+    page.click("#grouplist input[name='baddmachine']")
+    page.click(".btnPrimary[type='submit']")
+
+    locator = page.locator('#__popup_container .alert.alert-success')
+    expect(locator).to_have_text('Group successfully created')
+    page.click('#__popup_container button')
+
+    page.click("#list")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+    page.click(id_grp + group_name +" .groupshare a")
+
+    id_sql = str(sqlcheck('dyngroup', "SELECT id FROM Groups WHERE name='"+group_name+"'"))
+    expect(page).to_have_url(test_server + '/mmc/main.php?module=base&submod=computers&action=edit_share&id=' + id_sql + '&gid=' + id_sql + '&groupname=' + group_name + '&type=0&mod=')
+
+    page.click('//html/body/div/div[4]/div/form/div/table/tbody/tr/td[1]/div/select/option[1]')
+    page.click('//html/body/div/div[4]/div/form/div/table/tbody/tr/td[2]/div/input[1]')
+    page.click('.btnPrimary')
+    
+    locator = page.locator('#__popup_container .alert.alert-success')
+    expect(locator).to_have_text('Group successfully shared')
+    page.click('#__popup_container button')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
