@@ -16,4 +16,6 @@ def test_basic_login(page: Page) -> None:
 
     medulla_connect(page)
 
-    pass
+    # Checking that no alert-error appears
+    locator = page.locator('#__popup_container .alert.alert-error')
+    expect(locator).to_be_hidden()
