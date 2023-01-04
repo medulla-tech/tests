@@ -74,7 +74,7 @@ A voir une fois le module terminé.
 ## Création de groupe autre cas
 - [x] Créer un groupe alors qu'il existe déjà
 - [x] Supprimer un groupe 
-- [ ] Partager un groupe
+- [x] Partager un groupe
 - [x] Montrer le contenu du groupe
 - [x] Editer le groupe
 
