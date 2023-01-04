@@ -29,13 +29,3 @@ def test_dashboard_creategroup(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=add")
 
 
-
-def test_dashboard_creategroup(page: Page) -> None:
-
-    medulla_connect(page)
-
-    page.click("//html/body/div/div[4]/div/div[9]/div[2]/div[2]/div[1]/a")
-    # TODO: Voir comment confirmer que l'action a bien fonctionnée.
-
-
-
