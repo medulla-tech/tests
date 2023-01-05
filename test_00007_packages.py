@@ -203,7 +203,7 @@ def test_package_view_execute_package(page: Page) -> None:
 
     package_uuid = find_uuid_sql("Package de test execute")
 
-    id_to_edit = "#p" + package_uuid + " >> .display >> a"
+    id_to_edit = "#p_" + package_uuid + " >> .display >> a"
     page.click(id_to_edit)
 
     # FIXME: Fix the expect part.
@@ -221,7 +221,7 @@ def test_package_delete_execute_package(page: Page) -> None:
 
     package_uuid = find_uuid_sql("Package de test execute")
 
-    id_to_remove = "#p" +  package_uuid + " .delete a"
+    id_to_remove = "#p_" +  package_uuid + " .delete a"
     page.click(id_to_remove)
     page.click(".btnPrimary[type='submit']")
 
