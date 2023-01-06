@@ -190,7 +190,7 @@ def test_create_group_based_on_name(page: Page) -> None:
 
     normal_result = "1==glpi::Computer name==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 def test_create_group_based_on_description(page: Page) -> None:
@@ -219,7 +219,7 @@ def test_create_group_based_on_description(page: Page) -> None:
 
     normal_result = "1==glpi::Description==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 
@@ -249,7 +249,7 @@ def test_create_group_based_on_inventory_number(page: Page) -> None:
 
     normal_result = "1==glpi::Inventory number==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 def test_create_group_based_on_glpi_group(page: Page) -> None:
@@ -277,7 +277,7 @@ def test_create_group_based_on_glpi_group(page: Page) -> None:
 
     normal_result = "1==glpi::Group==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 def test_create_group_based_on_peripheral_name(page: Page) -> None:
@@ -305,7 +305,7 @@ def test_create_group_based_on_peripheral_name(page: Page) -> None:
 
     normal_result = "1==glpi::Peripheral name==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 def test_create_group_based_on_peripheral_serial(page: Page) -> None:
@@ -333,7 +333,7 @@ def test_create_group_based_on_peripheral_serial(page: Page) -> None:
 
     normal_result = "1==glpi::Peripheral serial==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 
 def test_create_group_based_on_machine_type(page: Page) -> None:
@@ -361,7 +361,7 @@ def test_create_group_based_on_machine_type(page: Page) -> None:
 
     normal_result = "1==glpi::System type==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_machine_manufacturer(page: Page) -> None:
 
@@ -388,7 +388,7 @@ def test_create_group_based_on_machine_manufacturer(page: Page) -> None:
 
     normal_result = "1==glpi::System manufacturer==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_machine_model(page: Page) -> None:
 
@@ -415,7 +415,7 @@ def test_create_group_based_on_machine_model(page: Page) -> None:
 
     normal_result = "1==glpi::System model==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_machine_owner(page: Page) -> None:
 
@@ -442,7 +442,7 @@ def test_create_group_based_on_machine_owner(page: Page) -> None:
 
     normal_result = "1==glpi::Owner of the machine==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_last_logged_user(page: Page) -> None:
 
@@ -469,7 +469,7 @@ def test_create_group_based_on_last_logged_user(page: Page) -> None:
 
     normal_result = "1==glpi::Last Logged User==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_user_location(page: Page) -> None:
 
@@ -496,7 +496,7 @@ def test_create_group_based_on_user_location(page: Page) -> None:
 
     normal_result = "1==glpi::User location==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_location(page: Page) -> None:
 
@@ -523,7 +523,7 @@ def test_create_group_based_on_location(page: Page) -> None:
 
     normal_result = "1==glpi::Location==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_state(page: Page) -> None:
 
@@ -550,7 +550,7 @@ def test_create_group_based_on_state(page: Page) -> None:
 
     normal_result = "1==glpi::State==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_entity(page: Page) -> None:
 
@@ -577,7 +577,7 @@ def test_create_group_based_on_entity(page: Page) -> None:
 
     normal_result = "1==glpi::Entity==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_operating_system(page: Page) -> None:
 
@@ -604,7 +604,7 @@ def test_create_group_based_on_operating_system(page: Page) -> None:
 
     normal_result = "1==glpi::Operating system==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_installed_software(page: Page) -> None:
 
@@ -631,7 +631,7 @@ def test_create_group_based_on_installed_software(page: Page) -> None:
 
     normal_result = "1==glpi::Installed software==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_software_name_and_version(page: Page) -> None:
 
@@ -660,7 +660,7 @@ def test_create_group_based_on_software_name_and_version(page: Page) -> None:
 
     normal_result = "1==glpi::Installed software (specific version)==>Notepad, 0.1<"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_os_version(page: Page) -> None:
 
@@ -687,7 +687,7 @@ def test_create_group_based_on_os_version(page: Page) -> None:
 
     normal_result = "1==glpi::OS Version==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_architecture(page: Page) -> None:
 
@@ -714,7 +714,7 @@ def test_create_group_based_on_architecture(page: Page) -> None:
 
     normal_result = "1==glpi::Architecture==*win"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_register_key(page: Page) -> None:
 
@@ -741,7 +741,7 @@ def test_create_group_based_on_register_key(page: Page) -> None:
 
     normal_result = "1==glpi::Register key==*win*"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_on_register_key_value(page: Page) -> None:
 
@@ -771,7 +771,7 @@ def test_create_group_based_on_register_key_value(page: Page) -> None:
 
     normal_result = "1==glpi::Register key value==>*win*, *win*<"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_by_OU_User(page: Page) -> None:
 
@@ -796,7 +796,7 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
 
     normal_result = "1==xmppmaster::OU user==test OU User"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_based_by_OU_Machine(page: Page) -> None:
 
@@ -821,7 +821,7 @@ def test_create_group_based_by_OU_Machine(page: Page) -> None:
 
     normal_result = "1==xmppmaster::OU user==test OU Machine"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
 def test_create_group_by_online_computers(page: Page) -> None:
 
@@ -844,7 +844,7 @@ def test_create_group_by_online_computers(page: Page) -> None:
 
     normal_result = "1==glpi::Online computer==True"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -869,7 +869,7 @@ def test_create_group_by_offline_computers(page: Page) -> None:
 
     normal_result = "1==glpi::Online computer==False"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
@@ -894,7 +894,7 @@ def test_create_group_by_existing_group(page: Page) -> None:
 
     normal_result = "1==dyngroup::groupname==Group Created by playwright By Existing Group==True"
 
-    assert normal_result != result_on_server[0]
+    assert normal_result == result_on_server
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
