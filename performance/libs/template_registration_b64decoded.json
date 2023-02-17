@@ -1,0 +1,46 @@
+{
+    "action" : "infomachine",
+    "dhcp" : "False",
+    "dnshostname" : "@@@HOSTNAME@@@",
+    "info" : {
+       "archi" : [
+          "64bit",
+          "WindowsPE"
+       ],
+       "hardtype" : "AMD64",
+       "hostname" : "@@@HOSTNAME@@@",
+       "os" : "Windows",
+       "osrelease" : "8",
+       "platform" : "Windows-8-6.2.9200",
+       "processor" : "AMD64 Family 22 Model 48 Stepping 1, AuthenticAMD",
+       "uname" : [
+          "Windows",
+          "@@@HOSTNAME@@@",
+          "8",
+          "6.2.9200",
+          "AMD64",
+          "AMD64 Family 22 Model 48 Stepping 1, AuthenticAMD"
+       ],
+       "version" : "6.2.9200"
+    },
+    "is_masterpublickey" : true,
+    "listdns" : [],
+    "listipinfo" : [
+       {
+          "dhcp" : true,
+          "dhcpserver" : "10.8.158.201",
+          "gateway" : "10.8.158.201",
+          "ipaddress" : "10.8.158.202",
+          "macaddress" : "@@@MACADDRESS_SHORT@@@",
+          "macnotshortened" : "@@@MACADDRESS@@@",
+          "mask" : "255.255.255.252"
+       }
+    ],
+    "msg" : "Windows",
+    "publickey" : "KGlDcnlwdG8uUHVibGljS2V5LlJTQQ0KX1JTQW9iag0KcDANCihkcDINClMnZScNCnAzDQpMNjU1MzdMDQpzUyduJw0KcDQNCkwxMzk3MzkxMzM0Njg4NDc1NTcwNTEyMjg2NTAwMDE3OTUwNzE0NDYyNzk3ODMyMjY1NTk0MTMxMTc0MzM2ODA4NzE0Mzk2NTk5NzM2MjQyNDU4NzQxODU5MTAyMDc1OTk1MDEyMzY2NDIwMzIxMDAzODE4NjQ0ODQwMTUzMjA4Mjk5NDM4MTcyNTA4NDg3Njk2ODA3NzI1NDM3ODU5NTM0MTE3ODMyOTgzOTE2ODg5NDM4MjE3NTQ2NTE1NDY0MjYzMjk4ODExOTI5MzI1OTg0OTU0ODYzNzM4NzMzNzE2MzExMjYwMjIwMDQzMTgzMTc1NzM5MjAxMjE3MTk2NjQ2NTI3NTY1NzU0MTM3NTU2ODE5NDA4Mjk0MDc4MTY5MTkyNTkzMDMwNTMyNDIwNzEzMjczMTlMDQpzYi4=",
+    "sessionid" : "master",
+    "users" : [
+       "SIVEO"
+    ]
+}
+ 

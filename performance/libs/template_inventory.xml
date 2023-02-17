@@ -1,0 +1,1259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <REQUEST>
+      <CONTENT>
+        <ACCESSLOG>
+          <LOGDATE>2019-04-11 08:57:10</LOGDATE>
+        </ACCESSLOG>
+        <ANTIVIRUS>
+          <COMPANY>Microsoft Corporation</COMPANY>
+          <ENABLED>1</ENABLED>
+          <GUID>{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}</GUID>
+          <NAME>Windows Defender</NAME>
+          <UPTODATE>1</UPTODATE>
+          <VERSION>4.10.14393.1794</VERSION>
+        </ANTIVIRUS>
+        <BIOS>
+          <ASSETTAG>To Be Filled By O.E.M.</ASSETTAG>
+          <BDATE>01/22/2018</BDATE>
+          <BMANUFACTURER>American Megatrends Inc.</BMANUFACTURER>
+          <BVERSION>P1.13F</BVERSION>
+          <MMANUFACTURER>ASRock</MMANUFACTURER>
+          <MMODEL>IMB-A182</MMODEL>
+          <MSN>@@@SERIAL@@@</MSN>
+          <SKUNUMBER>To Be Filled By O.E.M.</SKUNUMBER>
+          <SMANUFACTURER>To Be Filled By O.E.M.</SMANUFACTURER>
+          <SMODEL>To Be Filled By O.E.M.</SMODEL>
+          <SSN>To Be Filled By O.E.M.</SSN>
+        </BIOS>
+        <CONTROLLERS>
+          <CAPTION>FCH SATA Controller [AHCI mode]</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH SATA Controller [AHCI mode]</NAME>
+          <PCISUBSYSTEMID>1849:7801</PCISUBSYSTEMID>
+          <PRODUCTID>7801</PRODUCTID>
+          <TYPE>AMD SATA Controller</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>FCH USB EHCI Controller</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH USB EHCI Controller</NAME>
+          <PCISUBSYSTEMID>1849:7808</PCISUBSYSTEMID>
+          <PRODUCTID>7808</PRODUCTID>
+          <TYPE>Standard Enhanced PCI to USB Host Controller</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>FCH USB XHCI Controller</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH USB XHCI Controller</NAME>
+          <PCISUBSYSTEMID>1849:7814</PCISUBSYSTEMID>
+          <PRODUCTID>7814</PRODUCTID>
+          <TYPE>Contrôleur hôte AMD USB 3.0 eXtensible - 1.0 (Microsoft)</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1585</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>FCH Azalia Controller</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH Azalia Controller</NAME>
+          <PCISUBSYSTEMID>1022:780d</PCISUBSYSTEMID>
+          <PRODUCTID>780d</PRODUCTID>
+          <TYPE>High Definition Audio Controller</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1582</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>Kabini HDMI/DP Audio</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD/ATI]</MANUFACTURER>
+          <NAME>Kabini HDMI/DP Audio</NAME>
+          <PCISUBSYSTEMID>1849:9840</PCISUBSYSTEMID>
+          <PRODUCTID>9840</PRODUCTID>
+          <TYPE>High Definition Audio Controller</TYPE>
+          <VENDORID>1002</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>FCH SMBus Controller</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH SMBus Controller</NAME>
+          <PCISUBSYSTEMID>1849:780b</PCISUBSYSTEMID>
+          <PRODUCTID>780b</PRODUCTID>
+          <TYPE>AMD SMBus</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>156b</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1584</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>1849:1566</PCISUBSYSTEMID>
+          <PRODUCTID>1566</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1581</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>FCH LPC Bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>FCH LPC Bridge</NAME>
+          <PCISUBSYSTEMID>1849:780e</PCISUBSYSTEMID>
+          <PRODUCTID>780e</PRODUCTID>
+          <TYPE>PCI standard ISA bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller</CAPTION>
+          <MANUFACTURER>Realtek Semiconductor Co., Ltd.</MANUFACTURER>
+          <NAME>Motherboard (one of many)</NAME>
+          <PCISUBSYSTEMID>1849:8168</PCISUBSYSTEMID>
+          <PRODUCTID>8168</PRODUCTID>
+          <TYPE>Realtek PCIe GBE Family Controller</TYPE>
+          <VENDORID>10ec</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>Family 16h Processor Functions 5:1</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>Family 16h Processor Functions 5:1</NAME>
+          <PCISUBSYSTEMID>1849:1439</PCISUBSYSTEMID>
+          <PRODUCTID>1439</PRODUCTID>
+          <TYPE>PCI Express Root Port</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1583</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>Mullins [Radeon R4/R5 Graphics]</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD/ATI]</MANUFACTURER>
+          <NAME>Mullins [Radeon R4/R5 Graphics]</NAME>
+          <PCISUBSYSTEMID>1849:9851</PCISUBSYSTEMID>
+          <PRODUCTID>9851</PRODUCTID>
+          <TYPE>AMD Radeon(TM) R5E Graphics</TYPE>
+          <VENDORID>1002</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>Carte d&apos;acquisition video ORPIC PCIe</CAPTION>
+          <MANUFACTURER>Altera Corporation</MANUFACTURER>
+          <NAME>Carte d&apos;acquisition video ORPIC PCIe</NAME>
+          <PCISUBSYSTEMID>1172:0002</PCISUBSYSTEMID>
+          <PRODUCTID>a75e</PRODUCTID>
+          <TYPE>Carte d&apos;acquisition video ORPIC PCIe</TYPE>
+          <VENDORID>1172</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>PCI standard host CPU bridge</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>PCI standard host CPU bridge</NAME>
+          <PCISUBSYSTEMID>0000:0000</PCISUBSYSTEMID>
+          <PRODUCTID>1580</PRODUCTID>
+          <TYPE>PCI standard host CPU bridge</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CONTROLLERS>
+          <CAPTION>AMD PSP 1.0 Device</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc. [AMD]</MANUFACTURER>
+          <NAME>AMD PSP 1.0 Device</NAME>
+          <PCISUBSYSTEMID>1849:1537</PCISUBSYSTEMID>
+          <PRODUCTID>1537</PRODUCTID>
+          <TYPE>AMD PSP 1.0 Device</TYPE>
+          <VENDORID>1022</VENDORID>
+        </CONTROLLERS>
+        <CPUS>
+          <CORE>4</CORE>
+          <DESCRIPTION>AMD64 Family 22 Model 48 Stepping 1</DESCRIPTION>
+          <FAMILYNUMBER>22</FAMILYNUMBER>
+          <ID>01 0F 73 00 FF FB 8B 17</ID>
+          <MANUFACTURER>AMD</MANUFACTURER>
+          <MODEL>48</MODEL>
+          <NAME>AMD GX-424CC SOC with Radeon(TM) R5E Graphics</NAME>
+          <SERIAL></SERIAL>
+          <SPEED>2400</SPEED>
+          <STEPPING>1</STEPPING>
+          <THREAD>4</THREAD>
+        </CPUS>
+        <DRIVES>
+          <DESCRIPTION>Disque monté local</DESCRIPTION>
+          <FILESYSTEM>NTFS</FILESYSTEM>
+          <FREE>123040</FREE>
+          <LABEL>Windows</LABEL>
+          <LETTER>C:</LETTER>
+          <SERIAL>D80DE601</SERIAL>
+          <SYSTEMDRIVE>1</SYSTEMDRIVE>
+          <TOTAL>146137</TOTAL>
+          <TYPE>Local Disk</TYPE>
+          <VOLUMN>Windows</VOLUMN>
+        </DRIVES>
+        <DRIVES>
+          <DESCRIPTION>Disque monté local</DESCRIPTION>
+          <FILESYSTEM>NTFS</FILESYSTEM>
+          <FREE>91122</FREE>
+          <LABEL>DATA</LABEL>
+          <LETTER>D:</LETTER>
+          <SERIAL>8E107591</SERIAL>
+          <SYSTEMDRIVE></SYSTEMDRIVE>
+          <TOTAL>95476</TOTAL>
+          <TYPE>Local Disk</TYPE>
+          <VOLUMN>DATA</VOLUMN>
+        </DRIVES>
+        <DRIVES>
+          <DESCRIPTION>Disque monté local</DESCRIPTION>
+          <FILESYSTEM>NTFS</FILESYSTEM>
+          <FREE>3790</FREE>
+          <LABEL>DATA_LOTSYS</LABEL>
+          <LETTER>L:</LETTER>
+          <SERIAL>0417C46B</SERIAL>
+          <SYSTEMDRIVE></SYSTEMDRIVE>
+          <TOTAL>3819</TOTAL>
+          <TYPE>Local Disk</TYPE>
+          <VOLUMN>DATA_LOTSYS</VOLUMN>
+        </DRIVES>
+        <DRIVES>
+          <DESCRIPTION>Disque monté local</DESCRIPTION>
+          <FILESYSTEM>NTFS</FILESYSTEM>
+          <FREE>3604</FREE>
+          <LABEL>DATA_MORPHO</LABEL>
+          <LETTER>M:</LETTER>
+          <SERIAL>5A5BCCA6</SERIAL>
+          <SYSTEMDRIVE></SYSTEMDRIVE>
+          <TOTAL>3819</TOTAL>
+          <TYPE>Local Disk</TYPE>
+          <VOLUMN>DATA_MORPHO</VOLUMN>
+        </DRIVES>
+        <ENVS>
+          <KEY>ComSpec</KEY>
+          <VAL>%SystemRoot%\system32\cmd.exe</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>OS</KEY>
+          <VAL>Windows_NT</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>Path</KEY>
+          <VAL>C:\Python27\;C:\Python27\Scripts;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PATHEXT</KEY>
+          <VAL>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PROCESSOR_ARCHITECTURE</KEY>
+          <VAL>AMD64</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PSModulePath</KEY>
+          <VAL>%ProgramFiles%\WindowsPowerShell\Modules;%SystemRoot%\system32\WindowsPowerShell\v1.0\Modules</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>TEMP</KEY>
+          <VAL>%SystemRoot%\TEMP</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>TMP</KEY>
+          <VAL>%SystemRoot%\TEMP</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>USERNAME</KEY>
+          <VAL>SYSTEM</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>windir</KEY>
+          <VAL>%SystemRoot%</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>NUMBER_OF_PROCESSORS</KEY>
+          <VAL>4</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PROCESSOR_LEVEL</KEY>
+          <VAL>22</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PROCESSOR_IDENTIFIER</KEY>
+          <VAL>AMD64 Family 22 Model 48 Stepping 1, AuthenticAMD</VAL>
+        </ENVS>
+        <ENVS>
+          <KEY>PROCESSOR_REVISION</KEY>
+          <VAL>3001</VAL>
+        </ENVS>
+        <FIREWALL>
+          <PROFILE>StandardProfile</PROFILE>
+          <STATUS>on</STATUS>
+        </FIREWALL>
+        <FIREWALL>
+          <PROFILE>DomainProfile</PROFILE>
+          <STATUS>on</STATUS>
+        </FIREWALL>
+        <FIREWALL>
+          <PROFILE>PublicProfile</PROFILE>
+          <STATUS>on</STATUS>
+        </FIREWALL>
+        <HARDWARE>
+          <CHASSIS_TYPE>Desktop</CHASSIS_TYPE>
+          <CHECKSUM>131071</CHECKSUM>
+          <DEFAULTGATEWAY>10.8.158.201</DEFAULTGATEWAY>
+          <ETIME>28</ETIME>
+          <IPADDR>10.8.158.202</IPADDR>
+          <LASTLOGGEDUSER>SIVEO</LASTLOGGEDUSER>
+          <MEMORY>3537</MEMORY>
+          <NAME>@@@HOSTNAME@@@</NAME>
+          <OSNAME>Microsoft Windows 10 Entreprise 2016 LTSB</OSNAME>
+          <OSVERSION>10.0.14393</OSVERSION>
+          <PROCESSORN>1</PROCESSORN>
+          <PROCESSORS>2400</PROCESSORS>
+          <PROCESSORT>AMD GX-424CC SOC with Radeon(TM) R5E Graphics</PROCESSORT>
+          <USERID>SIVEO</USERID>
+          <UUID>@@@UUID@@@</UUID>
+          <VMSYSTEM>Physical</VMSYSTEM>
+          <WINCOMPANY>SIVEO</WINCOMPANY>
+          <WINLANG>1036</WINLANG>
+          <WINOWNER>Utilisateur Windows</WINOWNER>
+          <WINPRODID>00380-71600-11202-AAOEM</WINPRODID>
+          <WINPRODKEY>GKN69-8GDRM-CXWR3-HYYDX-RM649</WINPRODKEY>
+          <WORKGROUP>SIVEO</WORKGROUP>
+        </HARDWARE>
+        <INPUTS>
+          <CAPTION>HID-compliant mouse</CAPTION>
+          <DESCRIPTION>HID-compliant mouse</DESCRIPTION>
+          <INTERFACE>USB</INTERFACE>
+          <MANUFACTURER>Microsoft</MANUFACTURER>
+          <NAME>HID-compliant mouse</NAME>
+          <POINTINGTYPE>2</POINTINGTYPE>
+        </INPUTS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-544</ID>
+          <NAME>Administrateurs</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-578</ID>
+          <NAME>Administrateurs Hyper-V</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-552</ID>
+          <NAME>Duplicateurs</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-568</ID>
+          <NAME>IIS_IUSRS</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-546</ID>
+          <NAME>Invités</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-573</ID>
+          <NAME>Lecteurs des journaux d’événements</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-579</ID>
+          <NAME>Opérateurs d&apos;assistance de contrôle d&apos;accès</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-569</ID>
+          <NAME>Opérateurs de chiffrement</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-556</ID>
+          <NAME>Opérateurs de configuration réseau</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-551</ID>
+          <NAME>Opérateurs de sauvegarde</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-581</ID>
+          <NAME>System Managed Accounts Group</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-545</ID>
+          <NAME>Utilisateurs</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-547</ID>
+          <NAME>Utilisateurs avec pouvoir</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-580</ID>
+          <NAME>Utilisateurs de gestion à distance</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-558</ID>
+          <NAME>Utilisateurs de l’Analyseur de performances</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-555</ID>
+          <NAME>Utilisateurs du Bureau à distance</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-559</ID>
+          <NAME>Utilisateurs du journal de performances</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_GROUPS>
+          <ID>S-1-5-32-562</ID>
+          <NAME>Utilisateurs du modèle COM distribué</NAME>
+        </LOCAL_GROUPS>
+        <LOCAL_USERS>
+          <ID>S-1-5-21-1406955270-3554752139-4262011009-1000</ID>
+          <NAME>Admin</NAME>
+        </LOCAL_USERS>
+        <LOCAL_USERS>
+          <ID>S-1-5-21-1406955270-3554752139-4262011009-500</ID>
+          <NAME>Administrateur</NAME>
+        </LOCAL_USERS>
+        <LOCAL_USERS>
+          <ID>S-1-5-21-1406955270-3554752139-4262011009-1002</ID>
+          <NAME>Installation</NAME>
+        </LOCAL_USERS>
+        <LOCAL_USERS>
+          <ID>S-1-5-21-1406955270-3554752139-4262011009-1001</ID>
+          <NAME>SIVEO</NAME>
+        </LOCAL_USERS>
+        <LOCAL_USERS>
+          <ID>S-1-5-21-1406955270-3554752139-4262011009-1004</ID>
+          <NAME>pulse</NAME>
+        </LOCAL_USERS>
+        <MEMORIES>
+          <CAPACITY>4096</CAPACITY>
+          <CAPTION>DIMM 0</CAPTION>
+          <DESCRIPTION>SODIMM</DESCRIPTION>
+          <MEMORYCORRECTION>None</MEMORYCORRECTION>
+          <NUMSLOTS>1</NUMSLOTS>
+          <SERIALNUMBER>00000000</SERIALNUMBER>
+          <SPEED>800</SPEED>
+          <TYPE>DDR3</TYPE>
+        </MEMORIES>
+        <MEMORIES>
+          <CAPTION>DIMM 1</CAPTION>
+          <DESCRIPTION>SODIMM</DESCRIPTION>
+          <MEMORYCORRECTION>None</MEMORYCORRECTION>
+          <NUMSLOTS>2</NUMSLOTS>
+          <SERIALNUMBER>A1_SerialNum1</SERIALNUMBER>
+          <TYPE>DDR3</TYPE>
+        </MEMORIES>
+        <MONITORS>
+          <BASE64>AP///////wAlzwAAAAAAAAEUAQOAJB146gkloldLmiQYUFSlaAAxT0VPAQEBAQEBAQEBAQEBZBkAQEEAJjAYiDYA9HcRAAAYAAAAEAAKICAgICAgICAgICAgAAAA/QAyQR8yBwAKICAgICAgAAAA/ABJTk5PLUgKICAgICAgAGQ=</BASE64>
+          <CAPTION>INNO-H</CAPTION>
+          <DESCRIPTION>1/2010</DESCRIPTION>
+          <MANUFACTURER>Innolab Pte Ltd</MANUFACTURER>
+          <PORT>DVI</PORT>
+          <SERIAL>00000000</SERIAL>
+        </MONITORS>
+        <MONITORS>
+          <BASE64>AP///////wANEhF1cAMAAAUXAQSlHhZ44oBCrFEwtCUQUFMAAAABAQEBAQEBAQEBAQEBAQEB4BUAsEAAFjAwIDQABk0hAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAA/QA4TB5TEQAKICAgICAgAAAA/ABDSDc1MTFCCiAgICAgAMQ=</BASE64>
+          <CAPTION>CH7511B</CAPTION>
+          <DESCRIPTION>5/2013</DESCRIPTION>
+          <MANUFACTURER>CHR</MANUFACTURER>
+          <PORT>DisplayPort</PORT>
+          <SERIAL>00000370</SERIAL>
+        </MONITORS>
+        <NETWORKS>
+          <DESCRIPTION>Realtek PCIe GBE Family Controller #2</DESCRIPTION>
+          <IPADDRESS>10.8.158.202</IPADDRESS>
+          <IPDHCP>10.8.158.201</IPDHCP>
+          <IPGATEWAY>10.8.158.201</IPGATEWAY>
+          <IPMASK>255.255.255.252</IPMASK>
+          <IPSUBNET>10.8.158.200</IPSUBNET>
+          <MACADDR>@@@MACADDRESS@@@</MACADDR>
+          <PCIID>10EC:8168:8168:1849</PCIID>
+          <PNPDEVICEID>PCI\VEN_10EC&amp;DEV_8168&amp;SUBSYS_81681849&amp;REV_0C\01000000684CE00000</PNPDEVICEID>
+          <SPEED>100</SPEED>
+          <STATUS>Up</STATUS>
+          <VIRTUALDEV>0</VIRTUALDEV>
+        </NETWORKS>
+        <NETWORKS>
+          <DESCRIPTION>Realtek PCIe GBE Family Controller #2</DESCRIPTION>
+          <IPADDRESS6>fe80::ed0c:b35a:f2ca:7e88</IPADDRESS6>
+          <IPMASK6>ffff:ffff:ffff:ffff::</IPMASK6>
+          <IPSUBNET6>fe80::</IPSUBNET6>
+          <MACADDR>@@@MACADDRESS@@@</MACADDR>
+          <PCIID>10EC:8168:8168:1849</PCIID>
+          <PNPDEVICEID>PCI\VEN_10EC&amp;DEV_8168&amp;SUBSYS_81681849&amp;REV_0C\01000000684CE00000</PNPDEVICEID>
+          <SPEED>100</SPEED>
+          <STATUS>Up</STATUS>
+          <VIRTUALDEV>0</VIRTUALDEV>
+        </NETWORKS>
+        <OPERATINGSYSTEM>
+          <ARCH>64-bit</ARCH>
+          <BOOT_TIME>2019-04-10 16:03:30</BOOT_TIME>
+          <DNS_DOMAIN>SIVEO</DNS_DOMAIN>
+          <FQDN>@@@HOSTNAME@@@</FQDN>
+          <FULL_NAME>Microsoft Windows 10 Entreprise 2016 LTSB</FULL_NAME>
+          <INSTALL_DATE>2018-03-16 16:39:38</INSTALL_DATE>
+          <KERNEL_NAME>MSWin32</KERNEL_NAME>
+          <KERNEL_VERSION>10.0.14393</KERNEL_VERSION>
+          <NAME>Windows</NAME>
+          <SERVICE_PACK />  <TIMEZONE>
+            <NAME>Europe/Paris</NAME>
+            <OFFSET>+0200</OFFSET>
+          </TIMEZONE>
+          <VERSION>1607</VERSION>
+        </OPERATINGSYSTEM>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM1)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM1)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM2)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM2)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM3)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM3)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM4)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM4)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM5)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM5)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Nuvoton Communications Port (COM6)</CAPTION>
+          <DESCRIPTION>Nuvoton Communications Port</DESCRIPTION>
+          <NAME>Nuvoton Communications Port (COM6)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Périphérique série USB (COM7)</CAPTION>
+          <DESCRIPTION>Périphérique série USB</DESCRIPTION>
+          <NAME>Périphérique série USB (COM7)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <PORTS>
+          <CAPTION>Périphérique série USB (COM8)</CAPTION>
+          <DESCRIPTION>Périphérique série USB</DESCRIPTION>
+          <NAME>Périphérique série USB (COM8)</NAME>
+          <TYPE>Serial</TYPE>
+        </PORTS>
+        <SLOTS>
+          <DESCRIPTION>x4 PCI Express</DESCRIPTION>
+          <DESIGNATION>17</DESIGNATION>
+          <NAME>PCIE1</NAME>
+          <STATUS>used</STATUS>
+        </SLOTS>
+        <SLOTS>
+          <DESCRIPTION>Connecteur système</DESCRIPTION>
+          <DESIGNATION>PCIE1</DESIGNATION>
+          <NAME>Connecteur système</NAME>
+          <STATUS>used</STATUS>
+        </SLOTS>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>E74AF38B22067A5C5C3CE46BEA2C844DF23FA15F</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Package de pilotes Windows - Morpho (Orpic) Image  (04/04/2017 14.2.11.810)</NAME>
+          <PUBLISHER>Morpho</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>C:\PROGRA~1\DIFX\E94EC5D9364B6EDB\dpinst.exe /u C:\windows\System32\DriverStore\FileRepository\orpic.inf_amd64_20b579e4a3822d2c\orpic.inf</UNINSTALL_STRING>
+          <VERSION>04/04/2017 14.2.11.810</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>FBDBServer_3_0_x64_is1</GUID>
+          <HELPLINK>http://www.firebirdsql.org/</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Firebird 3.0.0.32483 (x64)</NAME>
+          <PUBLISHER>Firebird Project</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\Program Files\Firebird\Firebird_3_0\unins000.exe&quot;</UNINSTALL_STRING>
+          <URL_INFO_ABOUT>http://www.firebirdsql.org/</URL_INFO_ABOUT>
+          <VERSION>3.0.0.32483</VERSION>
+          <VERSION_MAJOR>3</VERSION_MAJOR>
+          <VERSION_MINOR>0</VERSION_MINOR>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>FusionInventory-Agent</GUID>
+          <HELPLINK>https://github.com/fusioninventory/fusioninventory-agent</HELPLINK>
+          <INSTALLDATE>04/03/2019</INSTALLDATE>
+          <NAME>FusionInventory Agent 2.4 (x64 edition)</NAME>
+          <PUBLISHER>FusionInventory Team</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>C:\Program Files\FusionInventory-Agent\Uninstall.exe</UNINSTALL_STRING>
+          <VERSION>2.4</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>IngenicoUSBDrivers_2.40</GUID>
+          <INSTALLDATE>30/01/2019</INSTALLDATE>
+          <NAME>Ingenico USB Drivers Package (JUNGO v36) 2.40 (remove only)</NAME>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>C:\Program Files (x86)\Ingenico\IngenicoUSBDrivers\Uninstall.exe</UNINSTALL_STRING>
+          <VERSION>2.40</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>Pulse Agent</GUID>
+          <INSTALLDATE>04/03/2019</INSTALLDATE>
+          <NAME>Pulse Agent</NAME>
+          <PUBLISHER>SIVEO</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\Program Files\Pulse\uninstall.exe&quot;</UNINSTALL_STRING>
+          <URL_INFO_ABOUT>http://www.siveo.net</URL_INFO_ABOUT>
+          <VERSION>1.9.8</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>Pulse Filetree Generator</GUID>
+          <INSTALLDATE>08/02/2019</INSTALLDATE>
+          <NAME>Pulse Filetree Generator</NAME>
+          <PUBLISHER>SIVEO</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <VERSION>1.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{0D3E9E15-DE7A-300B-96F1-B4AF12B96488}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 x64 Minimum Runtime - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{0D3E9E15-DE7A-300B-96F1-B4AF12B96488}</UNINSTALL_STRING>
+          <VERSION>14.0.23026</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{1D8E6291-B0D5-35EC-8441-6616F567A0F7}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=146008</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{1D8E6291-B0D5-35EC-8441-6616F567A0F7}</UNINSTALL_STRING>
+          <VERSION>10.0.40219</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{23170F69-40C1-2702-1602-000001000000}</GUID>
+          <HELPLINK>http://www.7-zip.org/support.html</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>7-Zip 16.02 (x64 edition)</NAME>
+          <PUBLISHER>Igor Pavlov</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{23170F69-40C1-2702-1602-000001000000}</UNINSTALL_STRING>
+          <URL_INFO_ABOUT>http://www.7-zip.org/</URL_INFO_ABOUT>
+          <VERSION>16.02.00.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{37B8F9C7-03FB-3253-8781-2517C99D7C00}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 x64 Additional Runtime - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{37B8F9C7-03FB-3253-8781-2517C99D7C00}</UNINSTALL_STRING>
+          <VERSION>11.0.61030</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{5FCE6D76-F5DC-37AB-B2B8-22AB8CEDB1D4}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{5FCE6D76-F5DC-37AB-B2B8-22AB8CEDB1D4}</UNINSTALL_STRING>
+          <VERSION>9.0.30729.6161</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{79F081BF-7454-43DB-BD8F-9EE596813233}</GUID>
+          <INSTALLDATE>09/11/2018</INSTALLDATE>
+          <NAME>Python 2.7.9 (64-bit)</NAME>
+          <PUBLISHER>Python Software Foundation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{79F081BF-7454-43DB-BD8F-9EE596813233}</UNINSTALL_STRING>
+          <VERSION>2.7.9150</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{929FBD26-9020-399B-9A7A-751D61F0B942}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{929FBD26-9020-399B-9A7A-751D61F0B942}</UNINSTALL_STRING>
+          <VERSION>12.0.21005</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{A749D8E6-B613-3BE3-8F5F-045C84EBA29B}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{A749D8E6-B613-3BE3-8F5F-045C84EBA29B}</UNINSTALL_STRING>
+          <VERSION>12.0.21005</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2005 Redistributable (x64)</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}</UNINSTALL_STRING>
+          <VERSION>8.0.61000</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{BC958BD2-5DAC-3862-BB1A-C1BE0790438D}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 x64 Additional Runtime - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{BC958BD2-5DAC-3862-BB1A-C1BE0790438D}</UNINSTALL_STRING>
+          <VERSION>14.0.23026</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 x64 Minimum Runtime - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}</UNINSTALL_STRING>
+          <VERSION>11.0.61030</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{D9D020C0-B53E-4A40-B2FA-35D47966601B}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>MSI to redistribute MS VS2010 CRT libraries</NAME>
+          <PUBLISHER>The Firebird Project</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{D9D020C0-B53E-4A40-B2FA-35D47966601B}</UNINSTALL_STRING>
+          <VERSION>10.0.30319.1</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{DEE0B752-52D8-4615-9BEE-1EDA46628960}</GUID>
+          <INSTALLDATE>09/11/2018</INSTALLDATE>
+          <NAME>TightVNC</NAME>
+          <PUBLISHER>GlavSoft LLC.</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{DEE0B752-52D8-4615-9BEE-1EDA46628960}</UNINSTALL_STRING>
+          <VERSION>2.8.8.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <FROM>registry</FROM>
+          <INSTALLDATE>10/11/2018</INSTALLDATE>
+          <NAME>Internet Explorer (64bit)</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <VERSION>11.2214.14393.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{050d4fc8-5d48-4b8f-8972-47c82c46020f}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.30501</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{050d4fc8-5d48-4b8f-8972-47c82c46020f}\vcredist_x64.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>12.0.30501.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{13A4EE12-23EA-3371-91EE-EFB36DDFFF3E}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{13A4EE12-23EA-3371-91EE-EFB36DDFFF3E}</UNINSTALL_STRING>
+          <VERSION>12.0.21005</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 Redistributable (x86) - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}\vcredist_x86.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>11.0.61030.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{3EE48F79-0D53-4FE3-B611-280D1EB6873A}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>MSI to redistribute MS VS2010 CRT libraries</NAME>
+          <PUBLISHER>The Firebird Project</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{3EE48F79-0D53-4FE3-B611-280D1EB6873A}</UNINSTALL_STRING>
+          <VERSION>10.0.30319.1</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{692514A8-5484-45FC-B0AE-BE2DF7A75891}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ Compiler Package for Python 2.7</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{692514A8-5484-45FC-B0AE-BE2DF7A75891}</UNINSTALL_STRING>
+          <VERSION>9.0.1.30729</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Install or uninstall this software</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{69C2B39D-F060-49AD-8877-01C4144A8424}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=105680</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Surface 2.0 Runtime</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /I{69C2B39D-F060-49AD-8877-01C4144A8424}</UNINSTALL_STRING>
+          <URL_INFO_ABOUT>http://go.microsoft.com/fwlink/?LinkId=105678</URL_INFO_ABOUT>
+          <VERSION>2.0.21114.00</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{710f4c1c-cc18-4c49-8cbf-51240c89a1a2}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2005 Redistributable</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{710f4c1c-cc18-4c49-8cbf-51240c89a1a2}</UNINSTALL_STRING>
+          <VERSION>8.0.61001</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{74d0e5db-b326-4dae-a6b2-445b9de1836e}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 Redistributable (x86) - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{74d0e5db-b326-4dae-a6b2-445b9de1836e}\VC_redist.x86.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>14.0.23026.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{9BE518E6-ECC6-35A9-88E4-87755C07200F}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{9BE518E6-ECC6-35A9-88E4-87755C07200F}</UNINSTALL_STRING>
+          <VERSION>9.0.30729.6161</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{A2563E55-3BEC-3828-8D67-E5E8B9E8B675}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 x86 Minimum Runtime - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{A2563E55-3BEC-3828-8D67-E5E8B9E8B675}</UNINSTALL_STRING>
+          <VERSION>14.0.23026</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{B175520C-86A2-35A7-8619-86DC379688B9}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{B175520C-86A2-35A7-8619-86DC379688B9}</UNINSTALL_STRING>
+          <VERSION>11.0.61030</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{BD95A8CD-1D9F-35AD-981A-3E7925026EBB}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{BD95A8CD-1D9F-35AD-981A-3E7925026EBB}</UNINSTALL_STRING>
+          <VERSION>11.0.61030</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{BE960C1C-7BAD-3DE6-8B1A-2616FE532845}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 x86 Additional Runtime - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{BE960C1C-7BAD-3DE6-8B1A-2616FE532845}</UNINSTALL_STRING>
+          <VERSION>14.0.23026</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{ca67548a-5ebe-413a-b50c-4b9ceb6d66c6}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2012 Redistributable (x64) - 11.0.61030</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{ca67548a-5ebe-413a-b50c-4b9ceb6d66c6}\vcredist_x64.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>11.0.61030.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{e46eca4f-393b-40df-9f49-076faf788d83}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2015 Redistributable (x64) - 14.0.23026</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{e46eca4f-393b-40df-9f49-076faf788d83}\VC_redist.x64.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>14.0.23026.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{F0C3E5D1-1ADE-321E-8167-68EF0DE699A5}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=146008</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{F0C3E5D1-1ADE-321E-8167-68EF0DE699A5}</UNINSTALL_STRING>
+          <VERSION>10.0.40219</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{F132AF7F-7BCA-4EDE-8A7C-958108FE7DBC}</GUID>
+          <INSTALLDATE>09/11/2018</INSTALLDATE>
+          <NAME>Realtek High Definition Audio Driver</NAME>
+          <PUBLISHER>Realtek Semiconductor Corp.</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>C:\Program Files\Realtek\Audio\HDA\RtlUpd64.exe -r -m -nrg2709</UNINSTALL_STRING>
+          <VERSION>6.0.1.7541</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{f65db027-aff3-4070-886a-0d87064aabb1}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>&quot;C:\ProgramData\Package Cache\{f65db027-aff3-4070-886a-0d87064aabb1}\vcredist_x86.exe&quot;  /uninstall</UNINSTALL_STRING>
+          <VERSION>12.0.30501.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <COMMENTS>Caution. Removing this product might prevent some applications from running.</COMMENTS>
+          <FROM>registry</FROM>
+          <GUID>{F8CFEB22-A2E7-3971-9EDA-4B11EDEFC185}</GUID>
+          <HELPLINK>http://go.microsoft.com/fwlink/?LinkId=133405</HELPLINK>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <SYSTEM_CATEGORY>system_component</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{F8CFEB22-A2E7-3971-9EDA-4B11EDEFC185}</UNINSTALL_STRING>
+          <VERSION>12.0.21005</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <GUID>{FC526514-AFD9-4A5C-8677-56241539609D}</GUID>
+          <INSTALLDATE>16/03/2018</INSTALLDATE>
+          <NAME>NXLog-CE</NAME>
+          <PUBLISHER>NXLog Ltd</PUBLISHER>
+          <SYSTEM_CATEGORY>application</SYSTEM_CATEGORY>
+          <UNINSTALL_STRING>MsiExec.exe /X{FC526514-AFD9-4A5C-8677-56241539609D}</UNINSTALL_STRING>
+          <VERSION>2.9.1716</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>i586</ARCH>
+          <FROM>registry</FROM>
+          <INSTALLDATE>10/11/2018</INSTALLDATE>
+          <NAME>Internet Explorer</NAME>
+          <PUBLISHER>Microsoft Corporation</PUBLISHER>
+          <VERSION>11.2214.14393.0</VERSION>
+        </SOFTWARES>
+        <SOFTWARES>
+          <ARCH>x86_64</ARCH>
+          <COMMENTS>Update</COMMENTS>
+          <FROM>WMI</FROM>
+          <INSTALLDATE>10/11/2018</INSTALLDATE>
+          <NAME>KB4093120</NAME>
+          <RELEASE_TYPE>Update</RELEASE_TYPE>
+          <SYSTEM_CATEGORY>update</SYSTEM_CATEGORY>
+        </SOFTWARES>
+        <SOUNDS>
+          <CAPTION>Realtek High Definition Audio</CAPTION>
+          <DESCRIPTION>Realtek High Definition Audio</DESCRIPTION>
+          <MANUFACTURER>Realtek</MANUFACTURER>
+          <NAME>Realtek High Definition Audio</NAME>
+        </SOUNDS>
+        <SOUNDS>
+          <CAPTION>AMD High Definition Audio Device</CAPTION>
+          <DESCRIPTION>AMD High Definition Audio Device</DESCRIPTION>
+          <MANUFACTURER>Advanced Micro Devices</MANUFACTURER>
+          <NAME>AMD High Definition Audio Device</NAME>
+        </SOUNDS>
+        <STORAGES>
+          <DESCRIPTION>Disk drive</DESCRIPTION>
+          <DISKSIZE>256060</DISKSIZE>
+          <FIRMWARE>MAV0100Q</FIRMWARE>
+          <INTERFACE>IDE</INTERFACE>
+          <MANUFACTURER>(Standard disk drives)</MANUFACTURER>
+          <MODEL>SAMSUNG MZ7LN256HMJP-00000</MODEL>
+          <NAME>\\.\PHYSICALDRIVE1</NAME>
+          <SCSI_COID>0</SCSI_COID>
+          <SCSI_LUN>0</SCSI_LUN>
+          <SCSI_UNID>0</SCSI_UNID>
+          <SERIAL>S2MJNX0J113801</SERIAL>
+          <SERIALNUMBER>S2MJNX0J113801</SERIALNUMBER>
+          <TYPE>Fixed hard disk media</TYPE>
+        </STORAGES>
+        <STORAGES>
+          <DESCRIPTION>Disk drive</DESCRIPTION>
+          <DISKSIZE>8012</DISKSIZE>
+          <FIRMWARE>S16425</FIRMWARE>
+          <INTERFACE>IDE</INTERFACE>
+          <MANUFACTURER>(Standard disk drives)</MANUFACTURER>
+          <MODEL>InnoDisk Corp. - mSATA 3ME3</MODEL>
+          <NAME>\\.\PHYSICALDRIVE0</NAME>
+          <SCSI_COID>0</SCSI_COID>
+          <SCSI_LUN>0</SCSI_LUN>
+          <SCSI_UNID>0</SCSI_UNID>
+          <SERIAL>BCA11705040010753</SERIAL>
+          <SERIALNUMBER>BCA11705040010753</SERIALNUMBER>
+          <TYPE>Fixed hard disk media</TYPE>
+        </STORAGES>
+        <USBDEVICES>
+          <CAPTION>SNAPI Imaging Device</CAPTION>
+          <MANUFACTURER>Symbol Technologies</MANUFACTURER>
+          <NAME>SNAPI Imaging Device</NAME>
+          <PRODUCTID>1900</PRODUCTID>
+          <SERIAL>S/N:C3215E15ED72384484BAC0696BDEB55B_REV:PAABLC45-002-R009</SERIAL>
+          <VENDORID>05E0</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB Input Device</CAPTION>
+          <MANUFACTURER>D-WAV Scientific Co., Ltd</MANUFACTURER>
+          <NAME>USB Input Device</NAME>
+          <PRODUCTID>C000</PRODUCTID>
+          <VENDORID>0EEF</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB Composite Device</CAPTION>
+          <NAME>USB Composite Device</NAME>
+          <PRODUCTID>0001</PRODUCTID>
+          <SERIAL>V06.00.00.02</SERIAL>
+          <VENDORID>222A</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB 2.0 Hub</CAPTION>
+          <MANUFACTURER>Standard Microsystems Corp.</MANUFACTURER>
+          <NAME>USB 2.0 Hub</NAME>
+          <PRODUCTID>2514</PRODUCTID>
+          <VENDORID>0424</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>Generic USB Hub</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc.</MANUFACTURER>
+          <NAME>Generic USB Hub</NAME>
+          <PRODUCTID>7900</PRODUCTID>
+          <VENDORID>0438</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB Composite Device</CAPTION>
+          <MANUFACTURER>Morpho</MANUFACTURER>
+          <NAME>USB Composite Device</NAME>
+          <PRODUCTID>0010</PRODUCTID>
+          <VENDORID>225D</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>Generic USB Hub</CAPTION>
+          <MANUFACTURER>Advanced Micro Devices, Inc.</MANUFACTURER>
+          <NAME>Generic USB Hub</NAME>
+          <PRODUCTID>7900</PRODUCTID>
+          <VENDORID>0438</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB 2.0 Hub</CAPTION>
+          <MANUFACTURER>Standard Microsystems Corp.</MANUFACTURER>
+          <NAME>USB 2.0 Hub</NAME>
+          <PRODUCTID>2514</PRODUCTID>
+          <VENDORID>0424</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>MPH SNBC Printer</CAPTION>
+          <MANUFACTURER>SNBC CO., Ltd</MANUFACTURER>
+          <NAME>MPH SNBC Printer</NAME>
+          <PRODUCTID>154F</PRODUCTID>
+          <VENDORID>154F</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>Model L100 Keyboard</CAPTION>
+          <MANUFACTURER>Dell Computer Corp.</MANUFACTURER>
+          <NAME>Model L100 Keyboard</NAME>
+          <PRODUCTID>2105</PRODUCTID>
+          <VENDORID>413C</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>ACR1252 CL Reader PICC</CAPTION>
+          <MANUFACTURER>Advanced Card Systems, Ltd</MANUFACTURER>
+          <NAME>ACR1252 CL Reader PICC</NAME>
+          <PRODUCTID>223E</PRODUCTID>
+          <VENDORID>072F</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>BCM20702A0 Bluetooth 4.0</CAPTION>
+          <MANUFACTURER>Broadcom Corp.</MANUFACTURER>
+          <NAME>BCM20702A0 Bluetooth 4.0</NAME>
+          <PRODUCTID>21E8</PRODUCTID>
+          <SERIAL>34C9F0836924</SERIAL>
+          <VENDORID>0A5C</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB Composite Device</CAPTION>
+          <MANUFACTURER>Morpho</MANUFACTURER>
+          <NAME>USB Composite Device</NAME>
+          <PRODUCTID>0011</PRODUCTID>
+          <VENDORID>225D</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB 2.0 Hub</CAPTION>
+          <MANUFACTURER>Standard Microsystems Corp.</MANUFACTURER>
+          <NAME>USB 2.0 Hub</NAME>
+          <PRODUCTID>2514</PRODUCTID>
+          <VENDORID>0424</VENDORID>
+        </USBDEVICES>
+        <USBDEVICES>
+          <CAPTION>USB 2.0 Hub</CAPTION>
+          <MANUFACTURER>Standard Microsystems Corp.</MANUFACTURER>
+          <NAME>USB 2.0 Hub</NAME>
+          <PRODUCTID>2514</PRODUCTID>
+          <VENDORID>0424</VENDORID>
+        </USBDEVICES>
+        <USERS>
+          <DOMAIN>@@@HOSTNAME@@@</DOMAIN>
+          <LOGIN>SIVEO</LOGIN>
+        </USERS>
+        <VERSIONCLIENT>FusionInventory-Agent_v2.4</VERSIONCLIENT>
+        <VERSIONPROVIDER>
+          <COMMENTS>Provided by Fusioninventory</COMMENTS>
+          <COMMENTS>Installer built with Appveyor on Fri Dec 29 13:28:19 UTC 2017</COMMENTS>
+          <NAME>FusionInventory</NAME>
+          <PERL_EXE>C:\Program Files\FusionInventory-Agent\perl\bin\perl.exe</PERL_EXE>
+          <PERL_VERSION>v5.24.1</PERL_VERSION>
+          <PROGRAM>fusioninventory-agent</PROGRAM>
+          <VERSION>2.4</VERSION>
+        </VERSIONPROVIDER>
+        <VIDEOS>
+          <CHIPSET>AMD Radeon Graphics Processor SDI (0x9851)</CHIPSET>
+          <NAME>AMD Radeon(TM) R5E Graphics</NAME>
+          <RESOLUTION>1024x768</RESOLUTION>
+        </VIDEOS>
+      </CONTENT>
+      <DEVICEID>@@@HOSTNAME@@@-2018-11-09-16-00-16</DEVICEID>
+      <QUERY>INVENTORY</QUERY>
+    </REQUEST>

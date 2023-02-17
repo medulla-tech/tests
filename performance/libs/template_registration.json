@@ -1,0 +1,45 @@
+{
+    "adorgbymachine" : "",
+    "adorgbyuser" : "",
+    "agenttype" : "machine",
+    "baseurlguacamole" : "http://medulla.local/guacamole/#/client/@@CUX_ID@@?username=root&amp;password=EiPhiuc3Ohvuah8Eveej",
+    "classutil" : "both",
+    "completedatamachine" : "@@@B64ENCODED_DATAMACHINE@@@",
+    "compress" : false,
+    "countstart" : "1234",
+    "deployment" : "rspulse@pulse/pulse",
+    "from" : "@@@MACADDRESS_SHORT@@@@pulse/@@@HOSTNAME@@@",
+    "ipconnection" : "192.168.220.75",
+    "ippublic" : "10.8.158.202",
+    "kiosk_presence" : "False",
+    "lastusersession" : "siveo",
+    "machine" : "@@@HOSTNAME@@@_ic",
+    "packageserver" : {},
+    "platform" : "Windows-8-6.2.9200",
+    "plugin" : {
+       "guacamole" : "1.10",
+       "installkey" : "1.471",
+       "start" : "1.11"
+    },
+    "pluginscheduled" : {
+       "pluging scheduled inventory" : "1.1",
+       "scheduling_deploy" : "1.0"
+    },
+    "portconnection" : "5222",
+    "portxmpp" : "5222",
+    "remoteservice" : {
+       "vnc" : 5000
+    },
+    "serverxmpp" : "192.168.220.75",
+    "subnetxmpp" : "10.8.158.200",
+    "who" : "rspulse@pulse/pulse/@@@HOSTNAME@@@_ic",
+    "xmppbroadcast" : "",
+    "xmppdhcp" : true,
+    "xmppdhcpserver" : "10.8.158.201",
+    "xmppgateway" : "10.8.158.201",
+    "xmppip" : "10.8.158.202",
+    "xmppmacaddress" : "@@@MACADDRESS_SHORT@@@",
+    "xmppmacnotshortened" : "@@@MACADDRESS@@@",
+    "xmppmask" : "255.255.255.252"
+}
+ 
