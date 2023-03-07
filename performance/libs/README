@@ -1,0 +1,37 @@
+Test cases:
+
+Case 1: Register machines in Pulse
+Usage: ./xmppsender.py -n100 -s0.01 -a register
+Templates used: template_registration.json and template_registration_b64decoded.json
+register_machines.sql is used to prepare the database for inserting timestamps to be able to calculate the time needed for processing the data
+To check the results: ./process_results.py -a register
+Once complete ./cleanup_tests.py must be run
+
+Case 2: Inventory machines
+Usage: ./xmppsender.py -n100 -s0.01 -a inventory
+Templates used: template_inventory.xml
+inventory_machines.sql is used to prepare the database for inserting timestamps to be able to calculate the time needed for processing the data
+With offset: ./xmppsender.py -n100 -s0.01 -o100 -a inventory
+To check the results: ./process_results.py -a inventory
+Once complete ./cleanup_tests.py must be run
+
+Case 3: Trace the time taken for mmc to process a message
+1. Copy plugin_testcharge.py to /usr/lib/python2.7/dist-packages/mmc/plugins/xmppmaster/master/pluginsmaster/
+2. Run xmppsender.py with the following options to send 10 messages of 12KB 0.5 seconds apart:
+./xmppsender.py -c -s 0.5 -n 10 -t 12000
+
+Case 4: Trace the time taken for ejabberd to process a message on main server
+1. Run xmpprecipient.py
+2. Run xmppsender.py with the following options to send 10 messages of 12KB 0.5 seconds apart:
+./xmppsender.py -n10 -s0.1 -j recvcharge@pulse -t 12000
+
+Case 5: Trace the time taken for ejabberd on main server and relay to process a message
+1. On relay, run xmpprecipient.py as follows:
+./xmpprecipient.py -r
+2. On main server, run xmppsender.py with the following options to send 10 messages of 12KB 0.5 seconds apart:
+./xmppsender.py -n10 -s0.1 -j recvcharge@pulse-relay01 -t 12000
+
+
+General use of xmppsender.py
+Other cases: Restart agent on a machine:
+./xmppsender.py -n1 -s1 -j <jid_machine> -M "{\"action\": \"restartbot\", \"sessionid\": \"restartbotqycol\", \"base64\": false, \"data\": \"\"}"
