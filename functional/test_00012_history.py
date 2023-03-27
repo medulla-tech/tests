@@ -22,85 +22,123 @@ def test_open_history(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
 
 def test_history_logsinventory(page: Page) -> None:
     
     medulla_connect(page)
-    
+
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsinventory')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsinventory")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsinventory"
+    )
 
 def test_history_logsbackuppc(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsbackuppc')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsbackuppc")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsbackuppc"
+    )
 
 def test_history_logsdeployment(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsdeployment')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsdeployment")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsdeployment"
+    )
 
 def test_history_logsquickaction(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsquickaction')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsquickaction")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsquickaction"
+    )
 
 def test_history_logsdownload(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsdownload')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsdownload")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsdownload"
+    )
 
 def test_history_logskiosk(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logskiosk')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logskiosk")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logskiosk"
+    )
 
 def test_history_logspackaging(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logspackaging')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logspackaging")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logspackaging"
+    )
 
 def test_history_logsremotedesktop(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsremotedesktop')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsremotedesktop")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsremotedesktop"
+    )
 
 def test_history_logsimaging(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarlogview')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=index"
+    )
     page.click('#logsimaging')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=logview&action=logsimaging")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=logview&action=logsimaging"
+    )

@@ -63,7 +63,9 @@ def test_deploy_package_execute_command(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click(".install > a >> nth=0")
     time.sleep(1)
@@ -78,13 +80,15 @@ def test_deploy_delayed_command(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#machinesList')
-    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    sql_command = f'SELECT uuid_serial_machine FROM machines WHERE hostname = "{machineName}"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .install a"
+    machine_inventory = f"#m{machine_serial} .install a"
     page.click(machine_inventory)
 
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
@@ -101,14 +105,14 @@ def test_deploy_delayed_command(page: Page) -> None:
     end_date = page.locator("#end_date")
     end_date.evaluate("node => node.removeAttribute('readonly')");
 
-    end_date.evaluate("node => node.setAttribute('value', '%s')" % end_hour_str);
+    end_date.evaluate(f"node => node.setAttribute('value', '{end_hour_str}')");
     end_date.evaluate("node => node.setAttribute('readonly', 1)");
 
 
     start_date = page.locator("#start_date")
     start_date.evaluate("node => node.removeAttribute('readonly')");
 
-    start_date.evaluate("node => node.setAttribute('value', '%s')" % start_hour_str);
+    start_date.evaluate(f"node => node.setAttribute('value', '{start_hour_str}')");
     start_date.evaluate("node => node.setAttribute('readonly', 1)");
 
     page.click(".btnPrimary[type='submit']")

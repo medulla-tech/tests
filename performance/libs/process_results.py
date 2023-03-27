@@ -41,9 +41,15 @@ def parse_recipient_log(recipient_logfile):
     return parsed_recipient_log
 
 def prepare_logs(database, table, logfile):
-    command = 'echo "select * from ' + table + ' INTO OUTFILE \'' + logfile + '\' FIELDS TERMINATED BY \'.999999 : \'" | mysql ' + database
+    command = (
+        f'echo "select * from {table}'
+        + ' INTO OUTFILE \''
+        + logfile
+        + '\' FIELDS TERMINATED BY \'.999999 : \'" | mysql '
+        + database
+    )
     os.system(command)
-    command = 'mv /tmp/systemd-private-*-mariadb.service*/' + logfile + ' /tmp'
+    command = f'mv /tmp/systemd-private-*-mariadb.service*/{logfile} /tmp'
     os.system(command)
     command = 'sed -i \'s.\\\\..g\' ' + logfile
     os.system(command)
@@ -60,14 +66,14 @@ def calculate_time_spent(sender_dict, recipient_dict):
         except KeyError:
             messages_lost.append(message_number)
 
-    print('Minimum time spent: %s seconds' % min(time_spent.values()))
-    print('Maximum time spent: %s seconds' % max(time_spent.values()))
+    print(f'Minimum time spent: {min(time_spent.values())} seconds')
+    print(f'Maximum time spent: {max(time_spent.values())} seconds')
     mean_time = sum(time_spent.values()) / len(time_spent)
-    print('Mean time spent: %s seconds' % mean_time)
+    print(f'Mean time spent: {mean_time} seconds')
     start = datetime.datetime.strptime(parsed_sender_log[1], '%Y-%m-%d %H:%M:%S.%f')
     end = datetime.datetime.strptime(parsed_recipient_log[max(parsed_recipient_log)], '%Y-%m-%d %H:%M:%S.%f')
-    print('Total processing time: %s' % (end - start))
-    print('Messages lost: %s' % messages_lost)
+    print(f'Total processing time: {end - start}')
+    print(f'Messages lost: {messages_lost}')
 
 
 if __name__ == '__main__':
@@ -90,8 +96,8 @@ if __name__ == '__main__':
                     help="Action done. eg. register")
     opts, args = optp.parse_args()
 
-    print('Sender log file: %s' % opts.sender_logfile)
-    print('Recipient log file: %s' % opts.recipient_logfile)
+    print(f'Sender log file: {opts.sender_logfile}')
+    print(f'Recipient log file: {opts.recipient_logfile}')
 
     parsed_sender_log = parse_sender_log(opts.sender_logfile)
     if opts.action == "register":

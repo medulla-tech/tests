@@ -27,61 +27,87 @@ def test_open_audit(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
 
 def test_audit_modify_refresh(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
 
     page.fill('#nbs', '103')
     page.click('//*[@id="bt"]')
 
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index&refreshtime=6180000")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index&refreshtime=6180000"
+    )
 
 def test_audit_users_tasks(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
     page.click('#auditdeploy')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditdeploy")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditdeploy"
+    )
 
 def test_audit_my_team_tasks(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
     page.click('#auditteam')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditteam")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditteam"
+    )
 
 def test_audit_my_past_deploys(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
     page.click('#auditmypastdeploys')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditmypastdeploys")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditmypastdeploys"
+    )
 
 def test_audit_past_deploys(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
     page.click('#auditpastdeploys')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditpastdeploys")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditpastdeploys"
+    )
 
 def test_audit_my_past_deploys_teams(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarxmppmaster')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=index"
+    )
     page.click('#auditmypastdeploysteam')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditmypastdeploysteam")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=auditmypastdeploysteam"
+    )

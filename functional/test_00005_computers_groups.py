@@ -28,10 +28,14 @@ def test_create_group_based_on_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Computer-name').click()
@@ -54,10 +58,14 @@ def test_create_duplicate_group_based_on_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Computer-name').click()
@@ -71,7 +79,7 @@ def test_create_duplicate_group_based_on_name(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
 
     locator = page.locator('#__popup_container .alert.alert-error')
-    wanted_sentence = "A group already exists with name '%s'" % GroupTest
+    wanted_sentence = f"A group already exists with name '{GroupTest}'"
     expect(locator).to_have_text(wanted_sentence)
 
 def test_groups_list_from_name(page: Page) -> None:
@@ -79,13 +87,17 @@ def test_groups_list_from_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest + " a")
+    page.click(f"#g_{GroupTest} a")
     expect(page).to_have_url(re.compile(".*action=display*"))
 
 def test_groups_display_from_bar(page: Page) -> None:
@@ -93,13 +105,17 @@ def test_groups_display_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest +  " .display a")
+    page.click(f"#g_{GroupTest} .display a")
     expect(page).to_have_url(re.compile(".*action=display*"))
 
 def test_groups_edit_from_bar(page: Page) -> None:
@@ -107,13 +123,17 @@ def test_groups_edit_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest + " .edit a")
+    page.click(f"#g_{GroupTest} .edit a")
     expect(page).to_have_url(re.compile(".*computersgroupedit*"))
 
 def test_groups_share_from_bar(page: Page) -> None:
@@ -121,13 +141,17 @@ def test_groups_share_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest + " .groupshare a")
+    page.click(f"#g_{GroupTest} .groupshare a")
     expect(page).to_have_url(re.compile(".*edit_share*"))
 
 def test_groups_install_from_bar(page: Page) -> None:
@@ -135,13 +159,17 @@ def test_groups_install_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest + " .install a")
+    page.click(f"#g_{GroupTest} .install a")
     expect(page).to_have_url(re.compile(".*action=groupmsctabs*"))
 
 def test_groups_delete_from_bar(page: Page) -> None:
@@ -149,13 +177,17 @@ def test_groups_delete_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#list')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
     # Ajouter le nom du groupe via SQL
-    page.click("#g_" + GroupTest + " .delete a")
+    page.click(f"#g_{GroupTest} .delete a")
     page.click(".btnPrimary[type='submit']")
 
 
@@ -169,10 +201,14 @@ def test_create_group_based_on_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Computer-name').click()
@@ -198,10 +234,14 @@ def test_create_group_based_on_description(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Description').click()
@@ -228,10 +268,14 @@ def test_create_group_based_on_inventory_number(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Inventory-number').click()
@@ -257,10 +301,14 @@ def test_create_group_based_on_glpi_group(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Group').click()
@@ -285,10 +333,14 @@ def test_create_group_based_on_peripheral_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Peripheral-name').click()
@@ -313,10 +365,14 @@ def test_create_group_based_on_peripheral_serial(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#Peripheral-serial').click()
@@ -341,10 +397,14 @@ def test_create_group_based_on_machine_type(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('#System-type').click()
@@ -368,10 +428,14 @@ def test_create_group_based_on_machine_manufacturer(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="System-manufacturer"]').click()
@@ -395,10 +459,14 @@ def test_create_group_based_on_machine_model(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="System-model"]').click()
@@ -422,10 +490,14 @@ def test_create_group_based_on_machine_owner(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Owner-of-the-machine"]').click()
@@ -449,10 +521,14 @@ def test_create_group_based_on_last_logged_user(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Last-Logged-User"]').click()
@@ -476,10 +552,14 @@ def test_create_group_based_on_user_location(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="User-location"]').click()
@@ -503,10 +583,14 @@ def test_create_group_based_on_location(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Location"]').click()
@@ -530,10 +614,14 @@ def test_create_group_based_on_state(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="State"]').click()
@@ -557,10 +645,14 @@ def test_create_group_based_on_entity(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Entity"]').click()
@@ -584,10 +676,14 @@ def test_create_group_based_on_operating_system(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Operating-system"]').click()
@@ -611,10 +707,14 @@ def test_create_group_based_on_installed_software(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Installed-software"]').click()
@@ -638,10 +738,14 @@ def test_create_group_based_on_software_name_and_version(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
 
@@ -667,10 +771,14 @@ def test_create_group_based_on_os_version(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="OS-Version"]').click()
@@ -694,10 +802,14 @@ def test_create_group_based_on_architecture(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Architecture"]').click()
@@ -721,10 +833,14 @@ def test_create_group_based_on_register_key(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Register-key"]').click()
@@ -748,10 +864,14 @@ def test_create_group_based_on_register_key_value(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#glpi').click()
     page.locator('//*[@id="Register-key-value"]').click()
@@ -778,11 +898,15 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
 
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#xmppmaster').click()
     page.locator('//*[@id="OU-User"]').click()
@@ -803,11 +927,15 @@ def test_create_group_based_by_OU_Machine(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
 
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.locator('#xmppmaster').click()
     page.locator('//*[@id="OU-Machine"]').click()
@@ -828,10 +956,14 @@ def test_create_group_by_online_computers(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click('#glpi')
     page.click('#Online-computer')
@@ -852,10 +984,14 @@ def test_create_group_by_offline_computers(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click('#glpi')
     page.click('#Online-computer')
@@ -878,10 +1014,14 @@ def test_create_group_by_existing_group(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click('#dyngroup')
     page.locator('#autocomplete').fill("Group Created by playwright By Existing Group")
@@ -902,10 +1042,14 @@ def test_create_group_static(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click("#tabsta a")
 
@@ -926,10 +1070,14 @@ def test_create_group_by_import_csv(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click("#tabfromfile a")
     page.fill("#groupname", "Group Created by playwright By Import CSV")
@@ -951,15 +1099,17 @@ def test_create_group_by_import_csv(page: Page) -> None:
 def test_share_group(page: Page) -> None:
     
     group_name = "aGroup_Created_by_playwright_For_Sharing"
-    id_grp = "#g_"
-
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click("#computersgroupcreator")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=computersgroupcreator"
+    )
 
     page.click("#tabsta a")
 
@@ -974,18 +1124,28 @@ def test_share_group(page: Page) -> None:
     page.click('#__popup_container button')
 
     page.click("#list")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )
 
-    page.click(id_grp + group_name +" .groupshare a")
+    page.click(f"#g_{group_name} .groupshare a")
 
-    id_sql = str(sqlcheck('dyngroup', "SELECT id FROM Groups WHERE name='"+group_name+"'"))
-    expect(page).to_have_url(test_server + '/mmc/main.php?module=base&submod=computers&action=edit_share&id=' + id_sql + '&gid=' + id_sql + '&groupname=' + group_name + '&type=0&mod=')
+    id_sql = str(
+        sqlcheck(
+            'dyngroup', f"SELECT id FROM Groups WHERE name='{group_name}'"
+        )
+    )
+    expect(page).to_have_url(
+        f'{test_server}/mmc/main.php?module=base&submod=computers&action=edit_share&id={id_sql}&gid={id_sql}&groupname={group_name}&type=0&mod='
+    )
 
     page.click('//html/body/div/div[4]/div/form/div/table/tbody/tr/td[1]/div/select/option[1]')
     page.click('//html/body/div/div[4]/div/form/div/table/tbody/tr/td[2]/div/input[1]')
     page.click('.btnPrimary')
-    
+
     locator = page.locator('#__popup_container .alert.alert-success')
     expect(locator).to_have_text('Group successfully shared')
     page.click('#__popup_container button')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=list"
+    )

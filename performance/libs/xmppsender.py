@@ -39,18 +39,16 @@ import zlib
 
 
 def file_put_contents_w_a(filename, data, option = "w"):
-    if option == "a" or  option == "w":
-        f = open( filename, option )
-        f.write(data)
-        f.close()
+    if option in ["a", "w"]:
+        with open( filename, option ) as f:
+            f.write(data)
 
 def file_put_contents(filename,  data):
     """
     write content "data" to file "filename"
     """
-    f = open(filename, 'w')
-    f.write(data)
-    f.close()
+    with open(filename, 'w') as f:
+        f.write(data)
 
 def add_coloring_to_emit_windows(fn):
         # add methods we need to the class
@@ -184,25 +182,24 @@ class configuration:
     def getRandomName(self, nb, pref=""):
         a="abcdefghijklnmopqrstuvwxyz"
         d=pref
-        for t in range(nb):
+        for _ in range(nb):
             d=d+a[random.randint(0,25)]
         return d
 
     def getRandomNameID(self, nb, pref=""):
         a="0123456789"
         d=pref
-        for t in range(nb):
+        for _ in range(nb):
             d=d+a[random.randint(0,9)]
         return d
 
     def get_local_ip_adresses(self):
-        ip_addresses = list()
+        ip_addresses = []
         interfaces = netifaces.interfaces()
         for i in interfaces:
             if i == 'lo':
                 continue
-            iface = netifaces.ifaddresses(i).get(netifaces.AF_INET)
-            if iface:
+            if iface := netifaces.ifaddresses(i).get(netifaces.AF_INET):
                 for j in iface:
                     addr = j['addr']
                     if addr != '127.0.0.1':
@@ -218,7 +215,7 @@ class configuration:
 def getRandomName(nb, pref=""):
     a="abcdefghijklnmopqrstuvwxyz0123456789"
     d=pref
-    for t in range(nb):
+    for _ in range(nb):
         d=d+a[random.randint(0,35)]
     return d
 
@@ -260,11 +257,12 @@ def generate_json_inventory(mac_shortened, hostname):
         inv_file = open("template_inventory.xml","r")
         inventory_data = inv_file.read().replace('@@@MACADDRESS@@@', mac).replace('@@@HOSTNAME@@@', hostname).replace('@@@SERIAL@@@', getRandomName(15)).replace('@@@UUID@@@', str(uuid.uuid4()))
 
-    inventory_info = {}
-    inventory_info['action'] = 'resultinventory'
-    inventory_info['sessionid'] = getRandomName(6, "inventory")
-    inventory_info['base64'] = False
-    inventory_info['data'] = {}
+    inventory_info = {
+        'action': 'resultinventory',
+        'sessionid': getRandomName(6, "inventory"),
+        'base64': False,
+        'data': {},
+    }
     inventory_info['data']['inventory'] = base64.b64encode(zlib.compress(inventory_data, 9))
     inventory_info['ret'] = 0
 
@@ -358,11 +356,10 @@ class MUCBot(sleekxmpp.ClientXMPP):
 
         try:
             resp.send(now=True)
-            logging.info("Account created for %s!" % self.boundjid)
+            logging.info(f"Account created for {self.boundjid}!")
         except IqError as e:
-            logging.error("Could not register account: %s" %
-                    e.iq['error']['text'])
-            #self.disconnect()
+            logging.error(f"Could not register account: {e.iq['error']['text']}")
+                #self.disconnect()
         except IqTimeout:
             logging.error("No response from server.")
             self.disconnect()

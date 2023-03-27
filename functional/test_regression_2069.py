@@ -25,10 +25,8 @@ def find_uuid_sql(label) -> str:
 
 
     # If we replay the test job, only take one
-    sql_request = "SELECT uuid FROM packages WHERE label = '" + label + "'LIMIT 1"
-    package_uuid = sqlcheck("pkgs", sql_request)
-
-    return package_uuid
+    sql_request = f"SELECT uuid FROM packages WHERE label = '{label}'LIMIT 1"
+    return sqlcheck("pkgs", sql_request)
 
 
 def get_package(package_uuid, tempdir) -> None:
@@ -39,7 +37,7 @@ def get_package(package_uuid, tempdir) -> None:
         tempdir: The directory where we will copy the test package
     """
     package_path = os.path.join("/", "var", "lib", "pulse2", "packages", package_uuid)
-    cmd = "scp -r root@" + ssh_server + ":%s %s" % (package_path, tempdir)
+    cmd = f"scp -r root@{ssh_server}" + f":{package_path} {tempdir}"
     call(cmd.split(" "))
 
 def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
@@ -95,7 +93,7 @@ def test_create_package_execute(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -120,7 +118,7 @@ def test_create_package_execute(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def template_deploy(page: Page) -> None:
@@ -161,13 +159,15 @@ def test_deploy_delayed_command(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=computers&action=machinesList"
+    )
 
     page.click('#machinesList')
-    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    sql_command = f'SELECT uuid_serial_machine FROM machines WHERE hostname = "{machineName}"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m_" + machine_serial + " .install a"
+    machine_inventory = f"#m_{machine_serial} .install a"
     page.click(machine_inventory)
 
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
@@ -184,14 +184,14 @@ def test_deploy_delayed_command(page: Page) -> None:
     end_date = page.locator("#end_date")
     end_date.evaluate("node => node.removeAttribute('readonly')");
 
-    end_date.evaluate("node => node.setAttribute('value', '%s')" % end_hour_str);
+    end_date.evaluate(f"node => node.setAttribute('value', '{end_hour_str}')");
     end_date.evaluate("node => node.setAttribute('readonly', 1)");
 
 
     start_date = page.locator("#start_date")
     start_date.evaluate("node => node.removeAttribute('readonly')");
 
-    start_date.evaluate("node => node.setAttribute('value', '%s')" % start_hour_str);
+    start_date.evaluate(f"node => node.setAttribute('value', '{start_hour_str}')");
     start_date.evaluate("node => node.setAttribute('readonly', 1)")
 
     page.click(".btnPrimary[type='submit']")
