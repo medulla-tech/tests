@@ -113,3 +113,43 @@ def test_deploy_delayed_command(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
     template_deploy(page)
+
+def test_deploy_interval_input(page: Page):
+    # Aller sur la page
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesList')
+
+    machine_serial = "4B426375-C45D-45A2-957C-A79965877824"
+
+    machine_inventory = "#m_" + machine_serial + " > td.action > ul > li.install > a"
+    page.click(machine_inventory)
+
+    # Cliquer sur le bouton pour accéder à la page suivante
+    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[9]/td[5]/ul/li[1]/a")
+
+    value_ok = ["", "1-3", "1-3,5-7"]
+    value_nok = ["0,1,2", "1-2-3", "-1-3", "1-25"]
+    # Remplir l'input avec une valeur invalide
+    input_field = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/table/tbody/tr[4]/td[2]/span/input")
+
+    button = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/input[1]")
+
+    # Vérifier que le bouton est activé avec des valeurs valides
+    for value in value_ok:
+        input_field.fill(value)
+        input_field.click()
+
+        LOGGER.info("Valeur : " + value)
+        assert not button.is_disabled()
+
+    # Vérifier que le bouton est désactivé avec des valeurs invalides
+    for value in value_nok:
+        input_field.fill(value)
+        input_field.click()
+
+        LOGGER.info("Valeur : " + value)
+        assert button.is_disabled()
