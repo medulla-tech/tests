@@ -116,7 +116,6 @@ def test_deploy_delayed_command(page: Page) -> None:
     template_deploy(page)
 
 def test_deploy_interval_input(page: Page):
-    # Aller sur la page
     medulla_connect(page)
 
     page.click('#navbarcomputers')
@@ -129,24 +128,24 @@ def test_deploy_interval_input(page: Page):
     machine_inventory = "#m_" + machine_serial + " > td.action > ul > li.install > a"
     page.click(machine_inventory)
 
-    # Cliquer sur le bouton pour accéder à la page suivante
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[9]/td[5]/ul/li[1]/a")
 
     value_ok = ["", "1-3", "1-3,5-7"]
     value_nok = ["0,1,2", "1-2-3", "-1-3", "1-25", "a", "a-1", "1-b", "a-b", "a-b-c", "a,b,c"]
-    # Remplir l'input avec une valeur invalide
+    # We definie the input field
     input_field = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/table/tbody/tr[4]/td[2]/span/input")
 
+    # We define the button to check if it's disabled or not
     button = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/input[1]")
 
-    # Vérifier que le bouton est activé avec des valeurs valides
+    # We Verify that the button is enabled with valid values
     for value in value_ok:
         input_field.fill(value)
         input_field.click()
 
         assert not button.is_disabled()
 
-    # Vérifier que le bouton est désactivé avec des valeurs invalides
+    # We Verify that the button is disabled with invalid values
     for value in value_nok:
         input_field.fill(value)
         input_field.click()
