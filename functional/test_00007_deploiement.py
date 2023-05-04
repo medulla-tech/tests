@@ -1,6 +1,6 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
-from common import medulla_connect
+from common import medulla_connect, sqlcheck
 
 import tempfile
 import logging
@@ -21,6 +21,7 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
+machineName = Config.get('test_server', 'machinename')
 
 
 def template_deploy(page: Page) -> None:
@@ -122,8 +123,8 @@ def test_deploy_interval_input(page: Page):
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesList')
-
-    machine_serial = "4B426375-C45D-45A2-957C-A79965877824"
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
 
     machine_inventory = "#m_" + machine_serial + " > td.action > ul > li.install > a"
     page.click(machine_inventory)
@@ -132,7 +133,7 @@ def test_deploy_interval_input(page: Page):
     page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[9]/td[5]/ul/li[1]/a")
 
     value_ok = ["", "1-3", "1-3,5-7"]
-    value_nok = ["0,1,2", "1-2-3", "-1-3", "1-25"]
+    value_nok = ["0,1,2", "1-2-3", "-1-3", "1-25", "a", "a-1", "1-b", "a-b", "a-b-c", "a,b,c"]
     # Remplir l'input avec une valeur invalide
     input_field = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/table/tbody/tr[4]/td[2]/span/input")
 
@@ -143,7 +144,6 @@ def test_deploy_interval_input(page: Page):
         input_field.fill(value)
         input_field.click()
 
-        LOGGER.info("Valeur : " + value)
         assert not button.is_disabled()
 
     # Vérifier que le bouton est désactivé avec des valeurs invalides
@@ -151,5 +151,4 @@ def test_deploy_interval_input(page: Page):
         input_field.fill(value)
         input_field.click()
 
-        LOGGER.info("Valeur : " + value)
         assert button.is_disabled()
