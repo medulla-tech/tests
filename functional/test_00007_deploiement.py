@@ -151,3 +151,35 @@ def test_deploy_interval_input(page: Page):
         input_field.click()
 
         assert button.is_disabled()
+
+def test_deploy_interval_calendar(page: Page):
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesList')
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m_" + machine_serial + " > td.action > ul > li.install > a"
+    page.click(machine_inventory)
+
+    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[9]/td[5]/ul/li[1]/a")
+
+    # We open the first input of the calendar
+    page.click("//html/body/div[1]/div[4]/div/div[3]/form/table/tbody/tr[2]/td[2]/input[2]")
+    start_date = page.locator("//html/body/div[2]/table/tbody/tr[5]/td[1]/a")
+    start_date.click()
+
+    # Push enter to close the calendar
+    page.keyboard.press("Enter")
+
+    # We open the second input of the calendar
+    page.click("//html/body/div[1]/div[4]/div/div[3]/form/table/tbody/tr[3]/td[2]/input[2]")
+    end_date = page.locator("//html/body/div[2]/table/tbody/tr[2]/td[1]/a")
+    end_date.click()
+
+    button = page.locator("//html/body/div[1]/div[4]/div/div[3]/form/input[1]")
+    assert button.is_disabled()
