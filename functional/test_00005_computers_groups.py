@@ -181,12 +181,12 @@ def test_create_group_based_on_name(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Name")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Name")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Name'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Name'")
 
     normal_result = "1==glpi::Computer name==*win*"
 
@@ -210,12 +210,12 @@ def test_create_group_based_on_description(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Description")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Description")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Description'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Description'")
 
     normal_result = "1==glpi::Description==*win*"
 
@@ -240,12 +240,12 @@ def test_create_group_based_on_inventory_number(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Inventory Number")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Inventory Number")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Inventory Number'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Inventory Number'")
 
     normal_result = "1==glpi::Inventory number==*win*"
 
@@ -269,11 +269,11 @@ def test_create_group_based_on_glpi_group(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Glpi Group")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Glpi Group")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Glpi Group'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Glpi Group'")
 
     normal_result = "1==glpi::Group==*win*"
 
@@ -297,11 +297,11 @@ def test_create_group_based_on_peripheral_name(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Peripheral name")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Peripheral name")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Peripheral name'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Peripheral name'")
 
     normal_result = "1==glpi::Peripheral name==*win*"
 
@@ -325,11 +325,11 @@ def test_create_group_based_on_peripheral_serial(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Peripheral serial")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Peripheral serial")
 
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Peripheral serial'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Peripheral serial'")
 
     normal_result = "1==glpi::Peripheral serial==*win*"
 
@@ -353,11 +353,11 @@ def test_create_group_based_on_machine_type(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Type")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Machine Type")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Machine Type'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Machine Type'")
 
     normal_result = "1==glpi::System type==*win*"
 
@@ -380,11 +380,11 @@ def test_create_group_based_on_machine_manufacturer(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Manufacturer")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Machine Manufacturer")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Machine Manufacturer'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Machine Manufacturer'")
 
     normal_result = "1==glpi::System manufacturer==*win*"
 
@@ -407,11 +407,11 @@ def test_create_group_based_on_machine_model(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Model")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Machine Model")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Machine Model'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Machine Model'")
 
     normal_result = "1==glpi::System model==*win*"
 
@@ -434,11 +434,11 @@ def test_create_group_based_on_machine_owner(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Machine Owner")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Machine Owner")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Machine Owner'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Machine Owner'")
 
     normal_result = "1==glpi::Owner of the machine==*win*"
 
@@ -461,11 +461,11 @@ def test_create_group_based_on_last_logged_user(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Last Logged User")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Last Logged User")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Last Logged User'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Last Logged User'")
 
     normal_result = "1==glpi::Last Logged User==*win*"
 
@@ -488,11 +488,11 @@ def test_create_group_based_on_user_location(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By User location")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By User location")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By User location'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By User location'")
 
     normal_result = "1==glpi::User location==*win*"
 
@@ -515,11 +515,11 @@ def test_create_group_based_on_location(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Location")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Location")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Location'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Location'")
 
     normal_result = "1==glpi::Location==*win*"
 
@@ -542,11 +542,11 @@ def test_create_group_based_on_state(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By State")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By State")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By State'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By State'")
 
     normal_result = "1==glpi::State==*win*"
 
@@ -569,11 +569,11 @@ def test_create_group_based_on_entity(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Entity")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Entity")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Entity'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Entity'")
 
     normal_result = "1==glpi::Entity==*win*"
 
@@ -596,11 +596,11 @@ def test_create_group_based_on_operating_system(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Operating System")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Operating System")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Operating System'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Operating System'")
 
     normal_result = "1==glpi::Operating system==*win*"
 
@@ -623,11 +623,11 @@ def test_create_group_based_on_installed_software(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Installed Software")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Installed Software")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Installed Software'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Installed Software'")
 
     normal_result = "1==glpi::Installed software==*win*"
 
@@ -651,12 +651,12 @@ def test_create_group_based_on_software_name_and_version(page: Page) -> None:
     page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[6]/input").fill("0.1")
     page.locator("//html/body/div/div[4]/div/div[3]/form/table/tbody/tr/td[7]/input").click()
     page.locator("//html/body/div/div[4]/div/div[3]/table[3]/tbody/tr/td[1]/input").click()
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Software Name and Version")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Software Name and Version")
     page.click(".btnPrimary[type='submit']")
 
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Software Name and Version'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Software Name and Version'")
 
     normal_result = "1==glpi::Installed software (specific version)==>Notepad, 0.1<"
 
@@ -679,11 +679,11 @@ def test_create_group_based_on_os_version(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By OS Version")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By OS Version")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By OS Version'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By OS Version'")
 
     normal_result = "1==glpi::OS Version==*win*"
 
@@ -706,11 +706,11 @@ def test_create_group_based_on_architecture(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Architecture")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Architecture")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Architecture'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Architecture'")
 
     normal_result = "1==glpi::Architecture==*win"
 
@@ -733,11 +733,11 @@ def test_create_group_based_on_register_key(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Register Key")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Register Key")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Register Key'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Register Key'")
 
     normal_result = "1==glpi::Register key==*win*"
 
@@ -763,11 +763,11 @@ def test_create_group_based_on_register_key_value(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By Register Key value")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By Register Key value")
     page.click(".btnPrimary[type='submit']")
     expect(page).to_have_url(re.compile(".*submod=computers&action=save_detail*"))
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Register Key value'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Register Key value'")
 
     normal_result = "1==glpi::Register key value==>*win*, *win*<"
 
@@ -789,10 +789,10 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("test OU User")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By OU User")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By OU User")
     page.click(".btnPrimary[type='submit']")
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By OU User'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By OU User'")
 
     normal_result = "1==xmppmaster::OU user==test OU User"
 
@@ -814,10 +814,10 @@ def test_create_group_based_by_OU_Machine(page: Page) -> None:
     page.locator('//*[@id="autocomplete"]').fill("test OU Machine")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
-    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Group Created by playwright By OU Machine")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By OU Machine")
     page.click(".btnPrimary[type='submit']")
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By OU Machine'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By OU Machine'")
 
     normal_result = "1==xmppmaster::OU user==test OU Machine"
 
@@ -837,10 +837,10 @@ def test_create_group_by_online_computers(page: Page) -> None:
     page.click('#Online-computer')
     page.click('.btnPrimary[type="submit"]')
     page.click('.btnPrimary[type="button"]')
-    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Group Created by playwright By Online Computers")
+    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Created by playwright By Online Computers")
     page.click('.btnPrimary[type="submit"]')
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Online Computers'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Online Computers'")
 
     normal_result = "1==glpi::Online computer==True"
 
@@ -862,10 +862,10 @@ def test_create_group_by_offline_computers(page: Page) -> None:
     page.locator("//select[@name='value']").select_option("False")
     page.click('.btnPrimary[type="submit"]')
     page.click('.btnPrimary[type="button"]')
-    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Group Created by playwright By Offline Computers")
+    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Created by playwright By Offline Computers")
     page.click('.btnPrimary[type="submit"]')
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Offline Computers'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Offline Computers'")
 
     normal_result = "1==glpi::Online computer==False"
 
@@ -884,15 +884,15 @@ def test_create_group_by_existing_group(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.click('#dyngroup')
-    page.locator('#autocomplete').fill("Group Created by playwright By Existing Group")
+    page.locator('#autocomplete').fill("Created by playwright By Existing Group")
     page.click('.btnPrimary[type="submit"]')
     page.click('.btnPrimary[type="button"]')
-    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Group Created by playwright By Existing Group")
+    page.locator('//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input').fill("Created by playwright By Existing Group")
     page.click('.btnPrimary[type="submit"]')
 
-    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Group Created by playwright By Existing Group'")
+    result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Existing Group'")
 
-    normal_result = "1==dyngroup::groupname==Group Created by playwright By Existing Group==True"
+    normal_result = "1==dyngroup::groupname==Created by playwright By Existing Group==True"
 
     assert normal_result == result_on_server
 
@@ -909,13 +909,13 @@ def test_create_group_static(page: Page) -> None:
 
     page.click("#tabsta a")
 
-    page.fill(".tabdiv input[name='name']", "Group Created by playwright Static")
+    page.fill(".tabdiv input[name='name']", "Created by playwright Static")
 
     page.click(".list option >> nth=0")
     page.click("#grouplist input[name='baddmachine']")
     page.click(".btnPrimary[type='submit']")
 
-    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Group Created by playwright Static'")
+    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Created by playwright Static'")
 
     assert result_on_server == 1
 
@@ -932,7 +932,7 @@ def test_create_group_by_import_csv(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.click("#tabfromfile a")
-    page.fill("#groupname", "Group Created by playwright By Import CSV")
+    page.fill("#groupname", "Created by playwright By Import CSV")
 
     with page.expect_file_chooser() as fc_info:
         page.locator("#importfile").click()
@@ -941,7 +941,7 @@ def test_create_group_by_import_csv(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
 
-    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Group Created by playwright By Import CSV'")
+    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Created by playwright By Import CSV'")
 
     assert result_on_server == 1
 
