@@ -46,17 +46,14 @@ def find_uuid_web(package_url) -> str:
 
     package_uuid = ""
     parsed_url = urlparse(package_url).query
-    package_uuid = parse_qs(parsed_url).get("packageUuid", "")
-    return package_uuid
+    return parse_qs(parsed_url).get("packageUuid", "")
 
 def find_uuid_sql(label) -> str:
 
 
     # If we replay the test job, only take one
-    sql_request = "SELECT uuid FROM packages WHERE label = '" + label + "'LIMIT 1"
-    package_uuid = sqlcheck("pkgs", sql_request)
-
-    return package_uuid
+    sql_request = f"SELECT uuid FROM packages WHERE label = '{label}'LIMIT 1"
+    return sqlcheck("pkgs", sql_request)
 
 
 def get_package(package_uuid, tempdir) -> None:
@@ -67,7 +64,7 @@ def get_package(package_uuid, tempdir) -> None:
         tempdir: The directory where we will copy the test package
     """
     package_path = os.path.join("/", "var", "lib", "pulse2", "packages", package_uuid)
-    cmd = "scp -r root@" + ssh_server + ":%s %s" % (package_path, tempdir)
+    cmd = f"scp -r root@{ssh_server}" + f":{package_path} {tempdir}"
     call(cmd.split(" "))
 
 def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
@@ -123,7 +120,7 @@ def test_create_package_execute(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -148,7 +145,7 @@ def test_create_package_execute(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 
@@ -162,7 +159,7 @@ def test_correctness_package_execute_json(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click(".display > a >> nth=0")
@@ -198,16 +195,16 @@ def test_package_view_execute_package(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     package_uuid = find_uuid_sql("Package de test execute")
 
-    id_to_edit = "#p_" + package_uuid + " >> .display >> a"
+    id_to_edit = f"#p_{package_uuid} >> .display >> a"
     page.click(id_to_edit)
 
     # FIXME: Fix the expect part.
-    url_to_edit = ".*packageUuid=" + package_uuid + "*"
+    url_to_edit = f".*packageUuid={package_uuid}*"
     expect(page).to_have_url(re.compile(url_to_edit))
 
 def test_package_delete_execute_package(page: Page) -> None:
@@ -216,12 +213,12 @@ def test_package_delete_execute_package(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     package_uuid = find_uuid_sql("Package de test execute")
 
-    id_to_remove = "#p_" +  package_uuid + " .delete a"
+    id_to_remove = f"#p_{package_uuid} .delete a"
     page.click(id_to_remove)
     page.click(".btnPrimary[type='submit']")
 
@@ -239,7 +236,7 @@ def test_create_package_execute_script(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -264,7 +261,7 @@ def test_create_package_execute_script(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_set_environment_variables(page: Page) -> None:
@@ -276,7 +273,7 @@ def test_create_package_set_environment_variables(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -301,7 +298,7 @@ def test_create_package_set_environment_variables(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_restart(page: Page) -> None:
@@ -313,7 +310,7 @@ def test_create_package_restart(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -338,7 +335,7 @@ def test_create_package_restart(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_wait_and_go_to_step(page: Page) -> None:
@@ -350,7 +347,7 @@ def test_create_package_wait_and_go_to_step(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -375,7 +372,7 @@ def test_create_package_wait_and_go_to_step(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_add_info_in_deployement_log(page: Page) -> None:
@@ -387,7 +384,7 @@ def test_create_package_add_info_in_deployement_log(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -412,7 +409,7 @@ def test_create_package_add_info_in_deployement_log(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_set_config_file_parameter(page: Page) -> None:
@@ -424,7 +421,7 @@ def test_create_package_set_config_file_parameter(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -449,7 +446,7 @@ def test_create_package_set_config_file_parameter(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_unzip_file(page: Page) -> None:
@@ -461,7 +458,7 @@ def test_create_package_unzip_file(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -490,7 +487,7 @@ def test_create_package_unzip_file(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_download_file(page: Page) -> None:
@@ -502,7 +499,7 @@ def test_create_package_download_file(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -529,7 +526,7 @@ def test_create_package_download_file(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_remove_uploaded_files(page: Page) -> None:
@@ -541,7 +538,7 @@ def test_create_package_remove_uploaded_files(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -566,7 +563,7 @@ def test_create_package_remove_uploaded_files(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_installation_section(page: Page) -> None:
@@ -578,7 +575,7 @@ def test_create_package_installation_section(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -600,7 +597,7 @@ def test_create_package_installation_section(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_update_section(page: Page) -> None:
@@ -612,7 +609,7 @@ def test_create_package_update_section(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -635,7 +632,7 @@ def test_create_package_update_section(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_uninstall_section(page: Page) -> None:
@@ -647,7 +644,7 @@ def test_create_package_uninstall_section(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -669,7 +666,7 @@ def test_create_package_uninstall_section(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_kiosk_notification(page: Page) -> None:
@@ -681,7 +678,7 @@ def test_create_package_kiosk_notification(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -706,7 +703,7 @@ def test_create_package_kiosk_notification(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_user_notification(page: Page) -> None:
@@ -718,7 +715,7 @@ def test_create_package_user_notification(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -743,7 +740,7 @@ def test_create_package_user_notification(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_user_question(page: Page) -> None:
@@ -755,7 +752,7 @@ def test_create_package_user_question(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -780,7 +777,7 @@ def test_create_package_user_question(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 def test_create_package_user_postpone_options(page: Page) -> None:
@@ -792,7 +789,7 @@ def test_create_package_user_postpone_options(page: Page) -> None:
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
     page.click("#add")
@@ -817,7 +814,7 @@ def test_create_package_user_postpone_options(page: Page) -> None:
     page.click(".btn")
 
     expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+        f"{test_server}/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
 

@@ -26,52 +26,70 @@ def test_open_admin(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
 def test_admin_clusterlist(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#clustersList')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=clustersList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=clustersList"
+    )
 
 def test_admin_newcluster(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#newCluster')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=newCluster")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=newCluster"
+    )
 
 def test_admin_rules(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#rules')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=rules"
+    )
 
 def test_admin_rules_up(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#rules')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=rules"
+    )
 
-    sql_request = "SELECT level FROM rules WHERE name='%s'" % user_rule
+    sql_request = f"SELECT level FROM rules WHERE name='{user_rule}'"
     level_before = sqlcheck("xmppmaster", sql_request)
 
-    page.click("#cr_" + user_rule + " .up a")
+    page.click(f"#cr_{user_rule} .up a")
 
     level_after = sqlcheck("xmppmaster", sql_request)
 
@@ -82,15 +100,19 @@ def test_admin_rules_down(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#rules')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=rules")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=rules"
+    )
 
-    sql_request = "SELECT level FROM rules WHERE name='%s'" % user_rule
+    sql_request = f"SELECT level FROM rules WHERE name='{user_rule}'"
     level_before = sqlcheck("xmppmaster", sql_request)
 
-    page.click("#cr_" + user_rule + " .down a")
+    page.click(f"#cr_{user_rule} .down a")
 
     level_after = sqlcheck("xmppmaster", sql_request)
 
@@ -101,10 +123,14 @@ def test_admin_create_cluster(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbaradmin')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=relaysList")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=relaysList"
+    )
 
     page.click('#newCluster')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=newCluster")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=admin&submod=admin&action=newCluster"
+    )
 
     page.fill('#cluster_name', 'Cluster Created by playwright To be deleted')
     page.fill('#cluster_description', 'Cluster Created by playwright Description')

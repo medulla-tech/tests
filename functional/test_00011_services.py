@@ -20,7 +20,9 @@ def test_open_services(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcontrol')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=services&submod=control&action=index"
+    )
 
 
 def test_open_services_others(page: Page) -> None:
@@ -28,20 +30,28 @@ def test_open_services_others(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcontrol')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=services&submod=control&action=index"
+    )
     page.click('#others')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=others")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=services&submod=control&action=others"
+    )
  
 
 
 def test_open_services_log(page: Page) -> None:
 
     medulla_connect(page)
-    
+
     page.click('#navbarcontrol')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=services&submod=control&action=index"
+    )
     page.click('#log')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=services&submod=control&action=log")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=services&submod=control&action=log"
+    )
 
 
 

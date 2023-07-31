@@ -32,7 +32,9 @@ def medulla_connect(page: Page) -> None:
     page.fill('#password', 'siveo')
     page.click('#connect_button')
 
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=main&action=default"
+    )
 
 
 

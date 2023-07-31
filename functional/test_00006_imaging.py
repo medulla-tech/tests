@@ -22,98 +22,128 @@ def test_open_imaging(page: Page) -> None:
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
 def test_open_imaging_manage_masters(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#master')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=master")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=master"
+    )
 
 def test_open_imaging_manage_bootservices(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#service')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=service")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=service"
+    )
 
 def test_open_imaging_manage_bootmenu(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#bootmenu')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=bootmenu")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=bootmenu"
+    )
 
 def test_open_imaging_manage_postimaging_scripts(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#postinstall')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=postinstall")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=postinstall"
+    )
 
 def test_open_imaging_configuration(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#configuration')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=configuration")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=configuration"
+    )
 
 def test_open_imaging_manage_sysprep(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#systemImageManager')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=systemImageManager")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=systemImageManager"
+    )
 
 def test_open_imaging_manage_sysprep_list(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#systemImageManager')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=systemImageManager")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=systemImageManager"
+    )
 
 
     page.click('#sysprepList a')
@@ -123,23 +153,31 @@ def test_open_imaging_manage_groups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#list_profiles')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=list_profiles")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=list_profiles"
+    )
 
 def test_open_imaging_add_groups(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbarmanage')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=index"
+    )
 
     page.click('#computersprofilecreator')
     # As the page can have issues, with wrong php include , or wrong session
     # we wait a second to be sure we have the final page.
     time.sleep(1)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=imaging&submod=manage&action=computersprofilecreator")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=imaging&submod=manage&action=computersprofilecreator"
+    )

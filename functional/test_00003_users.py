@@ -36,7 +36,9 @@ def test_open_users(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarusers')
-    expect(page).to_have_url( test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
 
 
 def test_create_users(page: Page) -> None:
@@ -44,10 +46,14 @@ def test_create_users(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarusers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
 
     page.click('#base_users_add')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=add")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=add"
+    )
 
     page.fill('#uid', test_user)
     page.fill('#pass', password)
@@ -57,10 +63,10 @@ def test_create_users(page: Page) -> None:
     page.fill('#title', 'title')
 
     page.click(".btnPrimary[type='submit']")
-    
+
     # Testing if the popup is from the alert-success class and if it has the right text
     locator = page.locator('#__popup_container .alert.alert-success')
-    expect(locator).to_have_text('User ' + test_user + ' successfully created')
+    expect(locator).to_have_text(f'User {test_user} successfully created')
 
 def test_edit_users_empty(page: Page) -> None:
     """
@@ -70,9 +76,13 @@ def test_edit_users_empty(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarusers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
     page.click(id_code + test_user + ' .edit')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=edit&user=test_user"
+    )
     page.click(".btnPrimary[type='submit']")
 
     time.sleep(1)
@@ -89,9 +99,13 @@ def test_edit_users(page: Page) -> None:
 
     medulla_connect(page)
     page.click('#navbarusers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
     page.click(id_code + test_user + ' .edit')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=edit&user=test_user")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=edit&user=test_user"
+    )
     page.fill('#sn', 'Familly Name Edited')
     page.click(".btnPrimary[type='submit']")
 
@@ -107,10 +121,14 @@ def test_duplicated_user(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarusers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
 
     page.locator('#base_users_add').click()
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=add")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=add"
+    )
 
     page.fill('#uid', test_user)
     page.fill('#pass', password)
@@ -132,14 +150,16 @@ def test_delete_users(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarusers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=users&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=users&action=index"
+    )
     page.click(id_code + test_user + ' .delete a')
     page.click('#delfiles')
     page.click(".btnPrimary[type='submit']")
-    
+
     # Testing if the popup is from the alert-success class and if it has the right text
     locator = page.locator('#__popup_container .alert.alert-success')
-    expect(locator).to_have_text('User ' + test_user + ' has been successfully deleted')
+    expect(locator).to_have_text(f'User {test_user} has been successfully deleted')
     page.click('#__popup_container button')
 
     time.sleep(1)

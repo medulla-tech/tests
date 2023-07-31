@@ -29,15 +29,16 @@ config = GlpiConfig("glpi")
 def delete_machine_from_glpi(machine_ids):
     authtoken =  base64.b64encode(config.webservices['glpi_username']+":"+config.webservices['glpi_password'])
 
-    headers = {'content-type': 'application/json',
-               'Authorization': "Basic " + authtoken
-               }
+    headers = {
+        'content-type': 'application/json',
+        'Authorization': f"Basic {authtoken}",
+    }
     url = config.webservices['glpi_base_url'] + "initSession"
     print("Create session REST")
     r = requests.get(url, headers=headers)
-    if r.status_code == 200 :
+    if r.status_code == 200:
         sessionwebservice =  str(json.loads(r.text)['session_token'])
-        print("session %s"%sessionwebservice)
+        print(f"session {sessionwebservice}")
         for id in machine_ids:
             machine_id = id.strip('\n')
             url = config.webservices['glpi_base_url'] + "Computer/" + str(machine_id)
@@ -46,13 +47,13 @@ def delete_machine_from_glpi(machine_ids):
             }
             parameters = {'force_purge': '1'}
             r = requests.delete(url, headers=headers, params=parameters)
-            if r.status_code == 200 :
-                print("Machine %s deleted"%str(machine_id))
+            if r.status_code == 200:
+                print(f"Machine {str(machine_id)} deleted")
 
         url = config.webservices['glpi_base_url'] + "killSession"
         r = requests.get(url, headers=headers)
-        if r.status_code == 200 :
-            print("Kill session REST: %s"%sessionwebservice)
+    if r.status_code == 200:
+        print(f"Kill session REST: {sessionwebservice}")
 
 
 

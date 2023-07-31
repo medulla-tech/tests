@@ -33,13 +33,17 @@ def test_open_update(page: Page) -> None:
     locator = page.locator("#__popup_container")
     expect(locator).to_be_hidden()
 
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
 def test_open_details_by_machines(page: Page) -> None:
     medulla_connect(page)
 
     page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
     page.click(".auditbymachine a")
 
@@ -53,7 +57,9 @@ def test_open_details_by_updates(page: Page) -> None:
     medulla_connect(page)
 
     page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
     page.click(".auditbyupdate a")
 
@@ -67,7 +73,9 @@ def test_open_details_by_updateall(page: Page) -> None:
     medulla_connect(page)
 
     page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
     page.click(".updateall a")
 
@@ -81,7 +89,9 @@ def test_deploy_specific_update(page: Page) -> None:
     medulla_connect(page)
 
     page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
     page.click(".updateone a")
     page.click(".quick a")
@@ -96,7 +106,9 @@ def test_enable_update(page: Page) -> None:
     medulla_connect(page)
 
     page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=updates&submod=updates&action=index"
+    )
 
     page.click("#updatesListWin a")
 
@@ -111,21 +123,27 @@ def test_enable_update(page: Page) -> None:
             selector : Css selector of the update to check to know statut of the update
             updateid : The id of the update to check
         """
-        if(page.locator(selctor).get_attribute("class") == "enableupdateg"):
-            page.click("#" + updateid + " a")
+        if (page.locator(selctor).get_attribute("class") == "enableupdateg"):
+            page.click(f"#{updateid} a")
             updateid = updateid[2:]
 
-            result_on_server = sqlcheck("xmppmaster", "SELECT valided FROM up_gray_list WHERE updateid = '" + updateid + "'")
+            result_on_server = sqlcheck(
+                "xmppmaster",
+                f"SELECT valided FROM up_gray_list WHERE updateid = '{updateid}'",
+            )
 
             assert result_on_server == 1
 
             expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=updatesListWin*"))
 
         else:
-            page.click("#" + updateid + " a")
+            page.click(f"#{updateid} a")
             updateid = updateid[2:]
 
-            result_on_server = sqlcheck("xmppmaster", "SELECT valided FROM up_gray_list WHERE updateid = '" + updateid + "'")
+            result_on_server = sqlcheck(
+                "xmppmaster",
+                f"SELECT valided FROM up_gray_list WHERE updateid = '{updateid}'",
+            )
 
             locator = (page.locator(".alert"))
             expect(locator).to_have_class("alert alert-success")

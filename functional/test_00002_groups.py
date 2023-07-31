@@ -26,7 +26,9 @@ def test_open_groups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbargroups')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
 
 def test_create_groups(page: Page) -> None:
@@ -34,26 +36,36 @@ def test_create_groups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbargroups')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
     page.click('#add')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=add")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=add"
+    )
 
     page.fill('#groupname', TestGroup_Name)
     page.fill('#groupdesc', 'Description du groupe')
     page.click(".btnPrimary[type='submit']")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
 def test_display_groups(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbargroups')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
-    machine_inventory = "#g_" + TestGroup_Name + " .display a"
+    machine_inventory = f"#g_{TestGroup_Name} .display a"
     page.click(machine_inventory)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=members&group=" + TestGroup_Name)
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=members&group={TestGroup_Name}"
+    )
 
 
 def test_edit_groups(page: Page) -> None:
@@ -61,20 +73,26 @@ def test_edit_groups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbargroups')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
-    machine_inventory = "#g_" + TestGroup_Name + " .edit a"
+    machine_inventory = f"#g_{TestGroup_Name} .edit a"
     page.click(machine_inventory)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=edit&group=" + TestGroup_Name)
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=edit&group={TestGroup_Name}"
+    )
 
 def test_delete_groups(page: Page) -> None:
 
     medulla_connect(page)
 
     page.click('#navbargroups')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=index")
+    expect(page).to_have_url(
+        f"{test_server}/mmc/main.php?module=base&submod=groups&action=index"
+    )
 
-    machine_inventory = "#g_" + TestGroup_Name + " .delete a"
+    machine_inventory = f"#g_{TestGroup_Name} .delete a"
     page.click(machine_inventory)
     page.click(".btnPrimary[type='submit']")
 
