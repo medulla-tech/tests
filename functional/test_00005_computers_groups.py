@@ -989,3 +989,7 @@ def test_share_group(page: Page) -> None:
     expect(locator).to_have_text('Group successfully shared')
     page.click('#__popup_container button')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+def test_remove_all_groups(page: Page) -> None:
+    sqlcheck('dyngroup', "DELETE FROM Results")
+    sqlcheck('dyngroup', "DELETE FROM Groups")
