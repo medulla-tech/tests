@@ -4,6 +4,7 @@ from common import medulla_connect, sqlcheck
 import configparser
 import os
 import re
+from time import sleep
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
@@ -36,6 +37,7 @@ def test_open_favouriteGroup(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#listFavourite')
@@ -46,6 +48,7 @@ def test_open_AllGroups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#list')
@@ -57,6 +60,7 @@ def test_open_CreateGroups(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#computersgroupcreator')
@@ -68,6 +72,7 @@ def test_open_UninventoriedMachines(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#xmppMachinesList')
@@ -79,6 +84,7 @@ def test_open_monitoringAlerts(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#alerts')
@@ -90,6 +96,7 @@ def test_open_customQA(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#customQA')
@@ -100,6 +107,7 @@ def test_open_ActionQuickGroup(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#ActionQuickGroup')
@@ -114,6 +122,7 @@ def test_open_filesmanagers(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#filesmanagers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=filesmanagers")
 
 def test_open_topology(page: Page) -> None:
@@ -124,6 +133,7 @@ def test_open_topology(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
     
     page.click('#topology')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=topology")
 
 def test_open_inventory_from_name(page: Page) -> None:
@@ -131,8 +141,8 @@ def test_open_inventory_from_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -147,8 +157,8 @@ def test_open_inventory_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -163,8 +173,8 @@ def test_open_monitoring_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -179,8 +189,8 @@ def test_open_remoteviewer_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -195,8 +205,8 @@ def test_open_backup_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -211,8 +221,8 @@ def test_open_deploy_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -227,8 +237,8 @@ def test_open_imaging_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -243,8 +253,8 @@ def test_open_xmppconsole_tab_summary(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -260,9 +270,10 @@ def test_open_fileviewer_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
-
+    sleep(5)
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
@@ -276,8 +287,8 @@ def test_open_config_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -292,8 +303,8 @@ def test_open_quickaction_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -308,8 +319,8 @@ def test_open_delete_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -327,8 +338,8 @@ def test_open_inventory_tab_hardware(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -344,8 +355,8 @@ def test_open_inventory_tab_connections(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -361,8 +372,8 @@ def test_open_inventory_tab_storage(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -378,8 +389,8 @@ def test_open_inventory_tab_network(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -395,8 +406,8 @@ def test_open_inventory_tab_software(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -412,8 +423,8 @@ def test_open_inventory_tab_administrative(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -429,8 +440,8 @@ def test_open_inventory_tab_history(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -446,8 +457,8 @@ def test_open_inventory_tab_antivirus(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -463,8 +474,8 @@ def test_open_inventory_tab_registry(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
 
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
@@ -480,6 +491,7 @@ def test_open_glpi_inventory_from_name(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -495,6 +507,7 @@ def test_open_glpi_inventory_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -511,6 +524,7 @@ def test_open_glpi_monitoring_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -527,6 +541,7 @@ def test_open_glpi_remoteviewer_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -543,6 +558,7 @@ def test_open_glpi_backup_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -559,6 +575,7 @@ def test_open_glpi_deploy_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -575,6 +592,7 @@ def test_open_glpi_imaging_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -591,6 +609,7 @@ def test_open_glpi_xmppconsole_tab_summary(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -608,6 +627,7 @@ def test_open_glpi_fileviewer_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -624,6 +644,7 @@ def test_open_glpi_config_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -640,6 +661,7 @@ def test_open_glpi_quickaction_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
@@ -656,6 +678,7 @@ def test_open_glpi_delete_from_bar(page: Page) -> None:
     medulla_connect(page)
 
     page.click('#navbarcomputers')
+    sleep(5)
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
     page.click('#machinesListglpi')
