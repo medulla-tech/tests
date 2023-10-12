@@ -992,4 +992,5 @@ def test_share_group(page: Page) -> None:
 
 def test_remove_all_groups(page: Page) -> None:
     sqlcheck('dyngroup', "DELETE FROM Results")
+    sqlcheck('dyngroup', "DELETE FROM ShareGroup")
     sqlcheck('dyngroup', "DELETE FROM Groups")
