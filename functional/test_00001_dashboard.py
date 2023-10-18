@@ -103,9 +103,12 @@ def template_create_group_by_status(page: Page, selector, group_name) -> None:
 def test_create_groupe_by_dashboard_machine_online(page: Page) -> None:
     medulla_connect(page)
 
-    status = sqlcheck("xmppmaster", "SELECT status FROM uptime_machine WHERE hostname = '" + machineName + "' ORDER BY id DESC LIMIT 1")
+    is_machine_online = sqlcheck("xmppmaster", "SELECT count(*) FROM machines WHERE enabled='1' and agenttype='machine'" )
 
-    if(status == 1):
-        template_create_group_by_status(page, ".computersonline-graphLabel0 a", "Machine Online")
-    else:
-        template_create_group_by_status(page, ".computersonline-graphLabel1 a", "Machine Offline")
+    if is_machine_online != 0:
+        status = sqlcheck("xmppmaster", "SELECT status FROM uptime_machine WHERE hostname = '" + machineName + "' ORDER BY id DESC LIMIT 1")
+
+        if(status == 1):
+            template_create_group_by_status(page, ".computersonline-graphLabel0 a", "Machine Online")
+        else:
+            template_create_group_by_status(page, ".computersonline-graphLabel1 a", "Machine Offline")
