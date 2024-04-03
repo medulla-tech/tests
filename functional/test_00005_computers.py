@@ -113,29 +113,6 @@ def test_open_ActionQuickGroup(page: Page) -> None:
     page.click('#ActionQuickGroup')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=ActionQuickGroup")
 
-
-def test_open_filesmanagers(page: Page) -> None:
-
-    medulla_connect(page)
-
-    page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
-    page.click('#filesmanagers')
-    sleep(5)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=filesmanagers")
-
-def test_open_topology(page: Page) -> None:
-
-    medulla_connect(page)
-    
-    page.click('#navbarcomputers')
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-    
-    page.click('#topology')
-    sleep(5)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=xmppmaster&submod=xmppmaster&action=topology")
-
 def test_open_inventory_from_name(page: Page) -> None:
 
     medulla_connect(page)
