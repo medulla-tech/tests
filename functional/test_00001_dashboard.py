@@ -30,6 +30,7 @@ def test_dashboard_creategroup(page: Page) -> None:
     page.click("//html/body/div/div[4]/div/div[3]/div[1]/div[2]/div[2]/ul/li/a")
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=groups&action=add")
 
+# TODO: Revoir la condition de verification du test. 
 def test_create_groupe_by_dashboard_os_system(page: Page) -> None:
     medulla_connect(page)
 
@@ -50,7 +51,7 @@ def test_create_groupe_by_dashboard_os_system(page: Page) -> None:
 
     locator = page.locator(".alert")
     expect(locator).to_have_class("alert alert-success")
-
+# TODO: Revoir la condition de verification du test.
 def test_create_groupe_by_dashboard_antivirus(page: Page) -> None:
     medulla_connect(page)
 
@@ -100,6 +101,7 @@ def template_create_group_by_status(page: Page, selector, group_name) -> None:
     locator = page.locator(".alert")
     expect(locator).to_have_class("alert alert-success")
 
+# TODO: Revoir la condition de verification du test.
 def test_create_groupe_by_dashboard_machine_online(page: Page) -> None:
     medulla_connect(page)
 
