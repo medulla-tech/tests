@@ -125,7 +125,7 @@ def test_duplicated_user(page: Page) -> None:
     # However, since there is 2 values of .alert we need to specify the entire CSS selector.
     # Then we make sure that it has the right text 
     locator = page.locator('#__popup_container > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)')
-    expect(locator).to_have_text('The user home directory already exists.Set the home directory in a different location or force the use of the existing directory (in expert mode).')
+    expect(locator).to_have_text(f'The user {test_user} already exists.')
 
 def test_delete_users(page: Page) -> None:
 
