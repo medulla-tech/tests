@@ -32,6 +32,7 @@ def medulla_connect(page: Page) -> None:
     page.fill('#password', password)
     page.click('#connect_button')
 
+    page.click("#expertmode")
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
 
