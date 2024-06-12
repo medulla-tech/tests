@@ -664,6 +664,11 @@ def test_open_delete_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
+
+    while machine_serial = '':
+        machine_serial = sqlcheck("xmppmaster", sql_command)
+        sleep(5)
+
     machine_inventory = "#m_" + machine_serial + " .delete a"
     page.click(machine_inventory)
 
