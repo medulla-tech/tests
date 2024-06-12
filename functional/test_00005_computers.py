@@ -29,6 +29,7 @@ def test_open_inventory(page: Page) -> None:
 
     medulla_connect(page)
 
+
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
@@ -236,6 +237,7 @@ def test_open_xmppconsole_tab_summary(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
+
     machine_inventory = "#m_" + machine_serial + " .console a"
     page.click(machine_inventory)
 
@@ -288,25 +290,6 @@ def test_open_quickaction_from_bar(page: Page) -> None:
 
     machine_inventory = "#m_" + machine_serial + " .quick a"
     page.click(machine_inventory)
-
-    #TODO: Add expect for the URL.
-
-def test_open_delete_from_bar(page: Page) -> None:
-
-    medulla_connect(page)
-
-    page.click('#navbarcomputers')
-    sleep(5)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
-    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
-    machine_serial = sqlcheck("xmppmaster", sql_command)
-
-    machine_inventory = "#m_" + machine_serial + " .delete a"
-    page.click(machine_inventory)
-
-    page.click('#imageWarning')
-    page.click(".btnPrimary[type='submit']")
 
     #TODO: Add expect for the URL.
 
@@ -660,6 +643,25 @@ def test_open_glpi_delete_from_bar(page: Page) -> None:
 
     page.click('#machinesListglpi')
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m_" + machine_serial + " .delete a"
+    page.click(machine_inventory)
+
+    page.click('#imageWarning')
+    page.click(".btnPrimary[type='submit']")
+
+    #TODO: Add expect for the URL.
+
+def test_open_delete_from_bar(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    sleep(5)
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
     machine_inventory = "#m_" + machine_serial + " .delete a"
