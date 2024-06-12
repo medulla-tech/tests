@@ -991,6 +991,6 @@ def test_share_group(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
 
 def test_remove_all_groups(page: Page) -> None:
-    sqlcheck('dyngroup', "DELETE FROM Results")
-    sqlcheck('dyngroup', "DELETE FROM ShareGroup")
-    sqlcheck('dyngroup', "DELETE FROM Groups")
+    sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
+    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM ShareGroup ; SET FOREIGN_KEY_CHECKS = 1")
+    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Groups ; SET FOREIGN_KEY_CHECKS = 1")
