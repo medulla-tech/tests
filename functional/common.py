@@ -54,6 +54,8 @@ def sqlcheck(base, sql_request):
         cursor = db.cursor()
         cursor.execute(sql_request)
 
+        db.commit()
+
         for row in cursor.fetchone() or cursor:
             return row
 
