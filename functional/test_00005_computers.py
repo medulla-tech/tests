@@ -665,7 +665,7 @@ def test_open_delete_from_bar(page: Page) -> None:
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
 
-    while machine_serial = '':
+    while machine_serial == '':
         machine_serial = sqlcheck("xmppmaster", sql_command)
         sleep(5)
 
