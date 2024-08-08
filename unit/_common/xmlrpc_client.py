@@ -150,7 +150,7 @@ def main():
     args = parser.parse_args()
 
     # Construct the full path to the config file
-    config_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), args.config)
+    config_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '_conf', 'xmlrpc_client.ini')
 
     # Load the configuration
     config = get_config(config_path)
