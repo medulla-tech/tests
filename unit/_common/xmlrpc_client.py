@@ -163,7 +163,7 @@ def main():
         cookie = authenticate_and_get_cookie(config, auth_method, auth_params, debug=args.debug)
     except Exception as e:
         print(f"Error during authentication: {e}")
-        return
+        quit(1)
 
     # Prepare the parameters for the function call
     try:
@@ -177,7 +177,7 @@ def main():
         print("Make sure your JSON string is properly formatted. For example:")
         print('Correct format: \'["param1", "param2", 123, true, {"key": "value"}]\'')
         print(f"Params passed: {args.params}")
-        return
+        quit(1)
 
     # Send an XML-RPC request using the authenticated session
     try:
@@ -186,6 +186,7 @@ def main():
         pprint(response)  # Use pprint to print the response in a readable format
     except Exception as e:
         print(f"Error during XML-RPC request: {e}")
+        quit(1)
 
 if __name__ == "__main__":
     main()
