@@ -128,7 +128,7 @@ def test_open_inventory_from_name(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=glpitabs*"))
 
 def test_open_inventory_from_bar(page: Page) -> None:
 
@@ -144,7 +144,7 @@ def test_open_inventory_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=glpitabs*"))
 
 def test_open_monitoring_from_bar(page: Page) -> None:
 
@@ -160,7 +160,7 @@ def test_open_monitoring_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .monit a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=monitoringview*"))
 
 def test_open_backup_from_bar(page: Page) -> None:
 
@@ -176,7 +176,13 @@ def test_open_backup_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .urbackup a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    # We have 2 cases to handle.
+    # if the machine is in a urbackup profile, or not yet configured
+    # The 2 are valid cases and can be encountered
+    try:
+        expect(page).to_have_url(re.compile(".*action=checkMachine*"))
+    except:
+        expect(page).to_have_url(re.compile(".*action=list_backups*"))
 
 def test_open_deploy_from_bar(page: Page) -> None:
 
@@ -192,7 +198,7 @@ def test_open_deploy_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=msctabs*"))
 
 def test_open_imaging_from_bar(page: Page) -> None:
 
@@ -208,7 +214,7 @@ def test_open_imaging_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .imaging a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=register_target*"))
 
 def test_open_xmppconsole_tab_summary(page: Page) -> None:
 
@@ -225,8 +231,7 @@ def test_open_xmppconsole_tab_summary(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .console a"
     page.click(machine_inventory)
 
-    page.click("#tab0")
-    expect(page).to_have_url(re.compile(".*part=Summary*"))
+    expect(page).to_have_url(re.compile(".*action=consolecomputerxmpp*"))
 
 def test_open_config_from_bar(page: Page) -> None:
 
@@ -242,7 +247,7 @@ def test_open_config_from_bar(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .config a"
     page.click(machine_inventory)
 
-    #TODO: Add expect for the URL.
+    expect(page).to_have_url(re.compile(".*action=listfichierconf*"))
 
 def test_open_quickaction_from_bar(page: Page) -> None:
 
