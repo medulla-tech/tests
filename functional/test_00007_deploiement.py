@@ -1,6 +1,6 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
-from common import medulla_connect
+from common import medulla_connect, sqlcheck
 
 import tempfile
 import logging
@@ -11,6 +11,7 @@ import json
 import configparser
 import time
 import unittest
+import datetime
 
 LOGGER = logging.getLogger(__name__)
 
@@ -21,7 +22,33 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 login = Config.get('test_server', 'login')
 password = Config.get('test_server', 'password')
+machineName = Config.get('test_server', 'machinename')
 
+def find_uuid_web(package_url) -> str:
+    """
+    It uses the URL of the package to exact the uuid.
+    The uuid is used on the filesystem to store the package
+
+    Args:
+        package_url: The URL of the package
+
+    Returns:
+        Returns a string with the uuid of the packge
+    """
+
+    package_uuid = ""
+    parsed_url = urlparse(package_url).query
+    package_uuid = parse_qs(parsed_url).get("packageUuid", "")
+    return package_uuid
+
+def find_uuid_sql(label) -> str:
+
+
+    # If we replay the test job, only take one
+    sql_request = "SELECT uuid FROM packages WHERE label = '" + label + "'LIMIT 1"
+    package_uuid = sqlcheck("pkgs", sql_request)
+
+    return package_uuid
 
 def template_deploy(page: Page) -> None:
     result_depl = True
@@ -65,10 +92,19 @@ def test_deploy_package_execute_command(page: Page) -> None:
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
-    page.click(".install > a >> nth=0")
-    time.sleep(1)
+    page.click('#machinesList')
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    page.click('.start')
+
+    machine_inventory = "#m_" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    package_uuid = find_uuid_sql("Notepad++")
+
+    package_to_deploy = "#p_" + package_uuid + " >> .start >> a"
+    page.click(package_to_deploy)
+
     time.sleep(1)
 
     template_deploy(page)
@@ -84,11 +120,10 @@ def test_deploy_delayed_command(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m" + machine_serial + " .install a"
+    machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr/td[5]/ul/li[1]/a")
-
+    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[4]/td[5]/ul/li[2]/a")
 
     now = datetime.now()
 
