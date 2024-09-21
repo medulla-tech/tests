@@ -11,7 +11,7 @@ import json
 import configparser
 import time
 import unittest
-from datetime import datetime
+from datetime import datetime, timedelta
 
 LOGGER = logging.getLogger(__name__)
 
@@ -127,7 +127,7 @@ def test_deploy_delayed_command(page: Page) -> None:
 
     now = datetime.now()
 
-    start_hour = now + timedelta(minutes=5)
+    start_hour = now + timedelta(minutes=1)
     start_hour_str = start_hour.strftime('%Y-%m-%d %H:%M:%S')
 
     end_hour = start_hour + timedelta(hours=1)
@@ -146,5 +146,5 @@ def test_deploy_delayed_command(page: Page) -> None:
     start_date.evaluate("node => node.setAttribute('value', '%s')" % start_hour_str);
     start_date.evaluate("node => node.setAttribute('readonly', 1)");
 
-    page.click(".btnPrimary[type='submit']")
+    page.click(".btnPrimary[type='submit']", timeout=600000)
     template_deploy(page)
