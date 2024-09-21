@@ -222,7 +222,6 @@ def test_create_group_based_on_description(page: Page) -> None:
     assert normal_result == result_on_server
 
 
-
 def test_create_group_based_on_inventory_number(page: Page) -> None:
 
     medulla_connect(page)
@@ -989,6 +988,47 @@ def test_share_group(page: Page) -> None:
     expect(locator).to_have_text('Group successfully shared')
     page.click('#__popup_container button')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=list")
+
+
+def test_create_group_use_booleans(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click("#computersgroupcreator")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
+
+
+    # Creation of the first condition
+    page.locator('#glpi').click()
+    page.locator('#Computer-name').click()
+    page.locator('//*[@id="autocomplete"]').click()
+    page.locator('//*[@id="autocomplete"]').fill("*win*")
+    page.click(".btnPrimary[type='submit']")
+
+    # Creation of the second condition
+    page.locator('#glpi').click()
+    page.locator('#Description').click()
+    page.locator('//*[@id="autocomplete"]').click()
+    page.locator('//*[@id="autocomplete"]').fill("*For the test*")
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btnPrimary[type='button']")
+
+    # Creation of the boolean
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[2]/td[1]/input[1]").fill("AND(1,2)")
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill(GroupTest)
+
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btnPrimary[type='button']")
+
+    page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill(GroupTest)
+
+    page.click(".btnPrimary[type='submit']")
+
+
+    expect(page).to_have_url(re.compile(".*action=save_detail*"))
 
 def test_remove_all_groups(page: Page) -> None:
     sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
