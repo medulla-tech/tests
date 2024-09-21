@@ -11,7 +11,7 @@ import json
 import configparser
 import time
 import unittest
-import datetime
+from datetime import datetime
 
 LOGGER = logging.getLogger(__name__)
 
