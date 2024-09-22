@@ -152,12 +152,27 @@ def test_create_package_execute(page: Page) -> None:
     )
 
 
+def test_watching_create_package(page: Page) -> None:
+    """
+        It tests if watching is working or if syncthing is not.
+    """
+    # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
+    time.sleep(5)
+
+    medulla_connect(page)
+
+    uuidPackage = find_uuid_sql("Package de test execute")
+
+    sql_request = "SELECT id FROM syncthingsync WHERE uuidpackage = '" + uuidPackage + "'LIMIT 1"
+    is_watching_OK = sqlcheck("pkgs", sql_request)
+
+    assert not is_watching_OK
+
+
 def test_correctness_package_execute_json(page: Page) -> None:
     """
         It checks if the packages we just created is OK.
     """
-    # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
-    time.sleep(5)
     medulla_connect(page)
 
     page.click("#navbarpkgs")
