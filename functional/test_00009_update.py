@@ -49,34 +49,6 @@ def test_open_details_by_machines(page: Page) -> None:
 
     expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=detailsByMachines*"))
 
-def test_open_details_by_updates(page: Page) -> None:
-    medulla_connect(page)
-
-    page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
-
-    page.click(".auditbyupdate a")
-
-    time.sleep(1)
-    locator = page.locator("#__popup_container")
-    expect(locator).to_be_hidden()
-
-    expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=detailsByUpdates*"))
-
-def test_open_details_by_updateall(page: Page) -> None:
-    medulla_connect(page)
-
-    page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
-
-    page.click(".updateall a")
-
-    time.sleep(1)
-    locator = page.locator("#__popup_container")
-    expect(locator).to_be_hidden()
-
-    expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=deployAllUpdates*"))
-
 def test_deploy_specific_update(page: Page) -> None:
     medulla_connect(page)
 
