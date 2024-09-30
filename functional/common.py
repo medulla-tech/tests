@@ -37,7 +37,7 @@ def medulla_connect(page: Page) -> None:
 
 
 
-def sqlcheck(base, sql_request):
+def sqlcheck(base, sql_request) -> None:
     """
         Used to run SQL requests
         Args:
@@ -63,3 +63,55 @@ def sqlcheck(base, sql_request):
 
     except Exception as e:
         sys.exit(1)
+
+
+def get_an_available_update() -> str:
+    """
+        Get an update from the Grey List but not yet validated/activated
+    """
+
+    sql_command = 'SELECT updateid FROM up_gray_list WHERE valided="0" LIMIT 1'
+    return sqlcheck("xmppmaster", sql_command)
+
+
+def get_an_activated_update() -> str:
+    """
+        Get an update from the Grey List but not yet validated/activated
+    """
+
+    sql_command = 'SELECT updateid FROM up_gray_list WHERE valided="1" LIMIT 1'
+    return sqlcheck("xmppmaster", sql_command)
+
+def is_update_activated(updateid) -> str:
+    """
+        Tell if an update is validated or not.
+
+        Returns:
+            1 if the update is validated. 0 otherwise
+    """
+
+    sql_command = f'SELECT valided FROM up_gray_list WHERE updateid="{updateid}"'
+    return sqlcheck("xmppmaster", sql_command)
+
+
+def is_update_whitelisted(updateid) -> str:
+    """
+        Tell if an update is validated or not.
+
+        Returns:
+            1 if the update is validated. 0 otherwise
+    """
+
+    sql_command = f'SELECT valided FROM up_white_list WHERE updateid="{updateid}"'
+    return sqlcheck("xmppmaster", sql_command)
+
+def is_update_blacklisted(updateid) -> str:
+    """
+        Tell if an update is validated or not.
+
+        Returns:
+            1 if the update is validated. 0 otherwise
+    """
+
+    sql_command = f'SELECT enable_rule FROM up_black_list WHERE updateid_or_kb="{updateid}"'
+    return sqlcheck("xmppmaster", sql_command)

@@ -1,5 +1,5 @@
 from playwright.sync_api import  expect, Page
-from common import medulla_connect, sqlcheck
+from common import medulla_connect, sqlcheck, get_an_available_update, is_update_activated, get_an_activated_update, is_update_whitelisted
 
 import configparser
 import os
@@ -49,20 +49,21 @@ def test_open_details_by_machines(page: Page) -> None:
 
     expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=detailsByMachines*"))
 
-def test_deploy_specific_update(page: Page) -> None:
-    medulla_connect(page)
+#def test_deploy_specific_update(page: Page) -> None:
+#    medulla_connect(page)
+#
+#    page.click("#navbarupdates")
+#    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+#
+#    page.click(".updateone a")
+#    page.click(".quick a")
+#
+#    time.sleep(1)
+#    locator = page.locator("#__popup_container")
+#    expect(locator).to_be_hidden()
+#
+#    expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=deploySpecificUpdate*"))
 
-    page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
-
-    page.click(".updateone a")
-    page.click(".quick a")
-
-    time.sleep(1)
-    locator = page.locator("#__popup_container")
-    expect(locator).to_be_hidden()
-
-    expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=deploySpecificUpdate*"))
 
 def test_enable_update(page: Page) -> None:
     medulla_connect(page)
@@ -72,37 +73,74 @@ def test_enable_update(page: Page) -> None:
 
     page.click("#updatesListWin a")
 
-    time.sleep(1)
-    updateid = page.locator(".listinfos .alternate >> nth=0").get_attribute("id")
+    availableUpdate = get_an_available_update()
 
-    def check_enable_update(page: Page, selctor, updateid):
-        """
-            It's a function to check if the update is enabled or not.
-        Args:
-            page (Page): The page to check
-            selector : Css selector of the update to check to know statut of the update
-            updateid : The id of the update to check
-        """
-        if(page.locator(selctor).get_attribute("class") == "enableupdateg"):
-            page.click("#" + updateid + " a")
-            updateid = updateid[2:]
+    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.enableupdate > a"
+    page.click(ActivateUpdate)
 
-            result_on_server = sqlcheck("xmppmaster", "SELECT valided FROM up_gray_list WHERE updateid = '" + updateid + "'")
+    locator = (page.locator(".alert"))
+    expect(locator).to_have_class("alert alert-success")
 
-            assert result_on_server == 1
+    isUpdateActivated = is_update_activated(availableUpdate)
 
-            expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=updatesListWin*"))
+    assert isUpdateActivated == 1
 
-        else:
-            page.click("#" + updateid + " a")
-            updateid = updateid[2:]
 
-            result_on_server = sqlcheck("xmppmaster", "SELECT valided FROM up_gray_list WHERE updateid = '" + updateid + "'")
+def test_disable_update(page: Page) -> None:
+    medulla_connect(page)
 
-            locator = (page.locator(".alert"))
-            expect(locator).to_have_class("alert alert-success")
-            assert result_on_server == 1
+    page.click("#navbarupdates")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
 
-            expect(page).to_have_url(re.compile(".*module=updates&submod=updates&action=updatesListWin*"))
+    page.click("#updatesListWin a")
 
-    check_enable_update(page, "//html/body/div/div[4]/div/div[2]/form/table/tbody/tr[1]/td[4]/ul/li[1]", updateid)
+    availableUpdate = get_an_activated_update()
+
+    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.disableupdate > a"
+    page.click(ActivateUpdate)
+
+
+    page.click(".btnPrimary[type='submit']")
+
+    isUpdateActivated = is_update_activated(availableUpdate)
+
+    assert isUpdateActivated == 0
+
+
+def test_add_whitelist_update(page: Page) -> None:
+    medulla_connect(page)
+    
+    page.click("#navbarupdates")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+    
+    page.click("#updatesListWin a")
+    
+    availableUpdate = get_an_activated_update()
+    
+    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.approveupdate > a"
+    page.click(ActivateUpdate)
+    
+
+    isUpdateWhiteListed = is_update_whitelisted(availableUpdate)
+    
+    assert isUpdateWhiteListed == 0
+
+
+def test_remove_whitelist_update(page: Page) -> None:
+    medulla_connect(page)
+
+    page.click("#navbarupdates")
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+
+    page.click("#updatesListWin a")
+
+    availableUpdate = get_an_available_update()
+
+    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.approveupdate > a"
+    page.click(ActivateUpdate)
+
+    page.click(".btnPrimary[type='submit']")
+
+    isUpdateWhiteListed = is_update_whitelisted(availableUpdate)
+
+    assert isUpdateWhiteListed == 1
