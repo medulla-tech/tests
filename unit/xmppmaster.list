@@ -1,1 +1,20 @@
 --function get_machines_list --params '[0, "20", {"location": "", "filter": "", "field": "allchamp", "contains": "", "start": 0, "end": 19, "maxperpage": "20"}]'
+--function get_machines_list --params '[0, "20", {"location": "", "filter": "", "field": "allchamp", contains": "", "start": 0.5, "end": 19, "maxperpage": "20"}]'
+--function getPresenceuuid --params '[False]'
+--function getPresenceuuid --params '[True]'
+--function get_computer_count_for_dashboard --params '[{'total': '1', 'total_offline': '1', 'offline_uninventoried': '0', 'offline_inventoried': '1', 'total_online': '0',
+                                                      'online_uninventoried': '0', 'online_inventoried': '0', 'total_uninventoried': '0', 'total_inventoried': '1'}]'
+--function get_count_agent_for_dashboard --params '[]'
+--function get_deploy_by_user_with_interval --params '[{'total_of_rows': 0, 'lentotal': 0, 'tabdeploy': {'state': [], 'pathpackage': [], 'sessionid': [],
+                                                     'start': [], 'inventoryuuid': [], 'command': [], 'login': [], 'host': [], 'macadress': [], 'group_uuid': [], 'startcmd': [],
+                                                     'endcmd': [], 'jidmachine': [], 'jid_relay': [], 'title': []}}]'
+--function get_conformity_update_by_entity --params '[{'entity': '0', 'nbmachines': 0, 'nbupdate': 0, 'totalmach': 1, 'conformite': 100}]]'
+--function get_mon_events --params '[{'total': 0, 'datas': []}]'
+--function get_content --params '['']'
+--function getlistcommandforuserbyos --params '[{'len': 0, 'nb': 0, 'limit': 20, 'max': '20', 'min': 0, 'filt': '', 'command': []}]'
+--function dir_exists --params '[True]'
+--function file_exists --params '['']'
+--function create_file --params '['']'
+--function create_dir --params '['']'
+--function getCommand_action_time --params '[{'nbtotal': 0, 'result': [[], [], [], [], [], [], [], [], []]}]'
+--function xmppGetAllPackages  --params '['0, []']'
