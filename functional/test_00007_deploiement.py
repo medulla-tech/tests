@@ -148,3 +148,44 @@ def test_deploy_delayed_command(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']", timeout=600000)
     template_deploy(page)
+
+def test_deploy_planned_command(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesList')
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    machine_inventory = "#m_" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    package = 'hostname'
+
+    sql_command_p = 'SELECT uuid FROM packages WHERE label = "' + package + '"'
+    package_to_deploy = sqlcheck("pkgs", sql_command_p)
+
+    machine_options = "#p_" + package_to_deploy + " .install a"
+
+
+    now = datetime.now()
+
+    start_hour = now + timedelta(minutes=1)
+    start_hour_str = start_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_hour = start_hour + timedelta(minutes=1)
+    end_hour_str = end_hour.strftime('%Y-%m-%d %H:%M:%S')
+
+    end_date = page.locator("#exec_date")
+    end_date.evaluate("node => node.removeAttribute('readonly')");
+
+    end_date.evaluate("node => node.setAttribute('value', '%s')" % end_hour_str);
+    end_date.evaluate("node => node.setAttribute('readonly', 1)");
+
+    page.check('xpath=//*[@id="Delay_install"]')
+
+    page.click(".btnPrimary[type='submit']", timeout=600000)
+    template_deploy(page)
