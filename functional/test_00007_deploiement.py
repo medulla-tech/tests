@@ -168,7 +168,7 @@ def test_deploy_planned_command(page: Page) -> None:
     sql_command_p = 'SELECT uuid FROM packages WHERE label = "' + package + '"'
     package_to_deploy = sqlcheck("pkgs", sql_command_p)
 
-    machine_options = "#p_" + package_to_deploy + " .install a"
+    machine_options = "#p_" + package_to_deploy + " .advanced a"
 
 
     now = datetime.now()
