@@ -836,7 +836,7 @@ def test_create_group_based_by_OU_Machine(page: Page) -> None:
 
     result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By OU Machine'")
 
-    normal_result = "1==xmppmaster::OU user==ou_machine"
+    normal_result = "1==xmppmaster::OU Machine==ou_machine"
 
     assert normal_result == result_on_server
 
