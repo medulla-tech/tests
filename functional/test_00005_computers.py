@@ -173,7 +173,7 @@ def test_open_backup_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m_" + machine_serial + " .infomach"
+    machine_inventory = "#m_" + machine_serial + " .urbackup"
     page.click(machine_inventory)
 
     # We have 2 cases to handle.
