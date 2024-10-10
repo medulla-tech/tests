@@ -1,11 +1,14 @@
 from playwright.sync_api import  expect, Page
 from common import medulla_connect, sqlcheck
 
+import logging
 import re
 import configparser
 import os
 import time
 
+logging.basicConfig(level=logging.DEBUG)
+mylogger = logging.getLogger()
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
 Config.read(os.path.join(project_dir, "config.ini"))
@@ -26,7 +29,14 @@ def test_remove_all_groups(page: Page) -> None:
     sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
     sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM ShareGroup ; SET FOREIGN_KEY_CHECKS = 1")
     sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Groups ; SET FOREIGN_KEY_CHECKS = 1")
-
+def test_remove_all_groups2(page: Page) -> None:
+    try:
+        sqlcheck("dyngroup", "DELETE FROM ShareGroup WHERE FK_groups IN (SELECT id FROM Groups WHERE name LIKE '%playwright%');")
+        sqlcheck('dyngroup', "DELETE FROM Results WHERE FK_groups IN (SELECT id FROM Groups WHERE name LIKE '%playwright%');")
+        sqlcheck('dyngroup', "DELETE FROM Groups WHERE name LIKE '%playwright%';")
+        mylogger.debug("Groups and related data successfully removed.")
+    except Exception as e:
+        mylogger.debug(f"Error occurred while removing groups: {e}")
 
 
 def test_create_group_based_on_name(page: Page) -> None:
