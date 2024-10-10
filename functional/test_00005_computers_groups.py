@@ -713,7 +713,7 @@ def test_create_group_based_on_architecture(page: Page) -> None:
     page.locator('#glpi').click()
     page.locator('//*[@id="Architecture"]').click()
     page.locator('//*[@id="autocomplete"]').click()
-    page.locator('//*[@id="autocomplete"]').fill("*win*")
+    page.locator('//*[@id="autocomplete"]').fill("64-bit")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
@@ -723,7 +723,7 @@ def test_create_group_based_on_architecture(page: Page) -> None:
 
     result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Architecture'")
 
-    normal_result = "1==glpi::Architecture==*win"
+    normal_result = "1==glpi::Architecture==64-bit"
 
     assert normal_result == result_on_server
 
