@@ -552,11 +552,9 @@ def test_open_glpi_xmppconsole_tab_summary(page: Page) -> None:
     sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m_" + machine_serial + " .console a"
-    page.click(machine_inventory)
-
-    page.click("#tab0")
-    expect(page).to_have_url(re.compile(".*part=Summary*"))
+    machine_inventory = "#m_" + machineName + " .console a"
+    page.click(machine_inventory)    
+    expect(page).to_have_url(re.compile(".*action=consolecomputerxmpp*"))
 
 def test_open_glpi_fileviewer_from_bar(page: Page) -> None:
 
