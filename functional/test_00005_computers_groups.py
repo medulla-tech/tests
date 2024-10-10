@@ -15,6 +15,7 @@ Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
 GroupTest = "Group_Test"
+machineName = Config.get('test_server', 'machinename')
 
 """
     The tests are done to test the user page of pulse.
@@ -81,7 +82,6 @@ def test_create_duplicate_group_based_on_name(page: Page) -> None:
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill(GroupTest)
 
     page.click(".btnPrimary[type='submit']")
-
     locator = page.locator('#__popup_container .alert.alert-error')
     wanted_sentence = "A group already exists with name '%s'" % GroupTest
     expect(locator).to_have_text(wanted_sentence)
@@ -788,6 +788,9 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
 
     medulla_connect(page)
 
+    sql_command = 'UPDATE machines SET ad_ou_user="ou_user" WHERE hostname = "' + machineName + '"'
+    sqlcheck("xmppmaster", sql_command)
+
     page.click('#navbarcomputers')
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
 
@@ -796,8 +799,8 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=computersgroupcreator")
 
     page.locator('#xmppmaster').click()
-    page.locator('//*[@id="OU-User"]').click()
-    page.locator('//*[@id="autocomplete"]').fill("test OU User")
+    page.locator("//a[@id='OU-user']").click()
+    page.locator('//*[@id="autocomplete"]').fill("ou_user")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill("Created by playwright By OU User")
@@ -805,7 +808,7 @@ def test_create_group_based_by_OU_User(page: Page) -> None:
 
     result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By OU User'")
 
-    normal_result = "1==xmppmaster::OU user==test OU User"
+    normal_result = "1==xmppmaster::OU user==ou_user"
 
     assert normal_result == result_on_server
 
