@@ -22,6 +22,12 @@ GroupTest = "Group_Test"
     -> Add new machines to a group
 
 """
+def test_remove_all_groups(page: Page) -> None:
+    sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
+    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM ShareGroup ; SET FOREIGN_KEY_CHECKS = 1")
+    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Groups ; SET FOREIGN_KEY_CHECKS = 1")
+
+
 
 def test_create_group_based_on_name(page: Page) -> None:
 
@@ -1029,8 +1035,3 @@ def test_share_group(page: Page) -> None:
 #
 #
 #    expect(page).to_have_url(re.compile(".*action=save_detail*"))
-
-def test_remove_all_groups(page: Page) -> None:
-    sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
-    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM ShareGroup ; SET FOREIGN_KEY_CHECKS = 1")
-    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Groups ; SET FOREIGN_KEY_CHECKS = 1")
