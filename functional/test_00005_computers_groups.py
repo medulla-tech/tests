@@ -740,7 +740,7 @@ def test_create_group_based_on_register_key(page: Page) -> None:
     page.locator('#glpi').click()
     page.locator('//*[@id="Register-key"]').click()
     page.locator('//*[@id="autocomplete"]').click()
-    page.locator('//*[@id="autocomplete"]').fill("*win*")
+    page.locator('//*[@id="autocomplete"]').fill("Register-key")
     page.click(".btnPrimary[type='submit']")
     page.click(".btnPrimary[type='button']")
 
@@ -750,7 +750,7 @@ def test_create_group_based_on_register_key(page: Page) -> None:
 
     result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Register Key'")
 
-    normal_result = "1==glpi::Register key==*win*"
+    normal_result = "1==glpi::Register key==Register-key"
 
     assert normal_result == result_on_server
 
