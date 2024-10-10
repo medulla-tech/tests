@@ -1,11 +1,16 @@
-from playwright.sync_api import  expect, Page
+from playwright.sync_api import expect, Page
 from common import medulla_connect, sqlcheck
+from bs4 import BeautifulSoup
 
+import logging
 import configparser
 import os
 import re
+import sys
 from time import sleep
 
+logging.basicConfig(level=logging.DEBUG)
+mylogger = logging.getLogger()
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
 Config.read(os.path.join(project_dir, "config.ini"))
@@ -23,7 +28,6 @@ machineName = Config.get('test_server', 'machinename')
     -> Do a search
     -> List online/offline computers.
 """
-
 
 def test_open_inventory(page: Page) -> None:
 
@@ -648,6 +652,7 @@ def test_open_delete_from_bar(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
 
     #TODO: Add expect for the URL.
+
 
 def test_hovering_modal_xmpp_info(page: Page) -> None:
     """
