@@ -279,7 +279,7 @@ def test_open_inventory_tab_hardware(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab1")
+    page.click("#tab1 a")
     expect(page).to_have_url(re.compile(".*part=Hardware*"))
 
 def test_open_inventory_tab_connections(page: Page) -> None:
@@ -296,7 +296,7 @@ def test_open_inventory_tab_connections(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab2")
+    page.click("#tab2 a")
     expect(page).to_have_url(re.compile(".*part=Connections*"))
 
 def test_open_inventory_tab_storage(page: Page) -> None:
@@ -313,7 +313,7 @@ def test_open_inventory_tab_storage(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab3")
+    page.click("#tab3 a")
     expect(page).to_have_url(re.compile(".*part=Storage*"))
 
 def test_open_inventory_tab_network(page: Page) -> None:
@@ -330,7 +330,7 @@ def test_open_inventory_tab_network(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab4")
+    page.click("#tab4 a")
     expect(page).to_have_url(re.compile(".*part=Network"))
 
 def test_open_inventory_tab_software(page: Page) -> None:
@@ -347,7 +347,7 @@ def test_open_inventory_tab_software(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab5")
+    page.click("#tab5 a")
     expect(page).to_have_url(re.compile(".*part=Software"))
 
 def test_open_inventory_tab_administrative(page: Page) -> None:
@@ -364,7 +364,7 @@ def test_open_inventory_tab_administrative(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab6")
+    page.click("#tab6 a")
     expect(page).to_have_url(re.compile(".*part=Administrative"))
 
 def test_open_inventory_tab_history(page: Page) -> None:
@@ -381,7 +381,7 @@ def test_open_inventory_tab_history(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab7")
+    page.click("#tab7 a")
     expect(page).to_have_url(re.compile(".*part=History"))
 
 def test_open_inventory_tab_antivirus(page: Page) -> None:
@@ -398,7 +398,7 @@ def test_open_inventory_tab_antivirus(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab8")
+    page.click("#tab8 a")
     expect(page).to_have_url(re.compile(".*part=Antivirus*"))
 
 def test_open_inventory_tab_registry(page: Page) -> None:
@@ -415,7 +415,7 @@ def test_open_inventory_tab_registry(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .inventory a"
     page.click(machine_inventory)
 
-    page.click("#tab9")
+    page.click("#tab9 a")
     expect(page).to_have_url(re.compile(".*part=Registry*"))
 
 def test_open_glpi_inventory_from_name(page: Page) -> None:
