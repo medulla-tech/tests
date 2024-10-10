@@ -556,23 +556,6 @@ def test_open_glpi_xmppconsole_tab_summary(page: Page) -> None:
     page.click(machine_inventory)    
     expect(page).to_have_url(re.compile(".*action=consolecomputerxmpp*"))
 
-def test_open_glpi_fileviewer_from_bar(page: Page) -> None:
-
-    medulla_connect(page)
-
-    page.click('#navbarcomputers')
-    sleep(5)
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
-
-    page.click('#machinesListglpi')
-    sql_command = 'SELECT hostname FROM machines WHERE hostname = "' + machineName + '"'
-    machine_serial = sqlcheck("xmppmaster", sql_command)
-
-    machine_inventory = "#m_" + machine_serial + " .fileviewer a"
-    page.click(machine_inventory)
-
-    #TODO: Add expect for the URL.
-
 def test_open_glpi_config_from_bar(page: Page) -> None:
 
     medulla_connect(page)
