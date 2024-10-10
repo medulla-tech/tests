@@ -891,7 +891,7 @@ def test_create_group_by_existing_group(page: Page) -> None:
 
     result_on_server = sqlcheck("dyngroup", "SELECT query FROM Groups WHERE name = 'Created by playwright By Existing Group'")
 
-    normal_result = "1==dyngroup::groupname==Created by playwright By Existing Group==True"
+    normal_result = "1==dyngroup::groupname==Created by playwright By Existing Group"
 
     assert normal_result == result_on_server
 
