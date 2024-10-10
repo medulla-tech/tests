@@ -173,7 +173,7 @@ def test_open_backup_from_bar(page: Page) -> None:
     sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
     machine_serial = sqlcheck("xmppmaster", sql_command)
 
-    machine_inventory = "#m_" + machine_serial + " .urbackup a"
+    machine_inventory = "#m_" + machine_serial + " .infomach"
     page.click(machine_inventory)
 
     # We have 2 cases to handle.
@@ -648,3 +648,61 @@ def test_open_delete_from_bar(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
 
     #TODO: Add expect for the URL.
+
+def test_hovering_modal_xmpp_info(page: Page) -> None:
+    """
+    This function tests the opening of the machine inventory from the navigation bar.
+
+    It performs the following steps:
+    1. Connects to the Medulla server.
+    2. Navigates to the computers page and verifies the URL.
+    3. Retrieves the IP address and machine serial from the database.
+    4. Hovers over the specified machine element to retrieve the 'mydata' attribute.
+    5. Parses the HTML content within the 'mydata' attribute to extract the IP address.
+    6. Compares the extracted IP address with the IP address from the database.
+    7. Logs the results and exits with a failure status if the IP addresses do not match.
+
+    Args:
+        page (Page): The Playwright Page object.
+
+    Returns:
+        None
+    """
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    sleep(5)
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    # Get IP address
+    sql_command = 'SELECT ip_xmpp FROM machines WHERE hostname = "' + machineName + '"'
+    ip_xmpp = sqlcheck("xmppmaster", sql_command)
+
+    # Get serial
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+    # Retrieve the value of the 'mydata' attribute
+    machine_inventory = "#m_" + machine_serial + " .infomach"
+    mylogger.info(f"Hovering over the element with text {machineName}...")
+    page.locator("//span[text()='qa-win-6']").hover()
+    machine_inventory_locator = "#m_" + machine_serial + " .infomach"
+    machine_inventory_element = page.locator(machine_inventory_locator)
+    mydata_content = machine_inventory_element.get_attribute('mydata')
+    mylogger.info(f"My DATA: {mydata_content}")
+
+    # Parse the HTML content within the 'mydata' attribute
+    soup = BeautifulSoup(mydata_content, 'html.parser')
+
+    # Extract the IP value
+    ip_address = soup.find('td', string='IP address').find_next('td').string.strip()
+
+    mylogger.info(f"IP Address in the page {ip_address}")
+
+    # Check if the IP present is in the modal
+    if ip_xmpp in ip_address:
+        mylogger.info(f"IP found is the same as in database {ip_xmpp} ")
+    else:
+        mylogger.info(f"IP {ip_address} not corresponding to {ip_xmpp} in the database.")
+        sys.exit(1)
