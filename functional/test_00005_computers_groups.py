@@ -26,10 +26,6 @@ GroupTest = "Group_Test"
 
 """
 def test_remove_all_groups(page: Page) -> None:
-    sqlcheck("dyngroup", "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Results ; SET FOREIGN_KEY_CHECKS = 1")
-    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM ShareGroup ; SET FOREIGN_KEY_CHECKS = 1")
-    sqlcheck('dyngroup', "SET FOREIGN_KEY_CHECKS = 0 ; DELETE FROM Groups ; SET FOREIGN_KEY_CHECKS = 1")
-def test_remove_all_groups2(page: Page) -> None:
     try:
         sqlcheck("dyngroup", "DELETE FROM ShareGroup WHERE FK_groups IN (SELECT id FROM Groups WHERE name LIKE '%playwright%');")
         sqlcheck('dyngroup', "DELETE FROM Results WHERE FK_groups IN (SELECT id FROM Groups WHERE name LIKE '%playwright%');")
