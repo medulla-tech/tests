@@ -608,7 +608,21 @@ def test_open_glpi_delete_from_bar(page: Page) -> None:
     page.click('#imageWarning')
     page.click(".btnPrimary[type='submit']")
 
-    #TODO: Add expect for the URL.
+    # Custom loop to wait until the machine_inventory element is back
+    timeout = 120  # Maximum time to wait in seconds
+    interval = 5  # Time interval between checks in seconds
+    elapsed_time = 0
+
+    while elapsed_time < timeout:
+        page.reload()  # Refresh the page to see the latest state
+        sleep(interval)
+        if page.is_visible(machine_inventory):
+            mylogger.info("Machine inventory is back and test is completed.")
+            break
+        elapsed_time += interval
+
+    if elapsed_time >= timeout:
+        mylogger.error("Machine inventory did not reappear within the timeout period.")
 
 def test_open_delete_from_bar(page: Page) -> None:
 
