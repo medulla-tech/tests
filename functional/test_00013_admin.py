@@ -3,6 +3,7 @@ from common import medulla_connect, sqlcheck
 
 import configparser
 import os
+import random
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
@@ -106,7 +107,10 @@ def test_admin_create_cluster(page: Page) -> None:
     page.click('#newCluster')
     expect(page).to_have_url( test_server + "/mmc/main.php?module=admin&submod=admin&action=newCluster")
 
-    page.fill('#cluster_name', 'Cluster Created by playwright To be deleted')
+    random_number = random.randint(1000, 9999)
+    cluster_name = f"Cluster Created by playwright {random_number}"
+
+    page.fill('#cluster_name', cluster_name)
     page.fill('#cluster_description', 'Cluster Created by playwright Description')
 
     page.locator("#outCluster li >> nth=0").drag_to(
