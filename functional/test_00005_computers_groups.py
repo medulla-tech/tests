@@ -82,9 +82,12 @@ def test_create_duplicate_group_based_on_name(page: Page) -> None:
     page.locator("//html/body/div/div[4]/div/table[2]/tbody/tr[1]/td[1]/input").fill(GroupTest)
 
     page.click(".btnPrimary[type='submit']")
-    locator = page.locator('#__popup_container .alert.alert-error')
+    popup_locator = page.locator('#__popup_container .alert.alert-error')
+    popup_locator.wait_for()  # On attend l'apparition de la popup
+
     wanted_sentence = "A group already exists with name '%s'" % GroupTest
-    expect(locator).to_have_text(wanted_sentence)
+
+    expect(popup_locator).to_have_text(wanted_sentence)
 
 def test_groups_list_from_name(page: Page) -> None:
 
