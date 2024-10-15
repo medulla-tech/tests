@@ -67,10 +67,9 @@ def template_deploy(page: Page) -> None:
 
         try:
             order_error.wait_for(timeout=1000)
-            LOGGER.info("ca marche")
             return True
         except:
-            LOGGER.info("Oooops")
+            LOGGER.info("Deploy in progress, please wait.")
             return False
 
     while check_deploy_success() == False:
