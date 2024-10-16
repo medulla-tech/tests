@@ -108,7 +108,7 @@ def test_deploy_package_execute_command(page: Page) -> None:
 
     template_deploy(page)
 
-def test_deploy_delayed_command(page: Page) -> None:
+def test_deploy_planned_command(page: Page) -> None:
 
     medulla_connect(page)
 
@@ -122,7 +122,10 @@ def test_deploy_delayed_command(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    page.click("//html/body/div/div[4]/div/div[3]/div/form/table/tbody/tr[4]/td[5]/ul/li[2]/a")
+    package_uuid = find_uuid_sql("Notepad++")
+    package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
+
+    page.click(package_to_deploy)
 
     now = datetime.now()
 
@@ -148,7 +151,7 @@ def test_deploy_delayed_command(page: Page) -> None:
     page.click(".btnPrimary[type='submit']", timeout=600000)
     template_deploy(page)
 
-def test_deploy_planned_command(page: Page) -> None:
+def test_deploy_delayed_command(page: Page) -> None:
 
     medulla_connect(page)
 
@@ -164,10 +167,10 @@ def test_deploy_planned_command(page: Page) -> None:
 
     package = 'hostname'
 
-    sql_command_p = 'SELECT uuid FROM packages WHERE label = "' + package + '"'
-    package_to_deploy = sqlcheck("pkgs", sql_command_p)
+    package_uuid = find_uuid_sql(package)
+    package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
 
-    machine_options = "#p_" + package_to_deploy + " .advanced a"
+    page.click(package_to_deploy)
 
 
     now = datetime.now()
