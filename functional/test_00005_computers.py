@@ -698,7 +698,8 @@ def test_hovering_modal_xmpp_info(page: Page) -> None:
     # Retrieve the value of the 'mydata' attribute
     machine_inventory = "#m_" + machine_serial + " .infomach"
     mylogger.info(f"Hovering over the element with text {machineName}...")
-    page.locator("//span[text()='qa-win-6']").hover()
+    locator_hover = f"//span[text()='{machineName}']"
+    page.locator(locator_hover).hover()
     machine_inventory_locator = "#m_" + machine_serial + " .infomach"
     machine_inventory_element = page.locator(machine_inventory_locator)
     mydata_content = machine_inventory_element.get_attribute('mydata')
