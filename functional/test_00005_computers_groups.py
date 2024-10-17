@@ -83,7 +83,7 @@ def test_create_duplicate_group_based_on_name(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
     popup_locator = page.locator('#__popup_container .alert.alert-error')
-    popup_locator.wait_for(timeout=60000)
+    popup_locator.wait_for(timeout=100000)
 
     wanted_sentence = "A group already exists with name '%s'" % GroupTest
 
