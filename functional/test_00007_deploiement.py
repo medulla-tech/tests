@@ -84,6 +84,47 @@ def template_deploy(page: Page) -> None:
 
     assert result_depl == True
 
+
+def test_create_package_execute(page: Page) -> None:
+    """
+        It creates a simple package with an empty
+        execute field.
+    """
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    page.click("#add")
+    page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.fill("#label", "Test_deploy_package")
+    page.fill("#version", "0.0")
+    page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
+
+    page.locator("#available-actions li >> nth=0").drag_to(
+        page.locator("#current-actions")
+    )
+    # As playwright does not detect correctly the new element, it drops it at the end.
+    # We need a second step, after the drop, to use the correct position
+    page.locator("#current-actions li >> nth=2").drag_to(
+        page.locator("#current-actions li >> nth=0")
+    )
+    # page.click('//*[@id="Form"]/input[3]')
+    page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
+    page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
+    page.fill("#workflow li:nth-child(1) .special_textarea", "hostname")
+    time.sleep(300)
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btn")
+
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+
+
 def test_deploy_package_execute_command(page: Page) -> None:
 
     medulla_connect(page)
@@ -99,7 +140,7 @@ def test_deploy_package_execute_command(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    package_uuid = find_uuid_sql("Notepad++")
+    package_uuid = find_uuid_sql("Test_deploy_package")
 
     package_to_deploy = "#p_" + package_uuid + " >> .start >> a"
     page.click(package_to_deploy)
@@ -122,7 +163,7 @@ def test_deploy_planned_command(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    package_uuid = find_uuid_sql("Notepad++")
+    package_uuid = find_uuid_sql("Test_deploy_package")
     package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
 
     page.click(package_to_deploy)
@@ -165,7 +206,7 @@ def test_deploy_delayed_command(page: Page) -> None:
     machine_inventory = "#m_" + machine_serial + " .install a"
     page.click(machine_inventory)
 
-    package = 'hostname'
+    package = 'Test_deploy_package'
 
     package_uuid = find_uuid_sql(package)
     package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
