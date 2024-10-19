@@ -142,6 +142,11 @@ def test_deploy_package_execute_command(page: Page) -> None:
 
     package_uuid = find_uuid_sql("Test_deploy_package")
 
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_deploy_package")
+    page.get_by_role("button", name="Search").click()
+
+
     package_to_deploy = "#p_" + package_uuid + " >> .start >> a"
     page.click(package_to_deploy)
 
@@ -164,6 +169,11 @@ def test_deploy_planned_command(page: Page) -> None:
     page.click(machine_inventory)
 
     package_uuid = find_uuid_sql("Test_deploy_package")
+
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_deploy_package")
+    page.get_by_role("button", name="Search").click()
+
     package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
 
     page.click(package_to_deploy)
@@ -207,6 +217,12 @@ def test_deploy_delayed_command(page: Page) -> None:
     page.click(machine_inventory)
 
     package = 'Test_deploy_package'
+
+
+    page.locator("#param").click()
+    page.locator("#param").fill(package)
+    page.get_by_role("button", name="Search").click()
+
 
     package_uuid = find_uuid_sql(package)
     package_to_deploy = "#p_" + package_uuid + " >> .advanced >> a"
