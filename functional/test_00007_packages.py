@@ -128,7 +128,7 @@ def test_create_package_execute(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
-    page.fill("#label", "Package de test execute")
+    page.fill("#label", "Test_execute_package")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
 
@@ -143,15 +143,14 @@ def test_create_package_execute(page: Page) -> None:
     # page.click('//*[@id="Form"]/input[3]')
     page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
     page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
-    page.fill("#version", "0.0")
-    page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
+    page.fill("#workflow li:nth-child(1) .special_textarea", "hostname")
+    time.sleep(300)
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
-
 
 def test_watching_create_package(page: Page) -> None:
     """
@@ -176,10 +175,18 @@ def test_correctness_package_execute_json(page: Page) -> None:
     """
     medulla_connect(page)
 
+    mylogger = logging.getLogger()
+
     page.click("#navbarpkgs")
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
+
+
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_execute_package")
+    page.get_by_role("button", name="Search").click()
+
 
     page.click(".display > a >> nth=0")
 
@@ -192,21 +199,22 @@ def test_correctness_package_execute_json(page: Page) -> None:
 
     remove_unneeded_key(tempdir, package_uuid, "conf.json")
 
-    assert (
-        filecmp.cmp(
-            os.path.join(tempdir, package_uuid, "conf.json"),
-            os.path.join("packages_template", "conf-execute.json"),
-        )
-        == True
-    )
-    remove_unneeded_key(tempdir, package_uuid, "xmppdeploy.json")
-    assert (
-        filecmp.cmp(
-            os.path.join(tempdir, package_uuid, "xmppdeploy.json"),
-            os.path.join("packages_template", "xmppdeploy-execute.json"),
-        )
-        == True
-    )
+    with open(os.path.join(tempdir, package_uuid, "conf.json"), 'r') as conffile1, \
+         open(os.path.join("packages_template", "conf-execute.json"), 'r') as conffile2:
+        confjson1 = json.load(conffile1)
+        confjson2 = json.load(conffile2)
+
+
+    assert(confjson1 == confjson2)
+
+
+    with open(os.path.join(tempdir, package_uuid, "xmppdeploy.json"), 'r') as xmppfile1, \
+         open(os.path.join("packages_template", "xmppdeploy-execute.json"), 'r') as xmppfile2:
+        xmppjson1 = json.load(xmppfile1)
+        xmppjson2 = json.load(xmppfile2)
+
+
+    assert(xmppjson1 == xmppjson2)
 
 def test_package_view_execute_package(page: Page) -> None:
 
