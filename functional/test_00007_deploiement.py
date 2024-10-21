@@ -115,15 +115,12 @@ def test_create_package_execute(page: Page) -> None:
     page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
     page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
     page.fill("#workflow li:nth-child(1) .special_textarea", "hostname")
-    time.sleep(300)
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
-
-
 
 def test_deploy_package_execute_command(page: Page) -> None:
 
@@ -141,6 +138,9 @@ def test_deploy_package_execute_command(page: Page) -> None:
     page.click(machine_inventory)
 
     package_uuid = find_uuid_sql("Test_deploy_package")
+
+
+    LOGGER.error(package_uuid)
 
     page.locator("#param").click()
     page.locator("#param").fill("Test_deploy_package")
