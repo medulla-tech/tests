@@ -231,6 +231,11 @@ def test_package_view_execute_package(page: Page) -> None:
     package_uuid = find_uuid_sql("Package de test execute")
 
     id_to_edit = "#p_" + package_uuid + " >> .display >> a"
+
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_execute_package")
+    page.get_by_role("button", name="Search").click()
+
     page.click(id_to_edit)
 
     # FIXME: Fix the expect part.
@@ -247,6 +252,11 @@ def test_package_delete_execute_package(page: Page) -> None:
     )
 
     package_uuid = find_uuid_sql("Package de test execute")
+
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_execute_package")
+    page.get_by_role("button", name="Search").click()
+
 
     id_to_remove = "#p_" +  package_uuid + " .delete a"
     page.click(id_to_remove)
