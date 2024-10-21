@@ -146,7 +146,6 @@ def test_create_package_execute(page: Page) -> None:
     page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
     page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
     page.fill("#workflow li:nth-child(1) .special_textarea", "hostname")
-    time.sleep(300)
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
