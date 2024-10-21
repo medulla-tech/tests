@@ -153,6 +153,47 @@ def test_create_package_execute(page: Page) -> None:
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
+
+def test_remove_from_pending(page: Page) -> None:
+    """
+        It creates a simple package with an empty
+        execute field.
+    """
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    page.click("#pending")
+    package_uuid = find_uuid_sql("Test_execute_package")
+
+    element_id = "#p_" +  package_uuid
+
+    mylogger.error(package_uuid)
+    try:
+        max_attempts = 10
+        attempt = 0
+
+        while attempt < max_attempts:
+            try:
+                page.wait_for_selector(element_id, timeout=10000)
+                mylogger.error(f"The package is still on the pending list. Test:  {attempt + 1}")
+
+                page.reload()
+                time.sleep(3)
+            except:
+                mylogger.error("The package is not on the pending list")
+                break
+
+            attempt += 1
+        else:
+            raise AssertionError("After 10 tries, the package is still on the pending list. There is a problem.")
+
+    except Exception as e:
+        mylogger.error(f"A problem occured : {e}")
+
 def test_watching_create_package(page: Page) -> None:
     """
         It tests if watching is working or if syncthing is not.
@@ -871,3 +912,24 @@ def test_create_package_user_postpone_options(page: Page) -> None:
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
+
+def test_clean_test_packages() -> None:
+
+    private_key_path = 'TO COMPLETE'
+    passphrase='TO COMPLETE'
+    private_key = paramiko.RSAKey.from_private_key_file(private_key_path, password=passphrase)
+
+    ssh_client = paramiko.SSHClient()
+
+    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh_client.connect(ssh_server, port="22", username="root", pkey=private_key)
+
+    file_to_delete = '/var/lib/pulse2/packages/sharing/global/*'
+    delete_command = f'rm -fr {file_to_delete}'
+    stdin, stdout, stderr = ssh_client.exec_command(delete_command)
+
+
+    run_script_command = 'source /var/lib/pulse2/clients/generate-agent-package'
+    stdin, stdout, stderr = ssh_client.exec_command(run_script_command)
+
+    ssh_client.close()
