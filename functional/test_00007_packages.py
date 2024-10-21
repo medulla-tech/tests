@@ -19,6 +19,8 @@ Config.read(os.path.join(project_dir, "config.ini"))
 test_server = Config.get('test_server', 'name')
 ssh_server = Config.get('test_server', 'ssh')
 
+mylogger = logging.getLogger()
+
 """
     The tests are done to test the package page of pulse.
 
@@ -156,8 +158,11 @@ def test_watching_create_package(page: Page) -> None:
     """
         It tests if watching is working or if syncthing is not.
     """
+
+    timeToWait = "20"
     # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
-    time.sleep(5)
+    mylogger.info(f"We are waiting {timeToWait} secondes. This allow the package to sync on the Relay servers")
+    time.sleep(timeToWait)
 
     medulla_connect(page)
 
@@ -174,8 +179,6 @@ def test_correctness_package_execute_json(page: Page) -> None:
         It checks if the packages we just created is OK.
     """
     medulla_connect(page)
-
-    mylogger = logging.getLogger()
 
     page.click("#navbarpkgs")
     expect(page).to_have_url(
