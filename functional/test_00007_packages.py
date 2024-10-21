@@ -181,12 +181,12 @@ def test_remove_from_pending(page: Page) -> None:
         while attempt < max_attempts:
             try:
                 page.wait_for_selector(element_id, timeout=10000)
-                mylogger.error(f"The package is still on the pending list. Test:  {attempt + 1}")
+                mylogger.info(f"The package is still on the pending list. Test:  {attempt + 1}")
 
                 page.reload()
                 time.sleep(3)
             except:
-                mylogger.error("The package is not on the pending list")
+                mylogger.info("The package is not on the pending list")
                 break
 
             attempt += 1
