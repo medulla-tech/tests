@@ -18,6 +18,8 @@ Config.read(os.path.join(project_dir, "config.ini"))
 
 test_server = Config.get('test_server', 'name')
 ssh_server = Config.get('test_server', 'ssh')
+passphrase = Config.get('test_server', 'passphrase')
+private_key_path = Config.get('test_server', 'passkey_path')
 
 mylogger = logging.getLogger()
 
@@ -915,8 +917,6 @@ def test_create_package_user_postpone_options(page: Page) -> None:
 
 def test_clean_test_packages() -> None:
 
-    private_key_path = 'TO COMPLETE'
-    passphrase='TO COMPLETE'
     private_key = paramiko.RSAKey.from_private_key_file(private_key_path, password=passphrase)
 
     ssh_client = paramiko.SSHClient()
