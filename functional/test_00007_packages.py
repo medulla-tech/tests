@@ -270,7 +270,7 @@ def test_package_view_execute_package(page: Page) -> None:
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
-    package_uuid = find_uuid_sql("Package de test execute")
+    package_uuid = find_uuid_sql("Test_execute_package")
 
     id_to_edit = "#p_" + package_uuid + " >> .display >> a"
 
@@ -293,7 +293,7 @@ def test_package_delete_execute_package(page: Page) -> None:
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
 
-    package_uuid = find_uuid_sql("Package de test execute")
+    package_uuid = find_uuid_sql("Test_execute_package")
 
     page.locator("#param").click()
     page.locator("#param").fill("Test_execute_package")
