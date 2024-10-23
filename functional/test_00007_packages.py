@@ -208,7 +208,7 @@ def test_watching_create_package(page: Page) -> None:
 
     medulla_connect(page)
 
-    uuidPackage = find_uuid_sql("Package de test execute")
+    uuidPackage = find_uuid_sql("Test_execute_package")
 
     sql_request = "SELECT id FROM syncthingsync WHERE uuidpackage = '" + uuidPackage + "'LIMIT 1"
     is_watching_OK = sqlcheck("pkgs", sql_request)
