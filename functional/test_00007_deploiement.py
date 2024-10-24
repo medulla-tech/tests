@@ -50,6 +50,42 @@ def find_uuid_sql(label) -> str:
 
     return package_uuid
 
+
+def template_deploy_with_error(page: Page) -> None:
+    result_depl = True
+
+    def check_deploy_success():
+        order_sent = page.locator("text=Deployment successful")
+
+        try:
+            order_sent.wait_for(timeout=1000)
+            return True
+        except:
+            return False
+
+    def check_deploy_error():
+        order_error = page.locator("text=Deployment aborted")
+
+        try:
+            order_error.wait_for(timeout=1000)
+            return True
+        except:
+            LOGGER.info("Deploy in progress, please wait...")
+            return False
+
+    while check_deploy_success() == False:
+        page.reload()
+        time.sleep(3)
+
+        if check_deploy_error() == True:
+            LOGGER.info("Deployment error")
+            result_depl = False
+            break
+
+
+    assert result_depl == False
+
+
 def template_deploy(page: Page) -> None:
     result_depl = True
 
@@ -83,7 +119,6 @@ def template_deploy(page: Page) -> None:
 
 
     assert result_depl == True
-
 
 def test_create_package_execute(page: Page) -> None:
     """
@@ -121,6 +156,76 @@ def test_create_package_execute(page: Page) -> None:
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
+
+def test_create_wrong_package_execute(page: Page) -> None:
+    """
+        It creates a simple package with an empty
+        execute field.
+    """
+    medulla_connect(page)
+
+    page.click("#navbarpkgs")
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+    page.click("#add")
+    page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.fill("#label", "Test_deploy_error_package")
+    page.fill("#version", "0.0")
+    page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
+
+    page.locator("#available-actions li >> nth=0").drag_to(
+        page.locator("#current-actions")
+    )
+    # As playwright does not detect correctly the new element, it drops it at the end.
+    # We need a second step, after the drop, to use the correct position
+    page.locator("#current-actions li >> nth=2").drag_to(
+        page.locator("#current-actions li >> nth=0")
+    )
+    # page.click('//*[@id="Form"]/input[3]')
+    page.click("#workflow li:nth-child(1) input[type='button'][value='Options']")
+    page.fill("#workflow li:nth-child(1) input[name='actionlabel']", "Package de test")
+    page.fill("#workflow li:nth-child(1) .special_textarea", "hostnameuh")
+    page.click(".btnPrimary[type='submit']")
+    page.click(".btn")
+
+    expect(page).to_have_url(
+        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+    )
+
+def test_deploy_package_wrong_execute_command(page: Page) -> None:
+
+    medulla_connect(page)
+
+    page.click('#navbarcomputers')
+    expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=computers&action=machinesList")
+
+    page.click('#machinesList')
+    sql_command = 'SELECT uuid_serial_machine FROM machines WHERE hostname = "' + machineName + '"'
+    machine_serial = sqlcheck("xmppmaster", sql_command)
+
+
+    machine_inventory = "#m_" + machine_serial + " .install a"
+    page.click(machine_inventory)
+
+    package_uuid = find_uuid_sql("Test_deploy_error_package")
+
+
+    LOGGER.error(package_uuid)
+
+    page.locator("#param").click()
+    page.locator("#param").fill("Test_deploy_package")
+    page.get_by_role("button", name="Search").click()
+
+
+    package_to_deploy = "#p_" + package_uuid + " >> .start >> a"
+    page.click(package_to_deploy)
+
+    time.sleep(1)
+
+    template_deploy_with_error(page)
+
 
 def test_deploy_package_execute_command(page: Page) -> None:
 
