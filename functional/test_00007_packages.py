@@ -202,7 +202,7 @@ def test_watching_create_package(page: Page) -> None:
         It tests if watching is working or if syncthing is not.
     """
 
-    timeToWait = "20"
+    timeToWait = 20
     # We need to add a small sleep to make sure the package is well synchronised  on the servers ( principal + ARs )
     mylogger.info(f"We are waiting {timeToWait} secondes. This allow the package to sync on the Relay servers")
     time.sleep(timeToWait)
