@@ -985,7 +985,7 @@ def test_share_group(page: Page) -> None:
     page.click("#tabsta a")
 
     page.fill(".tabdiv input[name='name']", group_name)
-
+    page.locator("input[name=\"bfiltmachine\"]").click()
     page.click(".list option >> nth=0")
     page.click("#grouplist input[name='baddmachine']")
     page.click(".btnPrimary[type='submit']")
