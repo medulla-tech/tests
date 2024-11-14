@@ -931,6 +931,7 @@ def test_create_group_static(page: Page) -> None:
 
     page.fill(".tabdiv input[name='name']", "Created by playwright Static")
 
+    page.locator("input[name=\"bfiltmachine\"]").click()
     page.click(".list option >> nth=0")
     page.click("#grouplist input[name='baddmachine']")
     page.click(".btnPrimary[type='submit']")
