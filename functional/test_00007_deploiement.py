@@ -153,6 +153,8 @@ def test_create_package_execute(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -189,6 +191,8 @@ def test_create_wrong_package_execute(page: Page) -> None:
     page.fill("#workflow li:nth-child(1) .special_textarea", "hostnameuh")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"

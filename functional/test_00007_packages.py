@@ -152,6 +152,8 @@ def test_create_package_execute(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+
+    time.sleep(5)
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -344,6 +346,8 @@ def test_create_package_execute_script(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -381,6 +385,8 @@ def test_create_package_set_environment_variables(page: Page) -> None:
     page.fill("//html/body/div/div[4]/div/form/span/div/div[2]/ul/li[1]/div[2]/div/table/tbody/tr[1]/th[2]/input", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -420,6 +426,8 @@ def test_create_package_restart(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -457,6 +465,8 @@ def test_create_package_wait_and_go_to_step(page: Page) -> None:
     page.fill("//html/body/div/div[4]/div/form/span/div/div[2]/ul/li[1]/div[2]/div/table/tbody/tr[1]/th[2]/input", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -496,6 +506,8 @@ def test_create_package_add_info_in_deployement_log(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -533,6 +545,8 @@ def test_create_package_set_config_file_parameter(page: Page) -> None:
     page.fill("//html/body/div/div[4]/div/form/span/div/div[2]/ul/li[1]/div[2]/div/table/tbody/tr[1]/th[2]/input", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -576,6 +590,8 @@ def test_create_package_unzip_file(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -616,6 +632,8 @@ def test_create_package_download_file(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -654,6 +672,8 @@ def test_create_package_remove_uploaded_files(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -688,6 +708,8 @@ def test_create_package_installation_section(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -725,6 +747,8 @@ def test_create_package_update_section(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -759,6 +783,8 @@ def test_create_package_uninstall_section(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -798,6 +824,8 @@ def test_create_package_kiosk_notification(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -835,6 +863,8 @@ def test_create_package_user_notification(page: Page) -> None:
     page.fill("//html/body/div/div[4]/div/form/span/div/div[2]/ul/li[1]/div[2]/div/table/tbody/tr[1]/th[2]/input", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
@@ -874,6 +904,8 @@ def test_create_package_user_question(page: Page) -> None:
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
 
+    time.sleep(5)
+
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
     )
@@ -911,6 +943,8 @@ def test_create_package_user_postpone_options(page: Page) -> None:
     page.fill("//html/body/div/div[4]/div/form/span/div/div[2]/ul/li[1]/div[2]/div/table/tbody/tr[1]/th[2]/input", "Package de test")
     page.click(".btnPrimary[type='submit']")
     page.click(".btn")
+
+    time.sleep(5)
 
     expect(page).to_have_url(
         test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
