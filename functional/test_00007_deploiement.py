@@ -215,9 +215,6 @@ def test_deploy_package_wrong_execute_command(page: Page) -> None:
 
     package_uuid = find_uuid_sql("Test_deploy_error_package")
 
-
-    LOGGER.error(package_uuid)
-
     page.locator("#param").click()
     page.locator("#param").fill("Test_deploy_error_package")
     page.get_by_role("button", name="Search").click()
