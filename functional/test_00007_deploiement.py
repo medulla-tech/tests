@@ -285,7 +285,7 @@ def test_deploy_planned_command(page: Page) -> None:
 
     now = datetime.now()
 
-    start_hour = now + timedelta(minutes=1)
+    start_hour = now + timedelta(minutes=3)
     start_hour_str = start_hour.strftime('%Y-%m-%d %H:%M:%S')
 
     end_hour = start_hour + timedelta(hours=1)
