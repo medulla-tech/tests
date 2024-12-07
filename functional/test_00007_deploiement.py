@@ -134,6 +134,7 @@ def test_create_package_execute(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Test_deploy_package")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -173,6 +174,7 @@ def test_create_wrong_package_execute(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Test_deploy_error_package")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")

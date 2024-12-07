@@ -133,6 +133,7 @@ def test_create_package_execute(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Test_execute_package")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -326,6 +327,7 @@ def test_create_package_execute_script(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test execute_script")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -366,6 +368,7 @@ def test_create_package_set_environment_variables(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test set_environment_variables")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -406,6 +409,7 @@ def test_create_package_restart(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test restart")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -446,6 +450,7 @@ def test_create_package_wait_and_go_to_step(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test wait_and_go_to_step")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -486,6 +491,7 @@ def test_create_package_add_info_in_deployement_log(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test add_info_in_deployement_log")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -526,6 +532,7 @@ def test_create_package_set_config_file_parameter(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test set_config_file_parameter")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -566,6 +573,7 @@ def test_create_package_unzip_file(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test unzip_file")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -610,6 +618,7 @@ def test_create_package_download_file(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test download_file")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -652,6 +661,7 @@ def test_create_package_remove_uploaded_files(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test remove_uploaded_files")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -692,6 +702,7 @@ def test_create_package_installation_section(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test installation_section")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -729,6 +740,7 @@ def test_create_package_update_section(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test update_section")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -767,6 +779,7 @@ def test_create_package_uninstall_section(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test uninstall_section")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -804,6 +817,7 @@ def test_create_package_kiosk_notification(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test kiosk_notification")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -844,6 +858,7 @@ def test_create_package_user_notification(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test user_notification")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -884,6 +899,7 @@ def test_create_package_user_question(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test user_question")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
@@ -924,6 +940,7 @@ def test_create_package_user_postpone_options(page: Page) -> None:
 
     page.click("#add")
     page.wait_for_selector("input[type='radio'][value='empty']:checked")
+    page.locator("#localisation_server").select_option("global")
     page.fill("#label", "Package de test user_postpone_options")
     page.fill("#version", "0.0")
     page.fill("#description", "CAN BE DELETED. TEST PACKAGE")
