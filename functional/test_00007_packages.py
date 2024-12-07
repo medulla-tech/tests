@@ -980,8 +980,12 @@ def test_clean_test_packages() -> None:
     delete_command = f'rm -fr {file_to_delete}'
     stdin, stdout, stderr = ssh_client.exec_command(delete_command)
 
+    sql_request = "DELETE FROM packages where pkgs_share_id='1'"
+    package_uuid = sqlcheck("pkgs", sql_request)
 
+
+"""
     run_script_command = 'source /var/lib/pulse2/clients/generate-agent-package'
     stdin, stdout, stderr = ssh_client.exec_command(run_script_command)
-
+"""
     ssh_client.close()
