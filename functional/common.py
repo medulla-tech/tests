@@ -82,6 +82,14 @@ def get_an_activated_update() -> str:
     sql_command = 'SELECT updateid FROM up_gray_list WHERE valided="1" LIMIT 1'
     return sqlcheck("xmppmaster", sql_command)
 
+def get_a_greylist_update() -> str:
+    """
+        Get an update from the Grey List but not yet validated/activated
+    """
+
+    sql_command = 'SELECT updateid FROM up_gray_list LIMIT 1'
+    return sqlcheck("xmppmaster", sql_command)
+
 def is_update_activated(updateid) -> str:
     """
         Tell if an update is validated or not.
