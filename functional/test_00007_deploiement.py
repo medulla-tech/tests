@@ -78,7 +78,6 @@ def template_deploy_with_error(page: Page) -> None:
         time.sleep(3)
 
         if check_deploy_error() == True:
-            LOGGER.info("Deployment error")
             result_depl = False
             break
 
@@ -113,7 +112,6 @@ def template_deploy(page: Page) -> None:
         time.sleep(3)
 
         if check_deploy_error() == True:
-            LOGGER.info("Deployment error")
             result_depl = False
             break
 
