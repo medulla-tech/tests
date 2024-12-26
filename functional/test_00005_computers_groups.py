@@ -36,7 +36,7 @@ def test_remove_all_groups(page: Page) -> None:
         mylogger.debug(f"Error occurred while removing groups: {e}")
 
 
-def test_create_group_based_on_name(page: Page) -> None:
+def test_create_group_Default(page: Page) -> None:
 
     medulla_connect(page)
 
