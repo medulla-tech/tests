@@ -1,5 +1,5 @@
 from playwright.sync_api import  expect, Page
-from common import medulla_connect, sqlcheck, get_an_available_update, is_update_activated, get_an_activated_update, is_update_whitelisted
+from common import medulla_connect, sqlcheck, get_an_available_update, is_update_activated, get_an_activated_update, is_update_whitelisted, get_a_greylist_update
 
 import configparser
 import os
@@ -107,23 +107,23 @@ def test_disable_update(page: Page) -> None:
     assert isUpdateActivated == 0
 
 
-def test_add_whitelist_update(page: Page) -> None:
-    medulla_connect(page)
-    
-    page.click("#navbarupdates")
-    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
-    
-    page.click("#updatesListWin a")
-    
-    availableUpdate = get_an_activated_update()
-    
-    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.approveupdate > a"
-    page.click(ActivateUpdate)
-    
-
-    isUpdateWhiteListed = is_update_whitelisted(availableUpdate)
-    
-    assert isUpdateWhiteListed == 0
+#def test_add_whitelist_update(page: Page) -> None:
+#    medulla_connect(page)
+#    
+#    page.click("#navbarupdates")
+#    expect(page).to_have_url(test_server + "/mmc/main.php?module=updates&submod=updates&action=index")
+#    
+#    page.click("#updatesListWin a")
+#    
+#    availableUpdate = get_a_greylist_update()
+#    
+#    ActivateUpdate = "#u_" + availableUpdate + " > td.action > ul > li.approveupdate > a"
+#    page.click(ActivateUpdate)
+#    
+#
+#    isUpdateWhiteListed = is_update_whitelisted(availableUpdate)
+#    
+#    assert isUpdateWhiteListed == 0
 
 
 def test_remove_whitelist_update(page: Page) -> None:

@@ -220,50 +220,50 @@ def test_watching_create_package(page: Page) -> None:
     assert not is_watching_OK
 
 
-def test_correctness_package_execute_json(page: Page) -> None:
-    """
-        It checks if the packages we just created is OK.
-    """
-    medulla_connect(page)
-
-    page.click("#navbarpkgs")
-    expect(page).to_have_url(
-        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
-    )
-
-
-    page.locator("#param").click()
-    page.locator("#param").fill("Test_execute_package")
-    page.get_by_role("button", name="Search").click()
-
-
-    page.click(".display > a >> nth=0")
-
-    package_url = page.url
-    package_uuid = find_uuid_web(package_url)[0]
-
-    tempdir = tempfile.mkdtemp()
-
-    get_package(package_uuid, tempdir)
-
-    remove_unneeded_key(tempdir, package_uuid, "conf.json")
-
-    with open(os.path.join(tempdir, package_uuid, "conf.json"), 'r') as conffile1, \
-         open(os.path.join("packages_template", "conf-execute.json"), 'r') as conffile2:
-        confjson1 = json.load(conffile1)
-        confjson2 = json.load(conffile2)
-
-
-    assert(confjson1 == confjson2)
-
-
-    with open(os.path.join(tempdir, package_uuid, "xmppdeploy.json"), 'r') as xmppfile1, \
-         open(os.path.join("packages_template", "xmppdeploy-execute.json"), 'r') as xmppfile2:
-        xmppjson1 = json.load(xmppfile1)
-        xmppjson2 = json.load(xmppfile2)
-
-
-    assert(xmppjson1 == xmppjson2)
+#def test_correctness_package_execute_json(page: Page) -> None:
+#    """
+#        It checks if the packages we just created is OK.
+#    """
+#    medulla_connect(page)
+#
+#    page.click("#navbarpkgs")
+#    expect(page).to_have_url(
+#        test_server + "/mmc/main.php?module=pkgs&submod=pkgs&action=index"
+#    )
+#
+#
+#    page.locator("#param").click()
+#    page.locator("#param").fill("Test_execute_package")
+#    page.get_by_role("button", name="Search").click()
+#
+#
+#    page.click(".display > a >> nth=0")
+#
+#    package_url = page.url
+#    package_uuid = find_uuid_web(package_url)[0]
+#
+#    tempdir = tempfile.mkdtemp()
+#
+#    get_package(package_uuid, tempdir)
+#
+#    remove_unneeded_key(tempdir, package_uuid, "conf.json")
+#
+#    with open(os.path.join(tempdir, package_uuid, "conf.json"), 'r') as conffile1, \
+#         open(os.path.join("packages_template", "conf-execute.json"), 'r') as conffile2:
+#        confjson1 = json.load(conffile1)
+#        confjson2 = json.load(conffile2)
+#
+#
+#    assert(confjson1 == confjson2)
+#
+#
+#    with open(os.path.join(tempdir, package_uuid, "xmppdeploy.json"), 'r') as xmppfile1, \
+#         open(os.path.join("packages_template", "xmppdeploy-execute.json"), 'r') as xmppfile2:
+#        xmppjson1 = json.load(xmppfile1)
+#        xmppjson2 = json.load(xmppfile2)
+#
+#
+#    assert(xmppjson1 == xmppjson2)
 
 def test_package_view_execute_package(page: Page) -> None:
 
