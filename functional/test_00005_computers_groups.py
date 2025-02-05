@@ -1,5 +1,5 @@
 from playwright.sync_api import  expect, Page
-from common import medulla_connect, sqlcheck
+from common import medulla_connect, sqlcheck, generate_csv_import
 
 import logging
 import re
@@ -956,20 +956,23 @@ def test_create_group_by_import_csv(page: Page) -> None:
 
     page.click("#tabfromfile a")
     page.fill("#groupname", "Created by playwright By Import CSV")
+    generate_csv_import()
 
     with page.expect_file_chooser() as fc_info:
         page.locator("#importfile").click()
         file_chooser = fc_info.value
         file_chooser.set_files("packages_template/csv_grp.csv")
 
+    page.click("input[name='elementare'][value='Computer name']")
+
     page.click(".btnPrimary[type='submit']")
+
+    error_alert = page.locator(".alert.alert-error")
+    expect(error_alert).not_to_be_visible()
 
     result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Created by playwright By Import CSV'")
 
     assert result_on_server == 1
-
-    locator = page.locator(".alert")
-    expect(locator).to_have_class("alert alert-success")
 
 def test_share_group(page: Page) -> None:
     

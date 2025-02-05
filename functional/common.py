@@ -18,6 +18,7 @@ password = Config.get('test_server', 'password')
 port = Config.get('test_server', 'port')
 mysqluser = Config.get('test_server', 'mysqluser')
 mysqlpass = Config.get('test_server', 'mysqlpass')
+csv_file_path = os.path.join(project_dir, "packages_template/csv_grp.csv")
 
 def medulla_connect(page: Page) -> None:
 
@@ -123,3 +124,15 @@ def is_update_blacklisted(updateid) -> str:
 
     sql_command = f'SELECT enable_rule FROM up_black_list WHERE updateid_or_kb="{updateid}"'
     return sqlcheck("xmppmaster", sql_command)
+
+def generate_csv_import():
+    """
+    Generate a CSV file with the gpe_machines
+    """
+    with open(csv_file_path, "w") as f:
+        pass
+    gpe_machines = Config.get("test_server", "gpe_machine").split(",")
+    with open(csv_file_path, "w") as f:
+        for machine in gpe_machines:
+            machine = machine.strip()
+            f.write(f"{machine}\n")
