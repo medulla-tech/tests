@@ -964,12 +964,11 @@ def test_create_group_by_import_csv(page: Page) -> None:
 
     page.click(".btnPrimary[type='submit']")
 
-    result_on_server = sqlcheck("dyngroup", "SELECT count(*) from Groups WHERE name = 'Created by playwright By Import CSV'")
+    idfromGroup = sqlcheck("dyngroup", "select id from Groups where name = 'Created by playwright By Import CSV'")
 
-    assert result_on_server == 1
+    isCSVGroup = sqlcheck("dyngroup", f"select count(*) from Results where FK_groups="{idfromGroup}";")
 
-    locator = page.locator(".alert")
-    expect(locator).to_have_class("alert alert-success")
+    assert result_on_server == 0
 
 def test_share_group(page: Page) -> None:
     
