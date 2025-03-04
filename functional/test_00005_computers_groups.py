@@ -966,7 +966,7 @@ def test_create_group_by_import_csv(page: Page) -> None:
 
     idfromGroup = sqlcheck("dyngroup", "select id from Groups where name = 'Created by playwright By Import CSV'")
 
-    isCSVGroup = sqlcheck("dyngroup", f"select count(*) from Results where FK_groups="{idfromGroup}";")
+    isCSVGroup = sqlcheck("dyngroup", f"select count(*) from Results where FK_groups='{idfromGroup}'")
 
     assert result_on_server == 0
 
