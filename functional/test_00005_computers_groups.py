@@ -962,13 +962,16 @@ def test_create_group_by_import_csv(page: Page) -> None:
         file_chooser = fc_info.value
         file_chooser.set_files("packages_template/csv_grp.csv")
 
+    page.locator("input:nth-child(16)").check()
+
     page.click(".btnPrimary[type='submit']")
 
     idfromGroup = sqlcheck("dyngroup", "select id from Groups where name = 'Created by playwright By Import CSV'")
 
-    isCSVGroup = sqlcheck("dyngroup", f"select count(*) from Results where FK_groups='{idfromGroup}'")
+    SQLRequete = f"select count(*) from Results where FK_groups='{idfromGroup}'"
+    isCSVGroup = sqlcheck("dyngroup", SQLRequete)
 
-    assert result_on_server == 0
+    assert  isCSVGroup != 0
 
 def test_share_group(page: Page) -> None:
     
