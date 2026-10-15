@@ -52,7 +52,10 @@ def medulla_connect(page: Page) -> None:
     page.fill('#password', password)
     page.click('#connect_button')
 
-    page.click("#expertmode")
+    # Recent Medulla versions removed this toggle: expert mode is always on
+    expert_mode = page.locator("#expertmode")
+    if expert_mode.count():
+        expert_mode.click()
     expect(page).to_have_url(test_server + "/mmc/main.php?module=base&submod=main&action=default")
 
 
