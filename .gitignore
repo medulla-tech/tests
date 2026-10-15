@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Per-server test configs (see MEDULLA_CONFIG in README)
+functional/config.*.ini

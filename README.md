@@ -128,3 +128,73 @@ Pour lancer les tests il faut utiliser la commande suivante:
 python3 -m pytest . --headed --slowmo 500 -o log_cli=true --log-cli-level=DEBUG
 
 au lieu du . qui signifie lancer tout les tests du dossier on peut utiliser unitairement un test précis.
+
+# Configuration
+
+Les valeurs de `functional/config.ini` sont des exemples. Ne pas y commiter de vrais identifiants.
+
+Pour tester plusieurs serveurs en local, créer un fichier par serveur, par exemple
+`functional/config.preprod.ini` (ignoré par git), et le choisir avec `MEDULLA_CONFIG` :
+
+    MEDULLA_CONFIG=functional/config.preprod.ini python3 -m pytest
+
+Les variables d'environnement suivantes remplacent les valeurs du fichier :
+
+| Variable | Clé de config.ini | Rôle |
+|---|---|---|
+| `MEDULLA_URL` | `name` | Racine du serveur web, sans `/mmc` (ex. `https://qa.medulla-tech.io`) |
+| `MEDULLA_USER` / `MEDULLA_PASSWORD` | `login` / `password` | Compte de l'interface web |
+| `MEDULLA_HOST` | `ssh` | Hôte utilisé pour les vérifications MySQL et SSH |
+| `MYSQL_PORT` / `MYSQL_USER` / `MYSQL_PASSWORD` | `port` / `mysqluser` / `mysqlpass` | Accès MySQL |
+| `MEDULLA_MACHINE` | `machinename` | Machine Windows avec agent Medulla |
+| `SSH_KEY_PATH` / `SSH_KEY_PASSPHRASE` | `passkey_path` / `passphrase` | Clé SSH root sur `MEDULLA_HOST` (tests de paquets) |
+
+Installation des dépendances (Ubuntu) :
+
+    sudo apt install pkg-config default-libmysqlclient-dev
+    pip install -r requirements.txt
+    playwright install --with-deps chromium
+
+# CI
+
+`.github/workflows/functional.yml` :
+
+- **Pull requests** : vérifie seulement que les tests se chargent (`pytest --collect-only`).
+- **Push sur `ci/functional-tests`** (temporaire, à retirer avant le merge) : vérifie que les tests se chargent
+  et lance seulement le test de connexion sur l'Environment `qa`, sans mettre le serveur à jour.
+- **À la demande** (onglet Actions → *Run workflow*) : lance les tests sur le serveur choisi. On peut aussi
+  choisir le runner et les tests à lancer.
+- **Chaque nuit** (du lundi au vendredi, 2h UTC) : lance les tests sur chaque serveur de la liste, en parallèle.
+
+### Mise à jour du serveur
+
+Comme l'ancien job Jenkins, le workflow peut d'abord mettre à jour le serveur pour tester les derniers paquets
+publiés : `apt update && apt upgrade` puis `/usr/sbin/restart-pulse-services` en SSH (root sur `MEDULLA_HOST`),
+puis il attend que l'interface web réponde (5 minutes au plus).
+Toujours fait la nuit ; au lancement manuel, cocher *update_server*. Demande les secrets `SSH_PRIVATE_KEY`
+et `MEDULLA_HOST`.
+
+## Un serveur = un Environment GitHub
+
+Chaque serveur cible est un **Environment** GitHub (Settings → Environments), par exemple `qa`, `preprod`.
+Chaque Environment a ses propres secrets et variables, sous les mêmes noms :
+
+- Secrets : `MEDULLA_URL`, `MEDULLA_USER`, `MEDULLA_PASSWORD`, `MEDULLA_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`,
+  `SSH_PRIVATE_KEY`, `SSH_KEY_PASSPHRASE`
+- Variables : `MEDULLA_MACHINE`, `MYSQL_PORT`
+
+Ajouter un serveur = créer un Environment et remplir ses secrets. Le workflow ne change pas.
+
+Variables du dépôt (Settings → Secrets and variables → Actions → Variables) :
+
+| Variable | Exemple | Rôle |
+|---|---|---|
+| `FUNCTIONAL_ENVIRONMENTS` | `["qa", "preprod"]` | Serveurs testés chaque nuit (défaut : `["qa"]`) |
+| `FUNCTIONAL_RUNNERS` | `{"qa": "proxmox-qa"}` | Runner de chaque serveur (défaut : `ubuntu-latest`) |
+
+## Runner
+
+Les tests modifient les données du serveur et ont besoin de MySQL et de SSH : ils doivent tourner sur un
+runner auto-hébergé du même réseau que le serveur. Sur ce runner, installer une fois
+`pkg-config default-libmysqlclient-dev python3-venv` et les dépendances de Chromium
+(`playwright install-deps chromium`), car le runner n'a pas sudo.

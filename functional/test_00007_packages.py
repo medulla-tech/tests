@@ -14,8 +14,8 @@ import re
 import paramiko
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
-Config = configparser.ConfigParser()
-Config.read(os.path.join(project_dir, "config.ini"))
+# config.ini values, overridden by environment variables (see common.py)
+from common import Config
 
 test_server = Config.get('test_server', 'name')
 ssh_server = Config.get('test_server', 'ssh')

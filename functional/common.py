@@ -8,7 +8,27 @@ import sys
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 Config = configparser.ConfigParser()
-Config.read(os.path.join(project_dir, "config.ini"))
+# MEDULLA_CONFIG selects another file, e.g. one per server (config.preprod.ini)
+Config.read(os.environ.get('MEDULLA_CONFIG') or os.path.join(project_dir, "config.ini"))
+
+# Environment variables override the config file, so the CI can pass secrets
+# without writing them to disk.
+env_overrides = {
+    'name': 'MEDULLA_URL',
+    'login': 'MEDULLA_USER',
+    'password': 'MEDULLA_PASSWORD',
+    'ssh': 'MEDULLA_HOST',
+    'port': 'MYSQL_PORT',
+    'mysqluser': 'MYSQL_USER',
+    'mysqlpass': 'MYSQL_PASSWORD',
+    'machinename': 'MEDULLA_MACHINE',
+    'passkey_path': 'SSH_KEY_PATH',
+    'passphrase': 'SSH_KEY_PASSPHRASE',
+}
+for option, variable in env_overrides.items():
+    if os.environ.get(variable):
+        # Escape % so ConfigParser interpolation leaves the value untouched
+        Config.set('test_server', option, os.environ[variable].replace('%', '%%'))
 
 test_server = Config.get('test_server', 'name')
 
@@ -28,7 +48,7 @@ def medulla_connect(page: Page) -> None:
     locator.select_option('C')
 
     # We fill username/password and we connect into the mmc.
-    page.fill('#username', 'root')
+    page.fill('#username', user)
     page.fill('#password', password)
     page.click('#connect_button')
 

@@ -1,0 +1,216 @@
+name: Functional tests
+
+# These tests create and delete data on the target server, so they never run
+# on pull requests: only at night and on demand. Pull requests only check
+# that the tests can be collected.
+#
+# Each target server is a GitHub Environment (Settings > Environments) holding
+# its own secrets and variables under the same names (MEDULLA_URL, ...).
+on:
+  schedule:
+    - cron: '0 2 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'GitHub Environment of the target server, e.g. qa (empty = FUNCTIONAL_ENVIRONMENTS variable)'
+        required: false
+      runner:
+        description: 'Runner label (empty = FUNCTIONAL_RUNNERS mapping, else ubuntu-latest)'
+        required: false
+      tests:
+        description: 'Tests to run, e.g. functional/test_00000_log.py (empty = all)'
+        required: false
+      update_server:
+        description: 'Upgrade the Medulla packages on the server and restart its services first'
+        type: boolean
+        default: false
+  pull_request:
+  # Temporary, to try the workflow before it reaches the default branch: a push
+  # only runs the login test, without updating the server. Remove before merging.
+  push:
+    branches:
+      - ci/functional-tests
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    name: Collect tests
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install system packages for mysqlclient
+        run: sudo apt-get update && sudo apt-get install -y pkg-config default-libmysqlclient-dev
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect tests
+        run: python -m pytest --collect-only -q
+
+  functional:
+    name: Run functional tests (${{ matrix.environment }})
+    if: github.event_name != 'pull_request'
+    strategy:
+      fail-fast: false
+      matrix:
+        # Manual run: the chosen environment. Nightly run: every environment
+        # listed in the FUNCTIONAL_ENVIRONMENTS variable, as a JSON array.
+        environment: ${{ fromJSON(inputs.environment && format('["{0}"]', inputs.environment) || vars.FUNCTIONAL_ENVIRONMENTS || '["qa"]') }}
+    environment: ${{ matrix.environment }}
+    # The runner must reach the server over HTTP, MySQL and SSH: use a
+    # self-hosted runner on the same network. FUNCTIONAL_RUNNERS maps each
+    # environment to a runner label, e.g. {"qa": "proxmox-qa"}.
+    runs-on: ${{ inputs.runner || fromJSON(vars.FUNCTIONAL_RUNNERS || '{}')[matrix.environment] || 'ubuntu-latest' }}
+    timeout-minutes: 120
+    # Runs on the same server share its data: never run two at once
+    concurrency:
+      group: functional-tests-${{ matrix.environment }}
+      cancel-in-progress: false
+    env:
+      MEDULLA_URL: ${{ secrets.MEDULLA_URL }}
+      MEDULLA_USER: ${{ secrets.MEDULLA_USER }}
+      MEDULLA_PASSWORD: ${{ secrets.MEDULLA_PASSWORD }}
+      MEDULLA_HOST: ${{ secrets.MEDULLA_HOST }}
+      MEDULLA_MACHINE: ${{ vars.MEDULLA_MACHINE }}
+      MYSQL_PORT: ${{ vars.MYSQL_PORT }}
+      MYSQL_USER: ${{ secrets.MYSQL_USER }}
+      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      SSH_KEY_PASSPHRASE: ${{ secrets.SSH_KEY_PASSPHRASE }}
+
+    steps:
+      # On push, a missing configuration skips the job instead of failing it
+      - name: Check configuration
+        id: config
+        run: |
+          if [ -n "$MEDULLA_URL" ] && [ -n "$MEDULLA_PASSWORD" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            echo "::notice::MEDULLA_URL and MEDULLA_PASSWORD are not set in this GitHub Environment, skipping the tests"
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::MEDULLA_URL and MEDULLA_PASSWORD must be set in the GitHub Environment of this job"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        if: steps.config.outputs.enabled == 'true'
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        if: steps.config.outputs.enabled == 'true'
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      # Self-hosted runners have no sudo: install these packages once by hand
+      # (pkg-config default-libmysqlclient-dev, and `playwright install-deps chromium`)
+      - name: Install system packages
+        if: steps.config.outputs.enabled == 'true' && (runner.environment == 'github-hosted')
+        run: sudo apt-get update && sudo apt-get install -y pkg-config default-libmysqlclient-dev
+
+      - name: Install dependencies
+        if: steps.config.outputs.enabled == 'true'
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.txt
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Install Chromium
+        if: steps.config.outputs.enabled == 'true'
+        run: |
+          if [ "$RUNNER_ENVIRONMENT" = "github-hosted" ]; then
+            playwright install --with-deps chromium
+          else
+            playwright install chromium
+          fi
+
+      # The packages tests connect to MEDULLA_HOST as root over SSH and scp
+      - name: Setup SSH key
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          if [ -z "$SSH_PRIVATE_KEY" ]; then
+            echo "::warning::SSH_PRIVATE_KEY is not set, the packages tests that use SSH will fail"
+            exit 0
+          fi
+          key="$RUNNER_TEMP/id_rsa"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          chmod 600 "$key"
+          echo "SSH_KEY_PATH=$key" >> "$GITHUB_ENV"
+
+          eval "$(ssh-agent -s)"
+          echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> "$GITHUB_ENV"
+          echo "SSH_AGENT_PID=$SSH_AGENT_PID" >> "$GITHUB_ENV"
+          askpass="$RUNNER_TEMP/askpass.sh"
+          printf '#!/bin/sh\necho "$SSH_KEY_PASSPHRASE"\n' > "$askpass"
+          chmod 700 "$askpass"
+          SSH_ASKPASS="$askpass" SSH_ASKPASS_REQUIRE=force DISPLAY=none ssh-add "$key" < /dev/null
+          rm -f "$askpass"
+
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "$MEDULLA_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # Like the old Jenkins job: test the latest published packages. Always on
+      # at night, optional on manual runs.
+      - name: Update the server
+        if: steps.config.outputs.enabled == 'true' && (github.event_name == 'schedule' || inputs.update_server)
+        run: |
+          if [ -z "$SSH_KEY_PATH" ] || [ -z "$MEDULLA_HOST" ]; then
+            echo "::error::Updating the server needs the SSH_PRIVATE_KEY and MEDULLA_HOST secrets"
+            exit 1
+          fi
+          ssh -o BatchMode=yes "root@$MEDULLA_HOST" \
+            "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::='--force-confold' -y upgrade"
+          ssh -o BatchMode=yes "root@$MEDULLA_HOST" /usr/sbin/restart-pulse-services
+
+          # Wait for the web interface to come back (5 minutes at most)
+          for i in $(seq 1 30); do
+            if curl -sk --max-time 10 "$MEDULLA_URL/mmc/index.php" | grep -q 'id="loginForm"'; then
+              echo "Web interface is up"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::The web interface did not come back after the update"
+          exit 1
+
+      - name: Run functional tests
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          # A push only runs the login test
+          TESTS: ${{ github.event_name == 'push' && 'functional/test_00000_log.py' || inputs.tests }}
+        # $TESTS is left unquoted on purpose: it may hold several paths
+        run: >
+          python -m pytest $TESTS
+          --browser chromium
+          --tracing retain-on-failure
+          --screenshot only-on-failure
+          --output test-results
+          --junitxml test-results/junit.xml
+
+      - name: Stop SSH agent
+        if: always() && steps.config.outputs.enabled == 'true'
+        run: |
+          [ -n "$SSH_AGENT_PID" ] && kill "$SSH_AGENT_PID" || true
+          rm -f "$RUNNER_TEMP/id_rsa"
+
+      - name: Upload results
+        if: always() && steps.config.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: functional-test-results-${{ matrix.environment }}
+          path: test-results/
+          retention-days: 14
