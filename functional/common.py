@@ -72,7 +72,8 @@ def sqlcheck(base, sql_request) -> None:
                             user=mysqluser,
                             passwd=mysqlpass,
                             port=int(port),
-                            db=base)
+                            db=base,
+                            connect_timeout=10)
 
         cursor = db.cursor()
         cursor.execute(sql_request)
@@ -85,7 +86,30 @@ def sqlcheck(base, sql_request) -> None:
         return None
 
     except Exception as e:
-        sys.exit(1)
+        # Fail the test with the reason instead of exiting silently
+        raise AssertionError(f"MySQL request on {base}@{hostname} failed: {e}") from e
+
+
+def sqlfetchall(base, sql_request) -> list:
+    """
+        Used to run a SQL request returning several rows
+        Args:
+            base: The database where we will do the request.
+            sql_request: The SQL Request that will be played
+    """
+    try:
+        db = MySQLdb.connect(host=hostname,
+                            user=mysqluser,
+                            passwd=mysqlpass,
+                            port=int(port),
+                            db=base,
+                            connect_timeout=10)
+        cursor = db.cursor()
+        cursor.execute(sql_request)
+        return list(cursor.fetchall())
+
+    except Exception as e:
+        raise AssertionError(f"MySQL request on {base}@{hostname} failed: {e}") from e
 
 
 def get_an_available_update() -> str:

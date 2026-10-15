@@ -1,6 +1,6 @@
 from playwright.sync_api import expect, Page, Request
 from urllib.parse import urlparse, parse_qs
-from common import medulla_connect, sqlcheck
+from common import medulla_connect, sqlcheck, sqlfetchall
 
 import tempfile
 import logging
@@ -72,7 +72,7 @@ def get_package(package_uuid, tempdir) -> None:
         tempdir: The directory where we will copy the test package
     """
     package_path = os.path.join("/", "var", "lib", "pulse2", "packages", package_uuid)
-    cmd = "scp -r root@" + ssh_server + ":%s %s" % (package_path, tempdir)
+    cmd = "scp -o ConnectTimeout=10 -r root@" + ssh_server + ":%s %s" % (package_path, tempdir)
     call(cmd.split(" "))
 
 def remove_unneeded_key(tempdir, uuid, jsonfile) -> None:
@@ -974,15 +974,20 @@ def test_clean_test_packages() -> None:
     ssh_client = paramiko.SSHClient()
 
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh_client.connect(ssh_server, port="22", username="root", pkey=private_key)
+    ssh_client.connect(ssh_server, port="22", username="root", pkey=private_key, timeout=10)
 
-    file_to_delete = '/var/lib/pulse2/packages/sharing/global/*'
-    delete_command = f'rm -fr {file_to_delete}'
-    stdin, stdout, stderr = ssh_client.exec_command(delete_command)
+    # Only the packages created by the tests: the server may hold real packages too
+    test_packages = ("pkgs_share_id='1' AND (label IN ('Test_execute_package', 'Test_deploy_package', "
+                     "'Test_deploy_error_package') OR label LIKE 'Package de test %')")
+    uuids = [row[0] for row in sqlfetchall("pkgs", "SELECT uuid FROM packages WHERE " + test_packages)]
+
+    for uuid in uuids:
+        # Never build a path from an unexpected value
+        assert re.fullmatch(r'[A-Za-z0-9_.-]+', uuid), "Unexpected package uuid: %r" % uuid
+        ssh_client.exec_command('rm -fr /var/lib/pulse2/packages/sharing/global/' + uuid)
     ssh_client.close()
 
-    sql_request = "DELETE FROM packages where pkgs_share_id='1'"
-    package_uuid = sqlcheck("pkgs", sql_request)
+    sqlcheck("pkgs", "DELETE FROM packages WHERE " + test_packages)
 
 
 """

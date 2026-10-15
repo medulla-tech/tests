@@ -161,7 +161,7 @@ Installation des dépendances (Ubuntu) :
 
 - **Pull requests** : vérifie seulement que les tests se chargent (`pytest --collect-only`).
 - **Push sur `ci/functional-tests`** (temporaire, à retirer avant le merge) : vérifie que les tests se chargent
-  et lance seulement le test de connexion sur l'Environment `qa`, sans mettre le serveur à jour.
+  et lance tous les tests sur l'Environment `qa`, sans mettre le serveur à jour.
 - **À la demande** (onglet Actions → *Run workflow*) : lance les tests sur le serveur choisi. On peut aussi
   choisir le runner et les tests à lancer.
 - **Chaque nuit** (du lundi au vendredi, 2h UTC) : lance les tests sur chaque serveur de la liste, en parallèle.

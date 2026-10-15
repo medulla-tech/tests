@@ -26,7 +26,7 @@ on:
         default: false
   pull_request:
   # Temporary, to try the workflow before it reaches the default branch: a push
-  # only runs the login test, without updating the server. Remove before merging.
+  # runs every test, without updating the server. Remove before merging.
   push:
     branches:
       - ci/functional-tests
@@ -190,8 +190,7 @@ jobs:
       - name: Run functional tests
         if: steps.config.outputs.enabled == 'true'
         env:
-          # A push only runs the login test
-          TESTS: ${{ github.event_name == 'push' && 'functional/test_00000_log.py' || inputs.tests }}
+          TESTS: ${{ inputs.tests }}
         # $TESTS is left unquoted on purpose: it may hold several paths
         run: >
           python -m pytest $TESTS
