@@ -94,6 +94,7 @@ jobs:
       - name: Check configuration
         id: config
         run: |
+          echo "Runner: $RUNNER_NAME ($RUNNER_ENVIRONMENT)"
           if [ -n "$MEDULLA_URL" ] && [ -n "$MEDULLA_PASSWORD" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
@@ -161,7 +162,9 @@ jobs:
           rm -f "$askpass"
 
           mkdir -p ~/.ssh
-          ssh-keyscan -H "$MEDULLA_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          if ! ssh-keyscan -T 10 -H "$MEDULLA_HOST" >> ~/.ssh/known_hosts 2>/dev/null; then
+            echo "::warning::Cannot reach $MEDULLA_HOST over SSH from this runner ($RUNNER_NAME)"
+          fi
 
       # Like the old Jenkins job: test the latest published packages. Always on
       # at night, optional on manual runs.
