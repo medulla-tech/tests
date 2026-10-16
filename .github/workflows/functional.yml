@@ -109,8 +109,10 @@ jobs:
         if: steps.config.outputs.enabled == 'true'
         uses: actions/checkout@v5
 
+      # setup-python has no build for Debian: self-hosted runners use the
+      # system python3 (and python3-venv) instead
       - name: Setup Python
-        if: steps.config.outputs.enabled == 'true'
+        if: steps.config.outputs.enabled == 'true' && runner.environment == 'github-hosted'
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -124,7 +126,7 @@ jobs:
       - name: Install dependencies
         if: steps.config.outputs.enabled == 'true'
         run: |
-          python -m venv .venv
+          python3 -m venv .venv
           .venv/bin/pip install -r requirements.txt
           echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
 
